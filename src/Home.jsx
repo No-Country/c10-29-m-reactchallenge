@@ -4,7 +4,7 @@ const Home = () => {
   return (
     <div >
 
-        Hola
+      Hola 123234434322
 
     </div>
   );
