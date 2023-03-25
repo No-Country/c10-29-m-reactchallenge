@@ -3,9 +3,7 @@ import React from 'react';
 const Home = () => {
   return (
     <div >
-
-      Hola 123234434322
-
+      No se olviden ordenar todo en carpetas. Ya les deje una foto de guia!
     </div>
   );
 };
