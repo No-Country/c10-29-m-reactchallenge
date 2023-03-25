@@ -8,7 +8,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import auth from "./utils/firebaseconfig";
+//import auth from "./utils/firebaseconfig";
 
 function Login() {
   const [email, setEmail] = useState("");
