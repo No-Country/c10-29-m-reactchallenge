@@ -2,12 +2,12 @@
 import { useState } from "react";
 import "./Login.css";
 
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+// import {
+//   getAuth,
+//   createUserWithEmailAndPassword,
+//   GoogleAuthProvider,
+//   signInWithPopup,
+// } from "firebase/auth";
 //import auth from "./utils/firebaseconfig";
 
 function Login() {

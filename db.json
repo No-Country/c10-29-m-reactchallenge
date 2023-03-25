@@ -1,0 +1,16 @@
+{
+  "tickets": [
+    {
+      "id": 1,
+      "title": "Lollapalooza Argentina",
+      "description": "lorem 10",
+      "image": "https://indierocks.b-cdn.net/wp-content/uploads/bfi_thumb/Lollapalooza-Argentina-2023-Editado-pw2aga3mdg6tz06whkqy8y1scszkvdi9uld9olap7o.png"
+    },
+    {
+      "id": 2,
+      "title": "Lollapalooza Argentina",
+      "description": "lorem 10",
+      "image": "https://indierocks.b-cdn.net/wp-content/uploads/bfi_thumb/Lollapalooza-Argentina-2023-Editado-pw2aga3mdg6tz06whkqy8y1scszkvdi9uld9olap7o.png"
+    }
+  ]
+}
