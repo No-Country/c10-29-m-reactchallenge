@@ -38,7 +38,7 @@ function Login() {
       !phoneNumber ||
       !password
     ) {
-      alert("Por favor, complete todos los campos obligatorios.");
+      alert("Por favor, complete  los campos obligatorios.");
     }
   };
   const handleRegistration = (e) => {
