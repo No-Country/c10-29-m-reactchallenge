@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { initialTickets } from "../../redux/tickets/ticketsSlice";
+import { initialTickets } from "../../redux/features/tickets/ticketsSlice";
 import ticketsService from "../../services/tickets";
 import Login from "../../components/Login";
 import Navbar from "../../layouts/Navbar/Index";
