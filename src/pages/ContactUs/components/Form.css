@@ -1,0 +1,74 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block; /* Agregamos esta propiedad para que los labels ocupen todo el ancho */
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+  width: 100%; /* Agregamos esta propiedad para que los inputs ocupen todo el ancho disponible */
+  box-sizing: border-box; /* Agregamos esta propiedad para que el ancho incluya el padding y el borde */
+}
+
+textarea {
+  height: 150px;
+  /* limit */
+  resize: none;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4da6ff;
+}
+
+button[type="submit"] {
+  background-color: #4da6ff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%; /* Agregamos esta propiedad para que el botón ocupe todo el ancho disponible */
+}
+
+.error {
+  /* text-red-500 text-xs italic */
+  color: #e53e3e;
+  font-size: 14px;
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 70%;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input,
+  textarea {
+    font-size: 14px;
+  }
+
+  button[type="submit"] {
+    font-size: 14px;
+  }
+}
