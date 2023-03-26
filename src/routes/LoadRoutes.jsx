@@ -9,7 +9,7 @@ const LoadRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact-us" element={<ContactUs />} />
-      {/* <Route exact path="*" element={<NotMatch />} /> */}
+      <Route exact path="*" element={<NotMatch />} />
     </Routes>
   )
 }
