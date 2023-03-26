@@ -5,7 +5,7 @@ import ticketsService from "../../services/tickets";
 import Login from "../../components/Login";
 import Navbar from "../../layouts/Navbar/Index";
 import Footer from "../../layouts/Footer/Index";
-
+import QRDownload from "../../components/QR";
 
 
 /*
@@ -36,6 +36,9 @@ const Home = () => {
     <div>
       <Navbar />
       <Login />
+
+      <QRDownload data="https://www.ejemplo.com" />
+
       {ticketsState.map((ticket) => (
         <div key={ticket.id}>
           <h1>{ticket.title}</h1>

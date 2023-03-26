@@ -1,0 +1,56 @@
+.qr-container{
+    margin: 0 auto;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#qrCodeEl canvas {
+    margin: auto;
+    display: block;
+    margin-bottom: 30px;
+  }
+
+
+.qr-input {
+  margin-bottom: 20px;
+}
+
+.qr-input input[type="text"] {
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 300px;
+}
+
+.qr-input input[type="button"] {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.qr-code {
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 20px;
+}
+
+.download-btn {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
