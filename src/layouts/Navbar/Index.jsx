@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Index.css";
 
 const Navbar = () => {
@@ -12,25 +13,27 @@ const Navbar = () => {
     <header>
       <nav className="navbar">
         <div className="logo">
-          <h1>ByPass</h1>
+          <Link to="/">
+            <h1>ByPass</h1>
+          </Link>
           <div className="menu-icon" onClick={handleShowNavbar}>
             {showNavbar ? "✖" : "☰"}
           </div>
         </div>
         <div className={`nav-elements  ${showNavbar && "active"}`}>
           <ul>
-              <li className="hvr-underline-from-center">
-                <a href="#">Sobre Nosotros</a>
-              </li>
-              <li className="hvr-underline-from-center">
-                <a href="#">Contactanos</a>
-              </li>
-              <li className="hvr-underline-from-center">
-                <a href="#">Inicio Sesion</a>
-              </li>
-              <li className="hvr-underline-from-center">
-                <a href="#">Registrarse</a>
-              </li>
+            <li className="hvr-underline-from-center">
+              <Link to="/about/">Sobre Nosotros</Link>
+            </li>
+            <li className="hvr-underline-from-center">
+              <Link to="/contact-us/">Contacto</Link>
+            </li>
+            <li className="hvr-underline-from-center">
+              <Link to="sign-in">Iniciar Sesion</Link>
+            </li>
+            <li className="hvr-underline-from-center">
+              <Link to="/sign-up/">Registrarse</Link>
+            </li>
           </ul>
         </div>
       </nav>
