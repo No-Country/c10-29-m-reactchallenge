@@ -7,6 +7,7 @@ import Navbar from "../../layouts/Navbar/Index";
 import Footer from "../../layouts/Footer/Index";
 
 
+
 /*
 useDispatch y useSelector son hooks proporcionados por la biblioteca React Redux que permiten a los componentes de React interactuar con la tienda global de Redux.
 

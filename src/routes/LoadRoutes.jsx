@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Routes, Route } from "react-router-dom";
-import { Home, About, ContactUs, NotMatch } from "../pages";
+import { Home, About, ContactUs, NotMatch,  } from "../pages";
 
 const LoadRoutes = () => {
   return (
