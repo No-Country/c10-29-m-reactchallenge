@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Index.css'
+
 const NotMatch = () => {
   return (
     <div className="container-not-found">
