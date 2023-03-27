@@ -1,101 +1,95 @@
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { nanoid } from '@reduxjs/toolkit'
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import './CreateEventForm.css'
 
-function validate(input) {
-  let error = {};
-
-  if (!input.name) {
-    error.name = "Ingrese el nombre";
-  } else if (input.name[0] === input.name[0].toLowerCase()) {
-    error.name = "La primera letra debe estar en mayúsculas ";
-  } else if (input.name.length <= 3 || input.name.length >= 30) {
-    error.name = "El nombre debe contener de 3 a 30 caracteres";
-  } 
-
-  return error;
-}
-
-
 const CreateEventForm = () => {
-  const [event, setEvent] = useState({
-    id: nanoid(),
-    name: '',
-    location: '',
-    dateTime: '',
-    capacity: '',
-    price: '',
+  const initialValues = {
+    lugar: '',
+    fechaHora: '',
+    capacidad: '',
+    precio: '',
     img: '',
-    description: '',
-  })
+    nombre: '',
+    descripcion: ''
+  };
 
-  const dispatch = useDispatch()
+  const validationSchema = Yup.object({
+    lugar: Yup.string().required('Lugar es requerido'),
+    fechaHora: Yup.string().required('Fecha/horario es requerido'),
+    capacidad: Yup.number().required('Capacidad es requerida'),
+    precio: Yup.string().required('Precio es requerido'),
+    img: Yup.string().required('Imagen es requerida'),
+    nombre: Yup.string().required('Nombre es requerido'),
+    descripcion: Yup.string().required('Descripción es requerida')
+  });
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    dispatch(addEvent(event))
-  }
-
-  const handleChange = e => {
-    setEvent({ ...event, [e.target.name]: e.target.value })
-    setError(
-      validate({
-        ...input, [e.target.name]: e.target.value, }) );
-
-      console.log(input);
-  
-  }
+  const handleSubmit = values => {
+    // handle form submission logic here
+    console.log(values);
+  };
 
   return (
     <div className="contenedorF">
-        <div className="contenedor2">
-        <div className="detail">
-        <Link to="/home"><button className="butt" id="volver">Volver</button></Link>
-        <h1 className="tittleForm">Crea un Evento!!!</h1>
-    <form className="form"   onSubmit={handleSubmit}>
-    <p className="sub">* : Requerido</p>
-      <div>
-      <label className="labels"> *Nombre del evento:</label>
-      <input  className='inputs' type="text" name="name" value={event.name} onChange={handleChange} placeholder="Nombre del evento" />
-      
-      </div>
-      <div>
-      <label className="labels"> *Lugar del evento:</label>
-      <input className='inputs'   type="text" name="location" value={event.location} onChange={handleChange} placeholder="Lugar del evento" />
-      </div>
-      <div>
-      <label className="labels"> *Fecha y hora del evento:</label>
-      <input className='inputs'   type="datetime-local" name="dateTime" value={event.dateTime} onChange={handleChange} placeholder="Fecha/horario del evento" />
-      </div>
-      <div>
-      <label className="labels"> *Capacidad del evento:</label>
-      <input className='inputs'   type="number" name="capacity" value={event.capacity} onChange={handleChange} placeholder="Capacidad del evento" />
-      </div>
-      <div>
-      <label className="labels"> *Precio del evento:</label>
-      <input className='inputs'   type="number" name="price" value={event.price} onChange={handleChange} placeholder="Precio del evento" />
-      </div>
-      <div>
-      <label className="labels"> *Imagen del evento:</label>
-      <input className='inputs'   type="text" name="img" value={event.img} onChange={handleChange} placeholder="Imagen de evento"/>
-      </div>
-      <div>
-      <label className="labels"> *Descripcion del evento:</label>
-      <textarea className='inputs'   type="text" name="description" value={event.description} onChange={handleChange} placeholder="Descripcion del evento"/>
-      </div>
-      
-            <div>
-              <input type="submit"  className="butt" disabled name="Send" />
+    <div className="contenedor2">
+    <div className="detail">
+   <h2 className="tittleForm">Crea un Evento!!!</h2>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
+      {({ errors, touched }) => (
+        <Form>
+          <div>
+            <label htmlFor="nombre">Nombre</label>
+            <Field type="text" id="nombre" name="nombre" placeholder="Nombre del evento" />
+            <ErrorMessage name="nombre"  />
+          </div>
+
+          <div>
+            <label htmlFor="lugar">Lugar</label>
+            <Field type="text" id="lugar" name="lugar" placeholder="Lugar del evento"  />
+            <ErrorMessage name="lugar" />
+          </div>
+
+          <div>
+            <label htmlFor="fechaHora">Fecha/horario</label>
+            <Field type="datetime-local" id="fechaHora" name="fechaHora" placeholder="Fecha/horario del evento"  />
+            <ErrorMessage name="fechaHora" />
+          </div>
+
+          <div>
+            <label htmlFor="capacidad">Capacidad</label>
+            <Field type="number" id="capacidad" name="capacidad" placeholder="Capacidad del evento" />
+            <ErrorMessage name="capacidad" />
+          </div>
+
+          <div>
+            <label htmlFor="precio">Precio</label>
+            <Field type="number" id="precio" name="precio" placeholder="Precio del evento"  />
+            <ErrorMessage name="precio" />
+          </div>
+
+          <div>
+            <label htmlFor="img">Imagen</label>
+            <Field type="text" id="img" name="img" placeholder="Imagen de evento" />
+            <ErrorMessage name="img" />
             </div>
-        
-      </form>
-      </div>
-      </div>
-      </div>
 
-  )
-}
+            <div>
+            <label htmlFor="description">Descripcion</label>
+            <textarea  type="text" id="description" name="description" placeholder="Descripcion del evento" />
+            <ErrorMessage name="description" />
+            </div>
+            <button type="submit">Submit</button>
+            </Form>
+              )}
+              </Formik>
+              </div>
+              </div>
+              </div>
+              )
+      }
 
-export default CreateEventForm
+      export default CreateEventForm
