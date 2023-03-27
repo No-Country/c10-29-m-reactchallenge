@@ -35,6 +35,7 @@ const Home = () => {
     <div>
       <Navbar />
       <CreateAccount />
+      <Login />
 
       {ticketsState.map((ticket) => (
         <div key={ticket.id}>
