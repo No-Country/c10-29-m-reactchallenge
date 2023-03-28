@@ -1,9 +1,25 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import "./CreateAccount.css";
+import { addDoc, getDocs, collection } from "firebase/firestore";
+import { db } from "../utils/firebaseConfig";
+import { useNavigate, useParams} from "react-router-dom";
 
 const Login = () => {
   const formC = useRef();
+  const { idLogin } = useParams();
+  const navegate = useNavigate()
+
+  //Leer datos
+  useEffect (() => {
+    const fetchFirestore = async () => {
+      const querySnapshot = await getDocs(collection(db, "login"));
+        querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+      });
+    }
+    fetchFirestore()
+  }, [idLogin])
+  
 
   return (
     <Formik
@@ -18,17 +34,27 @@ const Login = () => {
         ) {
           errors.user_email = "Por favor ingresar un correo electrónico válido";
         }
+
         if (!values.user_password) {
           errors.user_password = "Por favor ingrese su clave";
         }
-        // else if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/) {
-        //   errors.user_password =
-        //     'Por favor ingresar contraseña Minimo 8 caracteres Maximo 15 Al menos una letra mayúscula Al menos una letra minucula Al menos un dígito No espacios en blanco Al menos 1 caracter especial ';
-        // }
+
         return errors;
       }}
-      onSubmit={(values, { resetForm }) => {
-        alert("Logueando usuario");
+      onSubmit={async (values, { resetForm }) => {
+        try {
+          // Agregar nuevo documento a la colección "login" con los datos del usuario
+          await addDoc(collection(db, "login"), {
+            email: values.user_email,
+            password: values.user_password,
+          });
+
+          // Redireccionar a la página de inicio de sesión exitosa
+          navegate("/")
+        } catch (error) {
+          console.error("Error al agregar documento a Firestore: ", error);
+        }
+
         resetForm();
       }}
     >
@@ -62,4 +88,5 @@ const Login = () => {
     </Formik>
   );
 };
+
 export default Login;
