@@ -1,61 +1,81 @@
-import React, { useEffect, useRef } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { addDoc, getDocs, collection } from "firebase/firestore";
-import { db } from "../utils/firebaseConfig";
-import { useNavigate, useParams} from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react"
+import { Formik, Form, Field, ErrorMessage } from "formik"
+import { addDoc, getDocs, collection } from "firebase/firestore"
+import { useDispatch } from "react-redux"
+import { db } from "../utils/firebaseConfig"
+import { useNavigate} from "react-router-dom"
+import {loginSuccess} from '../redux/features/auth/authenticationSlice'
 
 const Login = () => {
-  const formC = useRef();
-  const { idLogin } = useParams();
+  const formC = useRef()
   const navegate = useNavigate()
+  const [users, setUsers] = useState([])
+  const dispatch = useDispatch()
 
+  const fetchFirestore = async () => {
+    const querySnapshot = await getDocs(collection(db, "login"))
+    const usersArray = []
+    querySnapshot.forEach((doc) => {
+      // console.log(JSON.stringify(doc.data()))
+      usersArray.push(JSON.stringify(doc.data())
+      )
+    })
+    setUsers(usersArray)
+  }
+  
   //Leer datos
   useEffect (() => {
-    const fetchFirestore = async () => {
-      const querySnapshot = await getDocs(collection(db, "login"));
-        querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-      });
-    }
     fetchFirestore()
-  }, [idLogin])
-  
+  }, [])
 
   return (
     <Formik
-      initialValues={{}}
+      initialValues={{  
+        user_password: "",
+        user_email: "",}}
       validate={(values) => {
-        const errors = {};
+        const errors = {}
 
         if (!values.user_email) {
-          errors.user_email = "Por favor ingrese su correo electrónico";
+          errors.user_email = "Por favor ingrese su correo electrónico"
         } else if (
           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.user_email)
         ) {
-          errors.user_email = "Por favor ingresar un correo electrónico válido";
+          errors.user_email = "Por favor ingresar un correo electrónico válido"
         }
 
         if (!values.user_password) {
-          errors.user_password = "Por favor ingrese su clave";
+          errors.user_password = "Por favor ingrese su clave"
         }
 
-        return errors;
+        return errors
       }}
+
       onSubmit={async (values, { resetForm }) => {
+        // console.log(users)
+        // console.log(values)
         try {
-          // Agregar nuevo documento a la colección "login" con los datos del usuario
-          await addDoc(collection(db, "login"), {
-            email: values.user_email,
-            password: values.user_password,
-          });
+          const matchedUser = users.find((u) => {
+            // console.log(u)
+            console.log(u.user_email !== values.user_email)
+            console.log(u.user_password !== values.user_password)
 
-          // Redireccionar a la página de inicio de sesión exitosa
-          navegate("/")
+            return u.user_email !== values.user_email && u.user_password !== values.user_password
+          })
+          if (matchedUser) {
+            // Redirect to successful login page
+            console.log(matchedUser)
+            dispatch(loginSuccess(matchedUser))
+            navegate("/")
+          } else {
+            // Display error message
+            alert("Invalid email or password")
+          }
         } catch (error) {
-          console.error("Error al agregar documento a Firestore: ", error);
+          console.error("Error al buscar usuario en Firestore: ", error)
         }
-
-        resetForm();
+      
+        resetForm()
       }}
     >
       {({ isSubmitting }) => (
@@ -86,7 +106,7 @@ const Login = () => {
         </Form>
       )}
     </Formik>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

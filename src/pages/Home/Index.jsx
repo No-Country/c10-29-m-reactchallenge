@@ -34,7 +34,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <CreateAccount />
+      {/* <CreateAccount /> */}
       <Login />
 
       {ticketsState.map((ticket) => (
