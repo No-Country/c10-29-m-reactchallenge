@@ -7,6 +7,7 @@ Bypass es una página web de venta de entradas digitales que permite a los usuar
 - **Visual Estudio**: Elegí el IDE de Visual Studio para realizar el proyecto completo. Es un panel de inicio creativo que se puede usar para editar, depurar y compilar código y, después, publicar una aplicación.
 - **React**: El proyecto se realizo en React Redux Toolkit.
 - **CSS**: Para la maquetación y diseño de la página utilice CSS, código propio e importado de Tailwind.
+- **FireBase**: Se utilizo para crear la base de datos y alojar los mismos.
 
 ## Descripción de los templates
 - ### Index
