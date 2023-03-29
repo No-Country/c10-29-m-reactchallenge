@@ -13,10 +13,9 @@ const Navbar = () => {
 
   const user = useSelector((store) => store.auth?.user);
   const dispatch = useDispatch();
-  console.log(user);
 
   return (
-    <header className="container">
+    <header>
       <nav className="navbar">
         <div className="logo">
           <Link to="/">
@@ -75,7 +74,8 @@ const Navbar = () => {
               </li>
             )}
             {user?.role !== "guest" && (
-              <li className="hvr-underline-from-center"
+              <li
+                className="hvr-underline-from-center"
                 onClick={() => {
                   dispatch(closeSession());
                 }}

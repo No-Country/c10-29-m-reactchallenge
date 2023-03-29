@@ -26,7 +26,7 @@ export const authSlice = createSlice({
       state.status = "loading";
     },
     loginSuccess: (state, action) => {
-      state.user = JSON.parse(action.payload);
+      state.user = action.payload
       state.user.status = "succeeded"
       console.log(state.user)
     },

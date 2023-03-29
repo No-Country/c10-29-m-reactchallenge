@@ -5,7 +5,11 @@ import ticketsService from "../../services/tickets";
 import Login from "../../components/Login";
 import Navbar from "../../layouts/Navbar/Index";
 import Footer from "../../layouts/Footer/Index";
-import CreateAccount from "../../components/CreateAccount";
+import Carousel from "../../pages/Home/Homecompone/Carousel";
+
+
+
+// import CreateAccount from "../../components/CreateAccount";
 
 /*
 useDispatch y useSelector son hooks proporcionados por la biblioteca React Redux que permiten a los componentes de React interactuar con la tienda global de Redux.
@@ -26,16 +30,23 @@ const Home = () => {
 
   // console.log(ticketsState)
   useEffect(() => {
-    ticketsService.getAll().then((tickets) => {
-      dispatch(initialTickets(tickets));
-    });
+    try {
+      ticketsService.getAll().then((tickets) => {
+        dispatch(initialTickets(tickets));
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (
     <div>
+
+      <Carousel/>
+   
       <Navbar />
       {/* <CreateAccount /> */}
-      <Login />
+      {/* <Login /> */}
 
       {ticketsState.map((ticket) => (
         <div key={ticket.id}>
