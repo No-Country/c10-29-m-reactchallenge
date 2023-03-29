@@ -1,6 +1,11 @@
 .footer{
     background-color: var(--black);
     color: var(--white);
+    margin-top: 10px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-container{
@@ -27,7 +32,6 @@
     text-align: left;
     gap: 0.5rem;
     margin: 0.5rem 0;
-
 }
 
 .media p span{
@@ -51,7 +55,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 20px;
     margin-top: 1.5rem;
 }
 
@@ -59,7 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 500;
     color: #F8F8F8;
 }
@@ -69,4 +73,13 @@
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 2rem;
     }
+
+    .footer{
+        position: relative;
+    }
+
+    .social{
+        
+    }
+
 }

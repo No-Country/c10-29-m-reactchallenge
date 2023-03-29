@@ -100,7 +100,7 @@
     left: 51%;
     right: 51%;
     bottom: 0;
-    background: #000;
+    background: #fff;
     height: 4px;
     -webkit-transition-property: left, right;
     transition-property: left, right;
@@ -117,7 +117,7 @@
     right: 0;
   }
   
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     .logo {
       justify-content: space-between;
       width: 100%;
