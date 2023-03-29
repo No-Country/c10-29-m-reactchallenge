@@ -1,13 +1,42 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { db } from "../utils/firebaseConfig";
+import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 import "./CreateAccount.css";
 
 const CreateAccount = () => {
   const formC = useRef();
 
+  const reference = collection(db, "login");
+  
+  const navigate = useNavigate();
+  
+  const addNewUser = async (values) => {
+    const email = values.user_email;
+    const q = query(reference, where("user_email", "==", email));
+    const querySnapshot = await getDocs(q);
+    if (!querySnapshot.empty) {
+      // Usuario ya registrado
+      alert("Este correo electrónico ya está registrado.");
+    } else {
+      await addDoc(reference, values);
+      alert("Usuario creado");
+    }
+  };
+
   return (
     <Formik
-      initialValues={{}}
+      initialValues={{
+        user_name: "",
+        user_email: "",
+        user_password: "",
+        user_birthdate: "",
+        user_dni: "",
+        user_phoneNumber: "",
+        status: "idle",
+        role: "guest"
+      }}
       validate={(values) => {
         const errors = {};
         if (!values.user_name) {
@@ -41,8 +70,9 @@ const CreateAccount = () => {
         return errors;
       }}
       onSubmit={(values, { resetForm }) => {
-        alert("Usuario creado");
-        resetForm();
+        addNewUser(values);
+        navigate("/sign-in");
+        // resetForm();
       }}
     >
       {({ isSubmitting }) => (
@@ -113,6 +143,19 @@ const CreateAccount = () => {
             <Field type="number" name="user_dni" placeholder="Numero de DNI" />
             <ErrorMessage className="error" name="user_dni" component="div" />
           </div>
+
+          <div role="group" aria-labelledby="my-radio-group">
+            <label>
+              <Field type="radio" name="role" value="buyer" />
+              Comprador
+            </label>
+            <label>
+              <Field type="radio" name="role" value="seller" />
+              Vendedor
+            </label>
+            
+          </div>
+
           <button type="submit">Registrarse</button>
         </Form>
       )}

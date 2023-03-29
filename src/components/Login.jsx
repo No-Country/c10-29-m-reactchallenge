@@ -17,7 +17,7 @@ const Login = () => {
     const usersArray = []
     querySnapshot.forEach((doc) => {
       // console.log(JSON.stringify(doc.data()))
-      usersArray.push(JSON.stringify(doc.data())
+      usersArray.push(JSON.parse(JSON.stringify(doc.data()))
       )
     })
     setUsers(usersArray)
@@ -52,19 +52,19 @@ const Login = () => {
       }}
 
       onSubmit={async (values, { resetForm }) => {
-        // console.log(users)
+        console.log(users)
         // console.log(values)
         try {
           const matchedUser = users.find((u) => {
             // console.log(u)
-            console.log(u.user_email !== values.user_email)
-            console.log(u.user_password !== values.user_password)
+            // console.log(u.user_email !== values.user_email)
+            // console.log(u.user_password !== values.user_password)
 
-            return u.user_email !== values.user_email && u.user_password !== values.user_password
+            return u.user_email === values.user_email && u.user_password === values.user_password
           })
           if (matchedUser) {
             // Redirect to successful login page
-            console.log(matchedUser)
+            // console.log(matchedUser)
             dispatch(loginSuccess(matchedUser))
             navegate("/")
           } else {

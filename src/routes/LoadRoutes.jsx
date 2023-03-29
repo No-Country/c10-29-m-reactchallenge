@@ -7,6 +7,8 @@ import {
   ContactUs, 
   Sell,
   Buy,
+  Login,
+  SignUp,
   NotMatch,  
 } from "../pages";
 
@@ -14,8 +16,10 @@ const GuestRoutes = () => {
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/about/" element={<About />} />
+      <Route path="/contact-us/" element={<ContactUs />} />
+      <Route path="/sign-in/" element={<Login />} />
+      <Route path="/sign-up/" element={<SignUp />} />
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
   )
@@ -25,8 +29,8 @@ const SellerRoutes = () => {
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/about/" element={<About />} />
+      <Route path="/contact-us/" element={<ContactUs />} />
       <Route path="/sell/" element={<Sell />} />
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
