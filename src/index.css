@@ -1,5 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@800&family=Roboto&display=swap');
+
+:root{
+  --white: #FFFFFF;
+  --light-brown: #CCB384;
+  --red: #EA5959;
+  --black: #2D2D2D;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body{
+  font-family: 'Roboto', "sans-serif";
+  font-size: 18px;
+  background-color: var(--red)!important;
+  /* height: 100vh; */
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }

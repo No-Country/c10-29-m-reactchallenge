@@ -9,7 +9,8 @@ import {
   Buy,
   Login,
   SignUp,
-  NotMatch,  
+  NotMatch,
+  Card,  
 } from "../pages";
 
 const GuestRoutes = () => {
@@ -18,6 +19,7 @@ const GuestRoutes = () => {
       <Route exact path="/" element={<Home />} />
       <Route path="/about/" element={<About />} />
       <Route path="/contact-us/" element={<ContactUs />} />
+      <Route path="/cards/:id" element={<Card />} />
       <Route path="/sign-in/" element={<Login />} />
       <Route path="/sign-up/" element={<SignUp />} />
       <Route exact path="*" element={<NotMatch />} />
@@ -32,6 +34,7 @@ const SellerRoutes = () => {
       <Route path="/about/" element={<About />} />
       <Route path="/contact-us/" element={<ContactUs />} />
       <Route path="/sell/" element={<Sell />} />
+
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
   )
