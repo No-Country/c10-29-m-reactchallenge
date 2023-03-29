@@ -1,15 +1,12 @@
-import Navbar from "../../layouts/Navbar/Index";
-import Footer from "../../layouts/Footer/Index";
+import Template from "../../layouts/Template/Index";
 import CreateAccount from "../../components/CreateAccount";
 import "./Index.css";
 
 function Index() {
   return (
-    <div>
-      <Navbar />
+    <Template>
       <CreateAccount />
-      <Footer />
-    </div>
+    </Template>
   )
 }
 

@@ -1,4 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel';
+import rectangle from '../../../assets/Rectangle.png';
 
 function UncontrolledExample() {
   return (
@@ -6,7 +7,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="Rectangle.png"
+          src={rectangle}
           alt="First slide"
         />
         
@@ -14,7 +15,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="Rectangle.png"
+          src={rectangle}
           alt="Second slide"
         />
 
@@ -23,7 +24,7 @@ function UncontrolledExample() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="Rectangle.png"
+          src={rectangle}
           alt="Third slide"
         />
 

@@ -12,7 +12,7 @@ const CreateAccount = () => {
   
   const navigate = useNavigate();
   
-  const addNewUser = async (values) => {
+  const addNewUser = async (values, resertForm) => {
     const email = values.user_email;
     const q = query(reference, where("user_email", "==", email));
     const querySnapshot = await getDocs(q);
@@ -22,6 +22,7 @@ const CreateAccount = () => {
     } else {
       await addDoc(reference, values);
       alert("Usuario creado");
+      resertForm()
     }
   };
 
@@ -70,8 +71,8 @@ const CreateAccount = () => {
         return errors;
       }}
       onSubmit={(values, { resetForm }) => {
-        addNewUser(values);
-        navigate("/sign-in");
+        addNewUser(values, resetForm);
+        // navigate("/sign-in");
         // resetForm();
       }}
     >
