@@ -1,12 +1,8 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-<<<<<<< HEAD:src/components/createAccount.jsx
-import { db } from "../utils/firebaseConfig"
-=======
 import { db } from "../utils/firebaseConfig";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
->>>>>>> c77c7b8c072cf6997e8983d0099ef87a668bef67:src/components/CreateAccount.jsx
 import "./CreateAccount.css";
 
 const CreateAccount = () => {
