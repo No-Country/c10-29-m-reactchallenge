@@ -50,26 +50,35 @@
   color: var(--Very-Dark-Blue);
 }
 
-.social {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
+.social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 1.5rem;
 }
 
-.social span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 4rem;
-  font-weight: 500;
-  color: #f8f8f8;
+.social span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: 500;
+    color: #F8F8F8;
 }
 
-@media screen and (max-width: 768px) {
-  .footer-container {
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 2rem;
-  }
+@media screen and (max-width: 768px){
+    .footer-container{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 2rem;
+    }
+
+    .footer{
+        position: relative;
+    }
+
+    .social{
+        
+    }
+
 }

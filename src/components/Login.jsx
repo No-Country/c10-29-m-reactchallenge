@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { db } from "../utils/firebaseConfig"
 import { useNavigate} from "react-router-dom"
 import {loginSuccess} from '../redux/features/auth/authenticationSlice'
+import "./Login.css"
 
 const Login = () => {
   const formC = useRef()
