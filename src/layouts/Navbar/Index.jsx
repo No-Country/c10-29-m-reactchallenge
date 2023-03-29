@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  loginSuccess,
-  closeSession,
-} from "../../redux/features/auth/authenticationSlice";
+import { loginSuccess, closeSession} from "../../redux/features/auth/authenticationSlice";
 import "./Index.css";
 
 const Navbar = () => {
@@ -78,8 +75,7 @@ const Navbar = () => {
               </li>
             )}
             {user?.role !== "guest" && (
-              <li
-                className="hvr-underline-from-center"
+              <li className="hvr-underline-from-center"
                 onClick={() => {
                   dispatch(closeSession());
                 }}

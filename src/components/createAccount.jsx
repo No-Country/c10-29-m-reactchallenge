@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { db } from "../utils/firebaseConfig"
 import "./CreateAccount.css";
 
 const CreateAccount = () => {

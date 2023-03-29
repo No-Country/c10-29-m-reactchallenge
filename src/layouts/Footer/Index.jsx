@@ -5,7 +5,6 @@ import { FaTwitter } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { AiOutlineClockCircle } from "react-icons/ai";
-
 import "./Index.css";
 
 function Footer() {
