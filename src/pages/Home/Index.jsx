@@ -5,7 +5,10 @@ import ticketsService from "../../services/tickets";
 import Login from "../../components/Login";
 import Navbar from "../../layouts/Navbar/Index";
 import Footer from "../../layouts/Footer/Index";
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from "../../pages/Home/Homecompone/Carousel";
+
+
+
 // import CreateAccount from "../../components/CreateAccount";
 
 /*
@@ -39,36 +42,7 @@ const Home = () => {
   return (
     <div>
 
-<Carousel>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="Rectangle.png"
-          alt="First slide"
-        />
-        
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="Rectangle.png"
-          alt="Second slide"
-        />
-
-       
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="Rectangle.png"
-          alt="Third slide"
-        />
-
-        
-      </Carousel.Item>
-    </Carousel>
-
-    
+      <Carousel/>
    
       <Navbar />
       {/* <CreateAccount /> */}
