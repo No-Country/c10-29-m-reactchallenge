@@ -5,6 +5,10 @@ import ticketsService from "../../services/tickets";
 import Login from "../../components/Login";
 import Navbar from "../../layouts/Navbar/Index";
 import Footer from "../../layouts/Footer/Index";
+import Carousel from "../../pages/Home/Homecompone/Carousel";
+
+
+
 // import CreateAccount from "../../components/CreateAccount";
 
 /*
@@ -37,6 +41,9 @@ const Home = () => {
 
   return (
     <div>
+
+      <Carousel/>
+   
       <Navbar />
       {/* <CreateAccount /> */}
       {/* <Login /> */}
