@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { closeSession } from "../../redux/features/auth/authenticationSlice";
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo-nav.png";
 import "./Index.css";
 
 const Navbar = () => {
