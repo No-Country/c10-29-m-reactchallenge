@@ -70,7 +70,7 @@ const Log = () => {
                   loginSuccess({
                     id: user.uid,
                     email: user.email,
-                    role: "buyer",
+                    role: "seller",
                   })
                 );
                 navigate("/");
