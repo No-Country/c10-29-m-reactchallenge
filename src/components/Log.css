@@ -1,12 +1,12 @@
-.signup-container {
+.login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
+  height: 100vh;
 }
 
-.signup-form {
+.login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,20 +18,20 @@
   width: 300px;
 }
 
-.signup-title{
+.login-title{
   font-size: 28px;
   font-family: "Kanit", sans-serif;
   font-weight: 800;
   margin-bottom: 20px;
 }
 
-.signup-form label {
+.login-form label {
   font-size: 16px;
   margin-bottom: 5px;
   color: var(--black);
 }
 
-.signup-form input {
+.login-form input {
   font-size: 16px;
   padding: 10px;
   border: 1px solid #ccc;
@@ -40,7 +40,7 @@
   margin-bottom: 10px;
 }
 
-.signup-form .form-button {
+.login-form .form-button {
   font-size: 16px;
   padding: 10px;
   border: none;
@@ -51,11 +51,11 @@
   width: 100%;
 }
 
-.signup-form .form-button:hover {
+.login-form .form-button:hover {
   opacity: 0.8;
 }
 
-.signup-form .error-message {
+.login-form .error-message {
     color: #e53e3e;
     font-size: 14px;
     font-style: italic;
@@ -70,7 +70,7 @@
 }
 
 @media (max-width: 768px) {
-  .signup-container {
+  .login-container {
     flex-direction: column;
   }
 }
