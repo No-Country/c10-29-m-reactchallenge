@@ -4,6 +4,7 @@ import { addEvent } from "../../../redux/features/events/eventsSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import ticketsService from "../../../services/tickets";
 import * as Yup from "yup";
+import { db } from "../../../utils/firebaseConfig";
 import "./CreateEventForm.css";
 
 const CreateEventForm = () => {
@@ -51,23 +52,23 @@ const CreateEventForm = () => {
             {({ values, errors, touched, isSubmitting }) => (
               <Form>
                 <div>
-                  <label htmlFor="title">name</label>
+                  <label htmlFor="title">Nombre</label>
                   <Field
                     type="text"
                     id="title"
                     name="title"
-                    placeholder="name del evento"
+                    placeholder="Nombre del evento"
                   />
                   <ErrorMessage name="title" />
                 </div>
 
                 <div>
-                  <label htmlFor="place">place</label>
+                  <label htmlFor="place">Lugar</label>
                   <Field
                     type="text"
                     id="place"
                     name="place"
-                    placeholder="place del evento"
+                    placeholder="Lugar del evento"
                   />
                   <ErrorMessage name="place" />
                 </div>
@@ -84,25 +85,25 @@ const CreateEventForm = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="capacidad">Capacidad</label>
+                  <label htmlFor="ability">Capacidad</label>
                   <Field
                     type="number"
-                    id="capacidad"
-                    name="capacidad"
+                    id="ability"
+                    name="ability"
                     placeholder="Capacidad del evento"
                   />
-                  <ErrorMessage name="capacidad" />
+                  <ErrorMessage name="ability" />
                 </div>
 
                 <div>
-                  <label htmlFor="price">price</label>
+                  <label htmlFor="price">Precio</label>
                   <Field
                     type="number"
                     id="price"
                     name="price"
                     placeholder="Precio del evento"
                   />
-                  <ErrorMessage name="precio" />
+                  <ErrorMessage name="price" />
                 </div>
 
                 <div>
@@ -117,13 +118,13 @@ const CreateEventForm = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="description">description</label>
+                  <label htmlFor="description">Descripcion</label>
                   <Field
                     as="textarea"
                     type="text"
                     id="description"
                     name="description"
-                    placeholder="description del evento"
+                    placeholder="Descripcion del evento"
                   />
                   <ErrorMessage name="description" />
                 </div>
