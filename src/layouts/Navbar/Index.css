@@ -188,7 +188,7 @@
       position: absolute;
       right: 0;
       top: 60px;
-      background-color: #000;
+      background-color: var(--black);
       width: 0px;
       height: 50vh;
       transition: all 0.3s ease-in;

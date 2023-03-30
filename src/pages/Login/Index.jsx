@@ -7,10 +7,16 @@ import "./Index.css";
 
 function Index() {
   return (
-    <>
+    <div className='login-page'>
       {/* <Login /> */}
+      <h1>bypass</h1>
+      <h2>¡Que gusto verte devuelta!</h2>
+      <h4>Inicio de Sesion</h4>
       <Log />
-      </>
+      <Link to="/" className="home-button">
+        Ir al Inicio
+      </Link>
+    </div>
   )
 }
 
