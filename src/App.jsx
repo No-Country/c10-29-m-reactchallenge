@@ -1,4 +1,3 @@
-
 import './App.css'
 import DefaultLayout from './layouts/DefaultLayout';
 
