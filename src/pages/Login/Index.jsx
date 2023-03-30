@@ -1,13 +1,16 @@
 import React from 'react'
-import Template from "../../layouts/Template/Index";
+// import Template from "../../layouts/Template/Index";
+import { Link } from "react-router-dom";
 import Login from "../../components/Login";
+import Log from "../../components/Log";
 import "./Index.css";
 
 function Index() {
   return (
-    <Template>
-      <Login />
-    </Template>
+    <>
+      {/* <Login /> */}
+      <Log />
+      </>
   )
 }
 

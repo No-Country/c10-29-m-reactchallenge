@@ -1,13 +1,16 @@
 import React, { useRef } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import "./CreateAccount.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import "./Log.css";
+
 const Log = () => {
   const formC = useRef();
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login-container">
+      <h1 className="login-title">Inicio de Sesion</h1>
       <Formik
         initialValues={{ user_password: "", user_email: "" }}
         validate={(values) => {
@@ -28,7 +31,7 @@ const Log = () => {
           //   errors.user_password =
           //     'Por favor ingresar contraseña Minimo 8 caracteres Maximo 15 Al menos una letra mayúscula Al menos una letra minucula Al menos un dígito No espacios en blanco Al menos 1 caracter especial ';
           // }
-          //return errors;
+          return errors;
         }}
         onSubmit={async (formvalue) => {
           try {
@@ -40,6 +43,7 @@ const Log = () => {
             ).then((userCredential) => {
               const user = userCredential.user;
               console.log(userCredential.user);
+              navigate("/");
             });
           } catch (error) {
             console.log(error.code);
@@ -50,39 +54,42 @@ const Log = () => {
         }}
       >
         {({ isSubmitting }) => (
-          <Form ref={formC}>
-            <div>
-              <label htmlFor="user_email">Email: </label>
+          <Form ref={formC} className="login-form">
+            <div className="form-group">
+              <label htmlFor="user_email" className="form-label">Email: </label>
               <Field
                 type="email"
                 name="user_email"
                 placeholder="Ingrese su correo electronico"
+                className="form-input"
               />
               <ErrorMessage
-                className="error"
+                className="error-message"
                 name="user_email"
                 component="div"
               />
             </div>
-            <div>
-              <label htmlFor="user_password">Contraseña: </label>
+            <div className="form-group">
+              <label htmlFor="user_password" className="form-label">Contraseña: </label>
               <Field
                 type="password"
                 name="user_password"
                 placeholder="Ingrese su contraseña"
+                className="form-input"
               />
               <ErrorMessage
-                className="error"
+                className="error-message"
                 name="user_password"
                 component="div"
               />
             </div>
-            <button type="submit" disabled={isSubmitting}>
+            <button type="submit" disabled={isSubmitting} className="form-button">
               Ingresar
             </button>
           </Form>
         )}
       </Formik>
+      <Link to="/" className="my-link-style">Ir al Inicio</Link>
     </div>
   );
 };
