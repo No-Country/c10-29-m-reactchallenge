@@ -34,16 +34,20 @@
     margin-top: 20px;
     padding: 10px 20px;
     border: none;
-    color: var(--black);
-    color: #fff;
     font-size: 16px;
     cursor: pointer;
     border-radius: 360px;
+    background-color: var(--black);
+    color: var(--white);
+    transition: background-color 0.3s ease;
   }
   
   .ticket-card__button:hover {
-    color: var(--white);
+    background-color: var(--white);
+    color: var(--black);
   }
+
+  
   
   @media (max-width: 768px) {
     .ticket-card {
