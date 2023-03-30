@@ -1,16 +1,36 @@
 import React, { useRef } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { loginSuccess } from "../redux/features/auth/authenticationSlice";
 import "./Log.css";
 
 const Log = () => {
   const formC = useRef();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // integrate useeffect with firebase and redux toolkit
+  // useEffect(() => {
+  //   const auth = getAuth();
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       dispatch(loginSuccess({
+  //         id: user.uid,
+  //         email: user.email,
+  //         role: "buyer",
+  //         status: "succeeded",
+  //       }));
+  //       navigate("/");
+  //     } else{
+  //       console.log("No hay usuario logueado");
+  //     }
+  //   });
+  // }, []);
 
   return (
     <div className="login-container">
-      <h1 className="login-title">Inicio de Sesion</h1>
       <Formik
         initialValues={{ user_password: "", user_email: "" }}
         validate={(values) => {
@@ -42,21 +62,36 @@ const Log = () => {
               formvalue.user_password
             ).then((userCredential) => {
               const user = userCredential.user;
-              console.log(userCredential.user);
-              navigate("/");
+              console.log(user);
+              // const auth = getAuth();
+              // auth.onAuthStateChanged((user) => {
+              if (user) {
+                dispatch(
+                  loginSuccess({
+                    id: user.uid,
+                    email: user.email,
+                    role: "buyer",
+                  })
+                );
+                navigate("/");
+              } else {
+                console.log("No hay usuario logueado");
+              }
+              // });
             });
           } catch (error) {
             console.log(error.code);
             console.log(error.message);
             alert(error.message);
           }
-          console.log(formvalue + formvalue.user_email);
         }}
       >
         {({ isSubmitting }) => (
           <Form ref={formC} className="login-form">
             <div className="form-group">
-              <label htmlFor="user_email" className="form-label">Email: </label>
+              {/* <label htmlFor="user_email" className="form-label">
+                Email:{" "}
+              </label> */}
               <Field
                 type="email"
                 name="user_email"
@@ -70,7 +105,9 @@ const Log = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="user_password" className="form-label">Contraseña: </label>
+              {/* <label htmlFor="user_password" className="form-label">
+                Contraseña:{" "}
+              </label> */}
               <Field
                 type="password"
                 name="user_password"
@@ -83,13 +120,17 @@ const Log = () => {
                 component="div"
               />
             </div>
-            <button type="submit" disabled={isSubmitting} className="form-button">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="form-button"
+            >
               Ingresar
             </button>
           </Form>
         )}
       </Formik>
-      <Link to="/" className="my-link-style">Ir al Inicio</Link>
+      <p className="password-forgotten">¿Olvidaste la contraseña?</p>
     </div>
   );
 };

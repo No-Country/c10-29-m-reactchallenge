@@ -28,7 +28,6 @@ const CreateAccount = () => {
 
   return (
     <div className="signup-container ">
-      <h1 className="login-title">Registrarse</h1>
       <Formik
         initialValues={{
           user_name: "",
@@ -188,7 +187,7 @@ const CreateAccount = () => {
               </label>
             </div>
 
-            <button type="submit">Registrarse</button>
+            <button type="submit" className="form-button">Registrarse</button>
           </Form>
         )}
       </Formik>
