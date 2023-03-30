@@ -7,15 +7,21 @@ import {
   ContactUs, 
   Sell,
   Buy,
-  NotMatch,  
+  Login,
+  SignUp,
+  NotMatch,
+  Card,  
 } from "../pages";
 
 const GuestRoutes = () => {
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/about/" element={<About />} />
+      <Route path="/contact-us/" element={<ContactUs />} />
+      <Route path="/cards/:id" element={<Card />} />
+      <Route path="/sign-in/" element={<Login />} />
+      <Route path="/sign-up/" element={<SignUp />} />
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
   )
@@ -25,9 +31,10 @@ const SellerRoutes = () => {
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/about/" element={<About />} />
+      <Route path="/contact-us/" element={<ContactUs />} />
       <Route path="/sell/" element={<Sell />} />
+
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
   )

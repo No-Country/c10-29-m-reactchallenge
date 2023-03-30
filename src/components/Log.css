@@ -1,38 +1,49 @@
-.signup-container {
+.login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
 }
 
-.signup-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-  width: 70%;
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  border-radius: 10px;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  width: 300px;
 }
 
 .form-group{
   width: 100%;
+  margin-bottom: 10px;
 }
 
-.signup-form label {
+.login-title{
+  font-size: 28px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.login-form label {
   font-size: 16px;
   margin-bottom: 5px;
   color: var(--black);
 }
 
-.signup-form input {
+.login-form input {
   font-size: 16px;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 10px;
   width: 100%;
   margin-bottom: 10px;
 }
 
-.signup-form .form-button {
+.login-form .form-button {
   font-size: 16px;
   padding: 10px;
   border: none;
@@ -41,14 +52,13 @@
   border-radius: 5px;
   cursor: pointer;
   width: 100%;
-  grid-column: span 2;
 }
 
-.signup-form .form-button:hover {
+.login-form .form-button:hover {
   opacity: 0.8;
 }
 
-.signup-form .error-message {
+.login-form .error-message {
     color: var(--white);
     font-size: 14px;
     font-style: italic;
@@ -62,23 +72,16 @@
   text-decoration: none;
 }
 
-.radio-buttons {
-  grid-column: span 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.password-forgotten{
+  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+  margin: 0.5rem 0;
   width: 100%;
 }
 
-
 @media (max-width: 768px) {
-  .signup-container {
+  .login-container {
     flex-direction: column;
-  }
-
-  .signup-form {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
   }
 }

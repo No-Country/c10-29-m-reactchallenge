@@ -1,0 +1,28 @@
+.signup-page{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-page h1{
+    font-size: 64px;
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+.signup-page h4, h2{
+    font-size: 28px;
+    font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.signup-page h4{
+    margin: 0.5rem 0;
+    font-size: 1.3rem;
+}

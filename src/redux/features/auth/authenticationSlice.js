@@ -8,26 +8,34 @@ El uso de slices en Redux Toolkit es una forma de organizar el código de tu apl
 
 import { createSlice } from "@reduxjs/toolkit"; // devuelve un objeto que contiene el estado de la aplicación
 
+const initialState = {
+  user: JSON.parse(localStorage.getItem("user"))
+    ? JSON.parse(localStorage.getItem("user"))
+    : {
+        id: null,
+        name: null,
+        email: null,
+        role: "guest",
+        status: "idle",
+      },
+  isLogged: JSON.parse(localStorage.getItem("user")) ? true : false,
+  status: "idle",
+};
+
 export const authSlice = createSlice({
   name: "authentication", // nombre del slice
-  initialState: {
-    // estado inicial del slice. Cuando la aplicacion inicio, el estado inicial es este. En este caso el estado inicial es un objeto con las propiedades user y status
-    user: {
-      id: null,
-      name: null,
-      email: null,
-      role: "guest",
-      status: "idle",
-    },
-  },
+  initialState: initialState,
   reducers: {
     // reducers que modifican el estado del slice
     loginStart: (state) => {
       state.status = "loading";
     },
     loginSuccess: (state, action) => {
-      state.user = action.payload;
-      state.user.status = "succeeded";
+      state.user = action.payload
+      state.user.status = "succeeded"
+      console.log(state.user)
+      state.isLogged = true;
+      localStorage.setItem("user", JSON.stringify(state.user));
     },
     closeSession: (state) => {
       state.user = {
@@ -37,6 +45,8 @@ export const authSlice = createSlice({
         role: "guest",
         status: "idle",
       };
+      state.isLogged = false;
+      localStorage.removeItem("user");
     },
   },
 });

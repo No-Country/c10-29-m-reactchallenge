@@ -1,16 +1,13 @@
-import Navbar from "../../../layouts/Navbar/Index";
-import Footer from "../../../layouts/Footer/Index";
+import Template from "../../../layouts/Template/Index";
 import QRDownload from "../../../components/QR";
 import "./Index.css";
 
 function Index() {
   return (
-    <div>
-      <Navbar />
-        <QRDownload data="https://www.ejemplo.com" />
-      <Footer />
-    </div>
-  )
+    <Template>
+      <QRDownload data="https://www.ejemplo.com" />
+    </Template>
+  );
 }
 
-export default Index
+export default Index;
