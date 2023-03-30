@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addEvent } from "../redux/features/events/eventsSlice";
+import { addEvent } from "../../../redux/features/events/eventsSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import ticketsService from "../services/tickets";
+import ticketsService from "../../../services/tickets";
 import * as Yup from "yup";
 import "./CreateEventForm.css";
 
