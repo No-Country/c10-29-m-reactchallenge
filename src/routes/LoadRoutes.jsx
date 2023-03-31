@@ -34,7 +34,7 @@ const SellerRoutes = () => {
       <Route path="/about/" element={<About />} />
       <Route path="/contact-us/" element={<ContactUs />} />
       <Route path="/sell/" element={<Sell />} />
-
+      <Route path="/cards/:id" element={<Card />} />
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
   )
@@ -46,6 +46,7 @@ const BuyerRoutes = () => {
       <Route exact path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact-us" element={<ContactUs />} />
+      <Route path="/cards/:id" element={<Card />} />
       <Route path="/buy/" element={<Buy />} />
       <Route exact path="*" element={<NotMatch />} />
     </Routes>

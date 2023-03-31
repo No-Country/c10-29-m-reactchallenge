@@ -23,13 +23,19 @@ function Footer() {
             </p>
             <div className="social">
               <span>
+                <a href="https://www.facebook.com" target="_blank">
                 <FaFacebookF />
+                </a>
               </span>
               <span>
+              <a href="https://www.instagram.com" target="_blank">
                 <FaInstagram />
+                </a>
               </span>
               <span>
+              <a href="https://www.twitter.com" target="_blank">
                 <FaTwitter />
+                </a>
               </span>
             </div>
           </div>
