@@ -1,12 +1,12 @@
-import CreateAccount from "../../components/CreateAccount";
+import SignUp from "../../components/SignUp";
 import "./Index.css";
 
 function Index() {
   return (
     <>
-      <CreateAccount />
+      <SignUp />
     </>
-  )
+  );
 }
 
-export default Index
+export default Index;

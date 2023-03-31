@@ -1,11 +1,47 @@
 import React, { useRef } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./CreateAccount.css";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {} from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { Link } from "react-router-dom";
+import { app } from "../utils/firebaseConfig";
+
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+import { query, getDocs, collection, where, addDoc } from "firebase/firestore";
+import SignWhitGoogle from "./SignWithGoogle";
 
 const SignUp = () => {
-  const formC = useRef();
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+  const googleProvider = new GoogleAuthProvider();
 
+  const formC = useRef();
+  const signInWithGoogle = async () => {
+    try {
+      const res = await signInWithPopup(auth, googleProvider);
+      console.log(res);
+      const user = res.user;
+      const q = query(collection(db, "users"), where("uid", "==", user.uid));
+      const docs = await getDocs(q);
+
+      if (docs.docs.length === 0) {
+        await addDoc(collection(db, "users"), {
+          uid: user.uid,
+          name: user.displayName,
+          authProvider: "google",
+          email: user.email,
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  };
   return (
     <div>
       <h1>Sign Up</h1>
@@ -13,6 +49,11 @@ const SignUp = () => {
         initialValues={{
           user_password: "",
           user_email: "",
+          user_name: "",
+          user_birthdate: "",
+          user_phoneNumber: "",
+          user_dni: "",
+          role: "",
         }}
         validate={(values) => {
           const errors = {};
@@ -49,27 +90,40 @@ const SignUp = () => {
         }}
         onSubmit={async (formvalue) => {
           try {
-            const auth = getAuth();
-            await createUserWithEmailAndPassword(
+            // const auth = getAuth();
+            const res = await createUserWithEmailAndPassword(
               auth,
               formvalue.user_email,
               formvalue.user_password,
-              formvalue.user_name
-            ).then((userCredential) => {
-              const user = userCredential.user;
-              console.log(userCredential.user);
+              formvalue.user_name,
+              formvalue.user_birthdate,
+              formvalue.user_phoneNumber,
+              formvalue.user_dni,
+              formvalue.role
+            );
+            console.log(formvalue);
+            const user = res.user;
+            console.log("user", user);
+            console.log("res.user", user);
+            await addDoc(collection(db, "users"), {
+              uid: user.uid,
+              name: formvalue.user_name,
+              authProvider: "local",
+              email: formvalue.user_email,
+              birthdate: formvalue.user_birthdate,
+              phone: formvalue.user_phoneNumber,
+              dni: formvalue.user_dni,
+              role: formvalue.role,
             });
-          } catch (error) {
-            console.log(error.code);
-            console.log(error.message);
-            alert(error.message);
+          } catch (err) {
+            console.error(err);
+            alert(err.message);
           }
-          console.log("formvalues" + formvalue.user_email);
         }}
       >
         {({ isSubmitting }) => (
           <Form ref={formC}>
-            {/* <div>
+            <div>
               <label htmlFor="user_name">Nombre y Apellido: </label>
               <Field
                 type="text"
@@ -81,7 +135,7 @@ const SignUp = () => {
                 name="user_name"
                 component="div"
               />
-            </div> */}
+            </div>
 
             <div>
               <label htmlFor="user_email">Email: </label>
@@ -111,28 +165,68 @@ const SignUp = () => {
               />
             </div>
 
-            {/* <div>
-            <label htmlFor="user_birthdate">Fecha de nacimiento </label>
-            <Field type="number" name="user_birthdate" placeholder="Fecha de nacimiento" />
-            <ErrorMessage className="error" name="user_birthdate" component="div" />
-          </div>
+            <div>
+              <label htmlFor="user_birthdate">Fecha de nacimiento </label>
+              <Field
+                type="date"
+                name="user_birthdate"
+                placeholder="Fecha de nacimiento"
+              />
+              <ErrorMessage
+                className="error"
+                name="user_birthdate"
+                component="div"
+              />
+            </div>
 
-          <div>
-            <label htmlFor="user_phoneNumber">Telefono </label>
-            <Field type="number" name="user_phoneNumber" placeholder="Numero de telefono" />
-            <ErrorMessage className="error" name="user_phoneNumber" component="div" />
-          </div>
-          <div>
-            <label htmlFor="user_dni">DNI </label>
-            <Field type="number" name="user_dni" placeholder="Numero de DNI" />
-            <ErrorMessage className="error" name="user_dni" component="div" />
-          </div> */}
+            <div>
+              <label htmlFor="user_phoneNumber">Telefono </label>
+              <Field
+                type="number"
+                name="user_phoneNumber"
+                placeholder="Numero de telefono"
+              />
+              <ErrorMessage
+                className="error"
+                name="user_phoneNumber"
+                component="div"
+              />
+            </div>
+            <div>
+              <label htmlFor="user_dni">DNI </label>
+              <Field
+                type="number"
+                name="user_dni"
+                placeholder="Numero de DNI"
+              />
+              <ErrorMessage className="error" name="user_dni" component="div" />
+            </div>
+            <div
+              className="radio-buttons"
+              role="group"
+              aria-labelledby="my-radio-group"
+            >
+              <label>
+                <Field type="radio" name="role" value="buyer" />
+                Comprador
+              </label>
+              <label>
+                <Field type="radio" name="role" value="seller" />
+                Vendedor
+              </label>
+            </div>
             <button type="submit" disabled={isSubmitting}>
               Registrarse
             </button>
           </Form>
         )}
       </Formik>
+      <SignWhitGoogle />
+      <div>
+        ¿Ya tenes una cuenta?
+        <Link to="/sign-in">Login</Link>
+        now.
+      </div>
     </div>
   );
 };
