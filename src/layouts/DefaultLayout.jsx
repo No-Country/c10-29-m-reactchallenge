@@ -3,9 +3,9 @@ import LoadRoutes from "../routes/LoadRoutes";
 
 const DefaultLayout = () => {
   return (
-    <div>
+    <>
       <LoadRoutes />
-    </div>
+    </>
   );
 };
 

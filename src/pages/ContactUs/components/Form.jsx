@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import {initialValues, validate} from './Form.data'
 // import emailjs from "@emailjs/browser";
 import "./Form.css";
 
@@ -9,13 +10,13 @@ const ContactUs = () => {
   return (
     <Formik
       
-      initialValues={{ user_name: "", user_email: "", message: "" }}
+      initialValues={initialValues}
       validate={(values) => {
         const errors = {};
         if (!values.user_name) {
           errors.user_name = "Por favor ingrese su nombre completo";
         }
-
+    
         if (!values.user_email) {
           errors.user_email = "Por favor ingrese su correo electrónico";
         } else if (
@@ -57,6 +58,7 @@ const ContactUs = () => {
             <Field
               type="text"
               name="user_name"
+              id="user_name"
               placeholder="Ingrese su nombre completo"
             />
             <ErrorMessage  className="error" name="user_name" component="div" />
@@ -67,6 +69,7 @@ const ContactUs = () => {
             <Field
               type="email"
               name="user_email"
+              id="user_email"
               placeholder="Ingrese su correo electronico"
             />
             <ErrorMessage className="error" name="user_email" component="div" />
@@ -78,6 +81,7 @@ const ContactUs = () => {
               as="textarea"
               type="text"
               name="message"
+              id="message"
               placeholder="Ingrese su mensaje"
             />
             <ErrorMessage className="error"  name="message" component="div" />
