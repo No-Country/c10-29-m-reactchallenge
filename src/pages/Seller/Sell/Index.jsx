@@ -1,5 +1,5 @@
 import Template from "../../../layouts/Template/Index";
-import CreateEventForm from "../../../components/CreateEventForm";
+import CreateEventForm from "../components/CreateEventForm";
 import "./Index.css";
 
 function Index() {

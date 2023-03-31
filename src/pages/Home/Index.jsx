@@ -1,3 +1,5 @@
+import { Animated } from "react-animated-css";
+import { AnimationOnScroll } from "react-animation-on-scroll";
 import Navbar from "../../layouts/Navbar/Index";
 import Footer from "../../layouts/Footer/Index";
 import Carousel from "./components/Carousel";
@@ -11,16 +13,24 @@ const Home = () => {
       <Carousel />
       <main>
         <div className="container">
-
           <section className="outstanding">
             <h2 className="title">Destacados</h2>
-            <Cards />
+            <AnimationOnScroll
+              animateIn="animate__bounceInLeft"
+              animateOnce={true}
+            >
+              <Cards />
+            </AnimationOnScroll>
           </section>
           <section>
             <h2 className="title">Esta semana</h2>
-            <Cards />
+            <AnimationOnScroll
+              animateIn="animate__bounceInRight"
+              animateOnce={true}
+            >
+              <Cards />
+            </AnimationOnScroll>
           </section>
-
         </div>
       </main>
       <Footer />

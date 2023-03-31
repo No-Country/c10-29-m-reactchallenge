@@ -5,11 +5,13 @@ import { configureStore } from "@reduxjs/toolkit"; // devuelve un objeto que con
 // import authReducer from './features/auth/authenticationSlice'; // importamos el reducer de la autenticación
 import ticketsReducer from "../features/tickets/ticketsSlice"; // importamos el reducer de los tickets
 import authReducer from "../features/auth/authenticationSlice"; // importamos el reducer de los tickets
+import eventsReducer from "../features/events/eventsSlice"; // importamos el reducer de los tickets
 
 export const store = configureStore({
   // reducer: // reducer es una función que toma el estado actual y una acción, y devuelve un nuevo estado. Es la forma en la cual vamos a poder manipular el estado de la aplicación. Es parecido al setState
   // auth: authReducer,
   reducer: {
+    events: eventsReducer,
     tickets: ticketsReducer,
     auth: authReducer,
   },

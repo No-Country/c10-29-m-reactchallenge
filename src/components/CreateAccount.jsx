@@ -28,7 +28,6 @@ const CreateAccount = () => {
 
   return (
     <div className="signup-container ">
-      <h1 className="login-title">Registrarse</h1>
       <Formik
         initialValues={{
           user_name: "",
@@ -108,7 +107,7 @@ const CreateAccount = () => {
                 placeholder="Ingrese su correo electronico"
               />
               <ErrorMessage
-                className="error"
+                className="error-message "
                 name="user_email"
                 component="div"
               />
@@ -124,7 +123,7 @@ const CreateAccount = () => {
                 placeholder="Ingrese su contraseña"
               />
               <ErrorMessage
-                className="error"
+                className="error-message "
                 name="user_password"
                 component="div"
               />
@@ -140,7 +139,7 @@ const CreateAccount = () => {
                 placeholder="Fecha de nacimiento"
               />
               <ErrorMessage
-                className="error"
+                className="error-message "
                 name="user_birthdate"
                 component="div"
               />
@@ -156,7 +155,7 @@ const CreateAccount = () => {
                 placeholder="Numero de telefono"
               />
               <ErrorMessage
-                className="error"
+                className="error-message "
                 name="user_phoneNumber"
                 component="div"
               />
@@ -170,7 +169,7 @@ const CreateAccount = () => {
                 name="user_dni"
                 placeholder="Numero de DNI"
               />
-              <ErrorMessage className="error" name="user_dni" component="div" />
+              <ErrorMessage className="error-message " name="user_dni" component="div" />
             </div>
 
             <div
@@ -188,7 +187,7 @@ const CreateAccount = () => {
               </label>
             </div>
 
-            <button type="submit">Registrarse</button>
+            <button type="submit" className="form-button">Registrarse</button>
           </Form>
         )}
       </Formik>
