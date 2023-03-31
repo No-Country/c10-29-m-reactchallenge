@@ -14,6 +14,7 @@ import {
 } from "firebase/auth";
 import { query, getDocs, collection, where, addDoc } from "firebase/firestore";
 import SignWhitGoogle from "./SignWithGoogle";
+import Reset from "./Reset";
 
 const SignUp = () => {
   const auth = getAuth(app);
@@ -227,6 +228,7 @@ const SignUp = () => {
         <Link to="/sign-in">Login</Link>
         now.
       </div>
+      <Reset />
     </div>
   );
 };
