@@ -6,6 +6,7 @@ import Carousel from "./components/Carousel";
 import Cards from "../Cards/Index";
 import "./Index.css";
 
+
 const Home = () => {
   return (
     <>

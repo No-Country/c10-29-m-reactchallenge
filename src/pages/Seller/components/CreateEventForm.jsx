@@ -7,6 +7,18 @@ import * as Yup from "yup";
 import { db } from "../../../utils/firebaseConfig";
 import "./CreateEventForm.css";
 
+
+
+
+
+
+
+
+
+
+
+
+
 const CreateEventForm = () => {
 
   const dispatch = useDispatch();
@@ -137,6 +149,7 @@ const CreateEventForm = () => {
               </Form>
             )}
           </Formik>
+          
         </div>
       </div>
     </div>
