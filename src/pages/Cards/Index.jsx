@@ -1,44 +1,54 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { initialTickets } from "../../redux/features/tickets/ticketsSlice";
-import ticketsService from "../../services/tickets";
 import { Link } from "react-router-dom";
-import "./Index.css";
 import { initialEvents } from "../../redux/features/events/eventsSlice";
+import { db } from "../../utils/firebaseConfig"
+import { getDocs, collection } from "firebase/firestore"
+import "./Index.css";
 
-const Home = () => {
+const Cards = () => {
   const dispatch = useDispatch();
 
   const ticketsState = useSelector((state) => state.tickets.tickets);
   const eventsState = useSelector((state) => state.events.events)
-  // console.log(ticketsState)
+  const user = useSelector((state) => state.auth.user);
+ 
+  const getEventsPromise = async () => {
+    const querySnapshot = await getDocs(collection(db, "events"))
+    const eventsArray = []
+    querySnapshot.forEach((doc) => {
+      eventsArray.push(JSON.parse(JSON.stringify(doc.data()))
+      )
+    })
+    // const events = eventsArray.filter((e) => e.user_id === userUid)
+    return eventsArray
+  }
+
+  const getEvents = async () => {
+    const events = await getEventsPromise();
+    return events
+  };
+
   useEffect(() => {
-    try {
-      ticketsService.getAll().then((tickets) => {
-        dispatch(initialEvents(tickets));
-      
-      });
-    } catch (error) {
-      console.log(error);
+    const fetchEvents = async () => {
+      try {
+        const events = await getEvents();
+        dispatch(initialEvents(events));
+      } catch (error) {
+        console.log(error);
+      }
     }
+    fetchEvents();
   }, []);
+
+  console.log("eventsState", eventsState);
 
   return (
     <div className="container">
       <div className="cards-container">
-        {/* {ticketsState.map((card) => (
-          <Link to={`/cards/${card.id}`}>
-            <div key={card.id} className="card-ticket">
-            
-              <img src={card.image} alt="" width="25%" />
-            </div>
-          </Link>
-        ))} */}
-        {eventsState.map((card) => (
-          <Link to={`/cards/${card.id}`}>
-            <div key={card.id} className="card-ticket">
-              {/* <h1>{card.title}</h1>
-            <p>{card.description}</p> */}
+        {eventsState && eventsState.map((card) => (
+          <Link to={`/cards/${card.uid}`} key={card.id}>
+            <div className="card-ticket">
               <img src={card.image} alt="" width="25%" />
             </div>
           </Link>
@@ -48,4 +58,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Cards;
