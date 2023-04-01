@@ -1,33 +1,31 @@
 import React, { useRef } from "react";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { db } from "../utils/firebaseConfig"
+import { getDocs, collection } from "firebase/firestore"
 import { loginSuccess } from "../redux/features/auth/authenticationSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./Log.css";
 
 const Log = () => {
   const formC = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // integrate useeffect with firebase and redux toolkit
-  // useEffect(() => {
-  //   const auth = getAuth();
-  //   auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       dispatch(loginSuccess({
-  //         id: user.uid,
-  //         email: user.email,
-  //         role: "buyer",
-  //         status: "succeeded",
-  //       }));
-  //       navigate("/");
-  //     } else{
-  //       console.log("No hay usuario logueado");
-  //     }
-  //   });
-  // }, []);
+  const errorLoggin = () => toast.error("Usuario o contraseña incorrectos");
+
+  const getUser = async (uid) => {
+    const querySnapshot = await getDocs(collection(db, "users"))
+    const usersArray = []
+    querySnapshot.forEach((doc) => {
+      usersArray.push(JSON.parse(JSON.stringify(doc.data()))
+      )
+    })
+    const user = usersArray.find((u) => u.uid === uid)
+    return user
+  }
 
   return (
     <div className="login-container">
@@ -56,33 +54,34 @@ const Log = () => {
         onSubmit={async (formvalue) => {
           try {
             const auth = getAuth();
+
             await signInWithEmailAndPassword(
               auth,
               formvalue.user_email,
-              formvalue.user_password
-            ).then((userCredential) => {
+              formvalue.user_password,
+
+            ).then(async (userCredential) => {
               const user = userCredential.user;
-              console.log(user);
-              // const auth = getAuth();
-              // auth.onAuthStateChanged((user) => {
-              if (user) {
+              console.log(user)
+              const loggedUser = await getUser(user.uid)
+              console.log(loggedUser)
+
+              if (loggedUser) {
+                // console.log(user);
                 dispatch(
-                  loginSuccess({
-                    id: user.uid,
-                    email: user.email,
-                    role: "seller",
-                  })
+                  loginSuccess(loggedUser)
                 );
                 navigate("/");
               } else {
-                console.log("No hay usuario logueado");
+                errorLoggin();
               }
               // });
             });
           } catch (error) {
-            console.log(error.code);
-            console.log(error.message);
-            alert(error.message);
+            // console.log(error.code);
+            // console.log(error.message);
+            // alert(error.message);
+            errorLoggin();
           }
         }}
       >
@@ -119,6 +118,7 @@ const Log = () => {
                 name="user_password"
                 component="div"
               />
+              <p className="password-forgotten">¿Olvidaste la contraseña?</p>
             </div>
             <button
               type="submit"
@@ -127,10 +127,10 @@ const Log = () => {
             >
               Ingresar
             </button>
+            <ToastContainer />
           </Form>
         )}
       </Formik>
-      <p className="password-forgotten">¿Olvidaste la contraseña?</p>
     </div>
   );
 };
