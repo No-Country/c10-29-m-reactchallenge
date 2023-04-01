@@ -1,11 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addEvent } from "../../../redux/features/events/eventsSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import ticketsService from "../../../services/tickets";
 import * as Yup from "yup";
 import { db } from "../../../utils/firebaseConfig";
 import "./CreateEventForm.css";
+import { collection, addDoc } from "firebase/firestore";
 
 
 
@@ -20,13 +21,12 @@ import "./CreateEventForm.css";
 
 
 const CreateEventForm = () => {
-
   const dispatch = useDispatch();
 
   const initialValues = {
     place: "",
     time: "",
-    capacidad: "",
+    ability: "",
     price: "",
     image: "",
     title: "",
@@ -43,12 +43,31 @@ const CreateEventForm = () => {
     description: Yup.string().required("Descripción es requerida"),
   });
 
-  const handleSubmit = async (values, { resetForm }) => {
+  const user = useSelector((store) => store.auth?.user);
+  console.log("user", user);
+
+  const handleSubmit = async (values) => {
     // handle form submission logic here
-    const newEvent = await ticketsService.create(values);
-    dispatch(addEvent(newEvent));
+    //const newEvent = await ticketsService.create(values);
+    // dispatch(addEvent(newEvent));
     console.log(values);
-    resetForm();
+    // resetForm();
+    try {
+      const docRef = await addDoc(collection(db, "events"), {
+        uid: user.id,
+        place: values.place,
+        time: values.time,
+        ability: values.ability,
+        price: values.price,
+        image: values.image,
+        title: values.title,
+        description: values.description,
+      });
+
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
   };
 
   return (
@@ -140,10 +159,7 @@ const CreateEventForm = () => {
                   />
                   <ErrorMessage name="description" />
                 </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                >
+                <button type="submit" disabled={isSubmitting}>
                   Submit
                 </button>
               </Form>
