@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { closeSession } from "../../redux/features/auth/authenticationSlice";
 import { Animated } from "react-animated-css";
+import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
+import { BiPurchaseTagAlt } from "react-icons/bi";
 import logo from "../../assets/logo.png";
 import "./Index.css";
 
@@ -15,6 +17,7 @@ const Navbar = () => {
 
   const user = useSelector((store) => store.auth?.user);
   const isLogged = useSelector((store) => store.auth?.isLogged);
+  const cart = useSelector((store) => store.cart);
   const dispatch = useDispatch();
 
   return (
@@ -60,15 +63,30 @@ const Navbar = () => {
                 </li>
               )}
               {user?.role === "buyer" && isLogged && (
-                <li className="hvr-underline-from-center">
-                  <Link to="/buy/">Comprar</Link>
-                </li>
+                <>
+                  <li className="hvr-underline-from-center">
+                    <Link to="/buy/">
+                      <BiPurchaseTagAlt />
+                      &nbsp; Mis Compras
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/cart/">
+                      <AiOutlineShoppingCart />{" "}
+                      <span className="cart-items">{cart.items.length}</span>{" "}
+                      &nbsp; Mi Carrito
+                    </Link>
+                  </li>
+                </>
               )}
 
               {user?.role !== "guest" && (
                 <>
                   <li className="hvr-underline-from-center">
-                    <Link to="/profile/">Perfil - {user.email}</Link>
+                    <Link to="/profile/">
+                      <AiOutlineUser />
+                      &nbsp; Mi Perfil
+                    </Link>
                   </li>
                   <li
                     className="hvr-underline-from-center"
