@@ -8,6 +8,18 @@ import { db } from "../../../utils/firebaseConfig";
 import "./CreateEventForm.css";
 import { collection, addDoc } from "firebase/firestore";
 
+
+
+
+
+
+
+
+
+
+
+
+
 const CreateEventForm = () => {
   const dispatch = useDispatch();
 
@@ -153,6 +165,7 @@ const CreateEventForm = () => {
               </Form>
             )}
           </Formik>
+          
         </div>
       </div>
     </div>

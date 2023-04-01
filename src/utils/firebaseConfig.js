@@ -3,6 +3,9 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { v4 } from 'uuid';
+
 const firebaseConfig = {
   apiKey: "AIzaSyCDul9tAGS5YMoiz1xX4NvXbMexYoV0jpY",
   authDomain: "no-country-ticket.firebaseapp.com",
@@ -13,8 +16,19 @@ const firebaseConfig = {
   measurementId: "G-MKGT2LFY2R",
 };
 
+
 export const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+
 export const db = getFirestore(app);
 export const database = getDatabase(app);
+export const storage = getStorage(app)
 export const auth = getAuth(app);
+
+
+export async function uploadFile(file) {
+  const storageRef = ref(storage, v4())
+ await uploadBytes(storageRef, file)
+ const url = await getDownloadURL(storageRef)
+ return url
+}
