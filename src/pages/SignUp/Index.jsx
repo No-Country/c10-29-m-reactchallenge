@@ -1,13 +1,17 @@
-import CreateAccount from "../../components/CreateAccount";
+import SignUp from "../../components/SignUp";
+
+import { Animated } from "react-animated-css";
+
 import "./Index.css";
 
 function Index() {
   return (
-    <div className="signup-page">
-      <h1>bypass</h1>
-      <h4>Creemos tu cuenta</h4>
-      <CreateAccount />
-    </div>
+    <Animated animationIn="bounceIn" animationOut="fadeOut" isVisible={true}>
+      <div className="signup-page">
+        <h1>bypass</h1>
+        <SignUp />
+      </div>
+    </Animated>
   );
 }
 

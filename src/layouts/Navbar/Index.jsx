@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { closeSession } from "../../redux/features/auth/authenticationSlice";
-import logo from "../../assets/logo.jpg";
+import { Animated } from "react-animated-css";
+import logo from "../../assets/logo.png";
 import "./Index.css";
 
 const Navbar = () => {
@@ -22,7 +23,14 @@ const Navbar = () => {
         <div className="navbar-container">
           <div className="bypass-logo">
             <Link to="/">
-              <img src={logo} alt="" />
+              <Animated
+                animationIn="pulse"
+                animationOut="fadeOut"
+                animationInDuration={1000}
+                isVisible={true}
+              >
+                <img src={logo} alt="" />
+              </Animated>
             </Link>
             <div className="menu-icon" onClick={handleShowNavbar}>
               {showNavbar ? "✖" : "☰"}
