@@ -1,3 +1,4 @@
+import produce from 'immer';
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -11,6 +12,15 @@ const eventsSlice = createSlice({
     initialEvents: (state, action) => {
       state.events = action.payload;
     },
+    getEventById: (state, action) => {
+      const index = state.events.findIndex(
+        (event) => event.id === action.payload.id
+      );
+      // produce(state, draft => {
+      //   draft.events[index] = action.payload;
+      // });
+      state.events = action.payload[index];
+    },
     addEvent: (state, action) => {
       state.events.push(action.payload);
     },
@@ -21,13 +31,14 @@ const eventsSlice = createSlice({
       state.events[index] = action.payload;
     },
     deleteEvent: (state, action) => {
-      state.events.filter((event) => event.id !== action.payload.id);
+      state.events = state.events.filter((event) => event.id !== action.payload.id);
     },
   },
 });
 
 export const { 
   initialEvents, 
+  getEventById,
   addEvent, 
   editEvent, 
   deleteEvent 

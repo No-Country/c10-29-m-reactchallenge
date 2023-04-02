@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../redux/features/cart/cartSlice";
-import ticketsService from "../../../services/tickets";
+import { getEventById } from "../../../redux/features/events/eventsSlice";
 import Template from "../../../layouts/Template/Index";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Index.css";
 
 function Index() {
@@ -13,15 +13,23 @@ function Index() {
   const { id } = useParams();
   const user = useSelector((state) => state.auth.user);
   const cart = useSelector((state) => state.cart.items);
+  const events = useSelector((state) => state.events.events);
   const dispatch = useDispatch();
 
-  const purchaseMessage = () => toast.success("La entrada se agrego al carrito :)")
+  const purchaseMessage = () =>
+    toast.success("La entrada se agrego al carrito :)");
 
   useEffect(() => {
-    ticketsService.getOne(id).then((card) => {
-      setCard(card);
-    });
-  }, [id]);
+    if (events.length === 0) {
+      dispatch(getEventById(id));
+      setCard(events.find((event) => event.uid === id));
+    } else {
+      const card = events.find((event) => event._id === id);
+      setCard(events.find((event) => event.uid === id));
+
+    }
+  }, [events, id, dispatch]);
+  
 
   const addNewItem = () => {
     console.log(card);
@@ -33,9 +41,15 @@ function Index() {
       addNewItem();
       purchaseMessage();
     } else {
-      toast.error("Debes iniciar sesion como comprador para comprar una entrada");
+      toast.error(
+        "Debes iniciar sesion como comprador para comprar una entrada"
+      );
     }
   };
+
+  // const event = events.find((event) => event._id === id);
+  console.log(events)
+  console.log(card)
 
   return (
     <Template>
@@ -46,10 +60,12 @@ function Index() {
             <h1>{card.title}</h1>
             <p>{card.description}</p>
             <p>$ {card.price}</p>
-            <button className="ticket-card__button" onClick={() => {
-              checkeUser()
-
-              }}>
+            <button
+              className="ticket-card__button"
+              onClick={() => {
+                checkeUser();
+              }}
+            >
               Comprar
             </button>
           </div>
