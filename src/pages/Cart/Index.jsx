@@ -1,8 +1,8 @@
-import React from 'react'
 import Template from '../../layouts/Template/Index'
 import Cart from '../../components/Cart'
 
-function Index() {
+function Index() { 
+  
   return (
     <Template>
         <Cart />

@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addEvent } from "../../../redux/features/events/eventsSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import ticketsService from "../../../services/tickets";
 import * as Yup from "yup";
 import { db } from "../../../utils/firebaseConfig";
 import "./CreateEventForm.css";
@@ -39,7 +38,6 @@ const CreateEventForm = () => {
   });
 
   const user = useSelector((store) => store.auth?.user);
-  console.log("user", user);
 
   const handleSubmit = async (values) => {
     // handle form submission logic here
