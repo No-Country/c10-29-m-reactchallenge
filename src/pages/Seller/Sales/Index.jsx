@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGetAllPurchasesByUserId } from "../../../redux/features/purchases/purchasesSlice";
+import { fetchGetAllSalesByUserId } from "../../../redux/features/sales/salesSlice";
 import Template from "../../../layouts/Template/Index";
 // import QRDownload from "../../../components/QR";
 import "./Index.css";
@@ -8,13 +8,16 @@ import "./Index.css";
 function Index() {
 
   const user = useSelector((store) => store.auth?.user);
-  const purchases = useSelector((store) => store.purchases.purchases || []); // Inicializar como una lista vacía
+  const sales = useSelector((store) => store.sales.sales || []); // Inicializar como una lista vacía
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchGetAllPurchasesByUserId(user.uid));
-  }, []); // Agregar purchases y dispatch como dependencias
+    
+    dispatch(fetchGetAllSalesByUserId(user.uid));
+  }, []); // Agregar sales y dispatch como dependencias
 
+  console.log("user", user);
+  console.log(sales);
 
   return (
     <Template>
@@ -38,13 +41,13 @@ function Index() {
                 </tr>
               </thead>
               <tbody>
-                {purchases.map((purchase) => { // Verificar si purchases es una lista vacía
+                {sales.map((sale) => { // Verificar si sales es una lista vacía
                   return (
-                    <tr key={purchase.uid}>
-                      <td>{purchase.title}</td>
-                      <td>{purchase.time}</td>
-                      <td>{purchase.place}</td>
-                      <td>{purchase.price}</td>
+                    <tr key={sale.uid}>
+                      <td>{sale.title}</td>
+                      <td>{sale.time}</td>
+                      <td>{sale.place}</td>
+                      <td>{sale.price}</td>
                       <td>
                         <button className="btn btn-primary">Ver</button>
                       </td>

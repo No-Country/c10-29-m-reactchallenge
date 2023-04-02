@@ -22,7 +22,7 @@ const Cards = () => {
               <img src={card.image} alt="" width="25%" />
             </div>
           </Link>
-        )).reverse()}
+        ))}
       </div>
     </div>
   );
