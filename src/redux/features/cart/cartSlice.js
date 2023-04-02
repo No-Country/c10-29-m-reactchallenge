@@ -14,23 +14,25 @@ const cartSlice = createSlice({
   name: "cart",
   initialState: {
     items: getItem("cart") || [],
-    total: 0,
+    total: getItem("total") || 0,
   },
 
   reducers: {
     addToCart: (state, action) => {
       const { id } = action.payload;
-  
-      if (
-        state.items.length === 0 ||
-        state.items.filter((item) => item.id === id).length === 0
-      ) {
-        state.items.push(action.payload);
+      console.log(action.payload);
+      const itemExists = state.items.some((item) => item.uid === id);
+    
+      if (!itemExists) {
+        const newItem = { ...action.payload };
+        console.log("newItem", newItem)
+        state.items.push(newItem);
+        state.total += newItem.price;
         setItem("cart", state.items);
-        state.total += parseFloat(action.payload.price);
+        setItem("total", state.total);
       }
-      
-    },
+    }
+    ,
     removeToCart: (state, action) => {
       const id = action.payload;
       const index = state.items.findIndex((item) => item.id === id);
@@ -38,11 +40,19 @@ const cartSlice = createSlice({
         state.total -= state.items[index].price;
         state.items.splice(index, 1);
         setItem("cart", state.items);
+        setItem("total", state.total);
       }
+
     },
+    emptyCart: (state) => {
+      state.items = [];
+      state.total = 0;
+      setItem("cart", state.items);
+      setItem("total", state.total);
+    }
   },
 });
 
-export const { addToCart, removeToCart } = cartSlice.actions;
+export const { addToCart, removeToCart, emptyCart } = cartSlice.actions;
 
 export default cartSlice.reducer;
