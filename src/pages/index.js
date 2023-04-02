@@ -6,6 +6,7 @@ export { default as Buy } from "./Buyer/Purchases/Index";
 export { default as Login } from "./Login/Index";
 export { default as SignUp } from "./SignUp/Index";
 export { default as Card } from "./Cards/Card/Index";
+export { default as Events } from "./Seller/Sales/Index";
 export { default as Cart } from "./Cart//Index";
 export { default as Profile } from "./Profile//Index";
 export { default as NotMatch } from "./NotMatch/Index";
