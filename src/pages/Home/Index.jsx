@@ -18,17 +18,17 @@ const Home = () => {
           <section className="outstanding">
             <h2 className="title">Destacados</h2>
             
-            <AnimationOnScroll
+            {/* <AnimationOnScroll
               animateIn="animate__bounceInLeft"
               animateOnce={true}
-            >
+            > */}
               {/*<Pagination
                info={info}
                pageNumber={pageNumber}
                updatePageNumber={updatePageNumber}
                />*/}
               <Cards />
-            </AnimationOnScroll>
+            {/* </AnimationOnScroll> */}
           </section>
           <section>
             <h2 className="title">Esta semana</h2>

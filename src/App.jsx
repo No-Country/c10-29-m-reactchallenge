@@ -1,13 +1,12 @@
-import './App.css'
 import DefaultLayout from './layouts/DefaultLayout';
-// import Upload from './pages/Seller/Sell/Upload';
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css'
 
 
 const App = () => {
   return (
     // <Upload/>
     <DefaultLayout />
-    
   )
 }
 

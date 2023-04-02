@@ -2,26 +2,20 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addEvent } from "../../../redux/features/events/eventsSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import ticketsService from "../../../services/tickets";
 import * as Yup from "yup";
 import { db } from "../../../utils/firebaseConfig";
 import "./CreateEventForm.css";
 import { collection, addDoc } from "firebase/firestore";
-
-
-
-
-
-
-
-
-
-
-
-
+import Upload from "./Upload";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {v4} from 'uuid';
 
 const CreateEventForm = () => {
   const dispatch = useDispatch();
+  const notify = () => toast.success("Evento creado con éxito!");
+  //error evento 
+  const errorEvent = () => toast.error("Error al crear el evento");
 
   const initialValues = {
     place: "",
@@ -44,7 +38,6 @@ const CreateEventForm = () => {
   });
 
   const user = useSelector((store) => store.auth?.user);
-  console.log("user", user);
 
   const handleSubmit = async (values) => {
     // handle form submission logic here
@@ -54,7 +47,8 @@ const CreateEventForm = () => {
     // resetForm();
     try {
       const docRef = await addDoc(collection(db, "events"), {
-        uid: user.id,
+        uid: v4(),
+        user_id: user.uid,
         place: values.place,
         time: values.time,
         ability: values.ability,
@@ -65,8 +59,10 @@ const CreateEventForm = () => {
       });
 
       console.log("Document written with ID: ", docRef.id);
+      notify();
     } catch (e) {
       console.error("Error adding document: ", e);
+      errorEvent();
     }
   };
 
@@ -138,14 +134,15 @@ const CreateEventForm = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="image">Imagen</label>
+                  {/* <label htmlFor="image">Imagen</label>
                   <Field
                     type={"file"}
                     id="image"
                     name="image"
                     placeholder="Imagen de evento"
                   />
-                  <ErrorMessage name="image" />
+                  <ErrorMessage name="image" /> */}
+                  <Upload />
                 </div>
 
                 <div>
@@ -162,6 +159,7 @@ const CreateEventForm = () => {
                 <button type="submit" disabled={isSubmitting}>
                   Submit
                 </button>
+                <ToastContainer />
               </Form>
             )}
           </Formik>

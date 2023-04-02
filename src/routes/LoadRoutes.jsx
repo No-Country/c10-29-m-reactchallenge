@@ -11,8 +11,9 @@ import {
   SignUp,
   Card,  
   Cart,
-  NotMatch,
   Profile,
+  Events,
+  NotMatch,
 } from "../pages";
 
 const GuestRoutes = () => {
@@ -37,6 +38,7 @@ const SellerRoutes = () => {
       <Route path="/contact-us/" element={<ContactUs />} />
       <Route path="/sell/" element={<Sell />} />
       <Route path="/cards/:id" element={<Card />} />
+      <Route path="/events/" element={<Events />} />
       <Route path="/profile/" element={<Profile />} />
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
