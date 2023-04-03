@@ -8,7 +8,6 @@ import "./CreateEventForm.css";
 import { collection, addDoc } from "firebase/firestore";
 import Upload from "./Upload";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import {v4} from 'uuid';
 
 const CreateEventForm = () => {
@@ -22,7 +21,7 @@ const CreateEventForm = () => {
     time: "",
     ability: "",
     price: "",
-    image: "",
+    image: "https://firebasestorage.googleapis.com/v0/b/no-country-ticket.appspot.com/o/1455da98-1051-4bc1-962d-c6fab39223ad?alt=media&token=95291e23-176a-4611-80bd-67a3547e9dac",
     title: "",
     description: "",
   };
@@ -53,7 +52,7 @@ const CreateEventForm = () => {
         time: values.time,
         ability: values.ability,
         price: values.price,
-        image: values.image,
+        image: "https://firebasestorage.googleapis.com/v0/b/no-country-ticket.appspot.com/o/1455da98-1051-4bc1-962d-c6fab39223ad?alt=media&token=95291e23-176a-4611-80bd-67a3547e9dac",
         title: values.title,
         description: values.description,
       });
@@ -73,6 +72,7 @@ const CreateEventForm = () => {
           <h2 className="tittleForm">Crea un Evento!!!</h2>
           <Formik
             initialValues={initialValues}
+            validateOnChange={false}
             // validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
