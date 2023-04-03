@@ -1,34 +1,27 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addEvent } from "../../../redux/features/events/eventsSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import ticketsService from "../../../services/tickets";
 import * as Yup from "yup";
 import { db } from "../../../utils/firebaseConfig";
 import "./CreateEventForm.css";
-
-
-
-
-
-
-
-
-
-
-
-
+import { collection, addDoc } from "firebase/firestore";
+import Upload from "./Upload";
+import { ToastContainer, toast } from 'react-toastify';
+import {v4} from 'uuid';
 
 const CreateEventForm = () => {
-
   const dispatch = useDispatch();
+  const notify = () => toast.success("Evento creado con éxito!");
+  //error evento 
+  const errorEvent = () => toast.error("Error al crear el evento");
 
   const initialValues = {
     place: "",
     time: "",
-    capacidad: "",
+    ability: "",
     price: "",
-    image: "",
+    image: "https://firebasestorage.googleapis.com/v0/b/no-country-ticket.appspot.com/o/1455da98-1051-4bc1-962d-c6fab39223ad?alt=media&token=95291e23-176a-4611-80bd-67a3547e9dac",
     title: "",
     description: "",
   };
@@ -43,12 +36,33 @@ const CreateEventForm = () => {
     description: Yup.string().required("Descripción es requerida"),
   });
 
-  const handleSubmit = async (values, { resetForm }) => {
+  const user = useSelector((store) => store.auth?.user);
+
+  const handleSubmit = async (values) => {
     // handle form submission logic here
-    const newEvent = await ticketsService.create(values);
-    dispatch(addEvent(newEvent));
+    //const newEvent = await ticketsService.create(values);
+    // dispatch(addEvent(newEvent));
     console.log(values);
-    resetForm();
+    // resetForm();
+    try {
+      const docRef = await addDoc(collection(db, "events"), {
+        uid: v4(),
+        user_id: user.uid,
+        place: values.place,
+        time: values.time,
+        ability: values.ability,
+        price: values.price,
+        image: "https://firebasestorage.googleapis.com/v0/b/no-country-ticket.appspot.com/o/1455da98-1051-4bc1-962d-c6fab39223ad?alt=media&token=95291e23-176a-4611-80bd-67a3547e9dac",
+        title: values.title,
+        description: values.description,
+      });
+
+      console.log("Document written with ID: ", docRef.id);
+      notify();
+    } catch (e) {
+      console.error("Error adding document: ", e);
+      errorEvent();
+    }
   };
 
   return (
@@ -58,6 +72,7 @@ const CreateEventForm = () => {
           <h2 className="tittleForm">Crea un Evento!!!</h2>
           <Formik
             initialValues={initialValues}
+            validateOnChange={false}
             // validationSchema={validationSchema}
             onSubmit={handleSubmit}
           >
@@ -119,14 +134,15 @@ const CreateEventForm = () => {
                 </div>
 
                 <div>
-                  <label htmlFor="image">Imagen</label>
+                  {/* <label htmlFor="image">Imagen</label>
                   <Field
                     type={"file"}
                     id="image"
                     name="image"
                     placeholder="Imagen de evento"
                   />
-                  <ErrorMessage name="image" />
+                  <ErrorMessage name="image" /> */}
+                  <Upload />
                 </div>
 
                 <div>
@@ -140,12 +156,10 @@ const CreateEventForm = () => {
                   />
                   <ErrorMessage name="description" />
                 </div>
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                >
+                <button type="submit" disabled={isSubmitting}>
                   Submit
                 </button>
+                <ToastContainer />
               </Form>
             )}
           </Formik>

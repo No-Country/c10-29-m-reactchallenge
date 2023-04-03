@@ -1,36 +1,84 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ticketsService from "../../../services/tickets";
-import Navbar from "../../../layouts/Navbar/Index";
-import Footer from "../../../layouts/Footer/Index";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../../redux/features/cart/cartSlice";
+import { fetchGetEventById } from "../../../redux/features/events/eventsSlice";
+import Template from "../../../layouts/Template/Index";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Index.css";
 
 function Index() {
-  const [card, setCard] = useState({});
   const { id } = useParams();
-
+  const user = useSelector((state) => state.auth.user);
+  const cart = useSelector((state) => state.cart.items);
+  const currentEventById = useSelector((state) => state.events.currentEventById);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  
+  const purchaseMessage = () => toast.success("La entrada se agrego al carrito :)");
+  const infoMessage = () => toast.error("La entrada ya se encuentra en el carrito");
+  
+  // console.log("current", currentEventById);
+  
   useEffect(() => {
-    ticketsService.getOne(id).then((card) => {
-      setCard(card);
-    });
+    setLoading(true);
+    dispatch(fetchGetEventById(id));
+    setLoading(false);
   }, [id]);
-  console.log("card", card);
+
+  
+  
+  // const addNewItem = () => {
+  //   console.log(card);
+  // };
+  console.log("currentEventByID", currentEventById);
+  console.log("user id", user.uid);
+  const checkeUser = () => {
+    if (cart && user.role === "buyer") {
+      // addNewItem();
+      if (!cart.find(item => item.uid === currentEventById.uid)){
+        purchaseMessage();
+        const newEvent = {...currentEventById, user_id: user.uid};
+        dispatch(addToCart(newEvent));
+        console.log("newEvent", newEvent);
+      }else{
+        infoMessage();
+      }
+    } else {
+      toast.error(
+        "Debes iniciar sesion como comprador para comprar una entrada"
+      );
+    }
+  };
+
+  // console.log("current", currentEventById);
+
   return (
-    <>
-      <Navbar />
-      {card && (
+    <Template>
+      {loading && <h1>Loading...</h1>}
+      {currentEventById ? (
         <div className="ticket-card">
-          <img className="ticket-card__image" src={card.image} alt="" />
+          <img className="ticket-card__image" src={currentEventById.image} alt="" />
           <div className="ticket-card__text">
-            <h1>{card.title}</h1>
-            <p>{card.description}</p>
-            <p>$ {card.price}</p>
-            <button className="ticket-card__button">Comprar</button>
+            <h1>{currentEventById.title}</h1>
+            <p>{currentEventById.description}</p>
+            <p>$ {currentEventById.price}</p>
+            <button
+              className="ticket-card__button"
+              onClick={() => {
+                checkeUser();
+              }}
+            >
+              Comprar
+            </button>
           </div>
         </div>
+      ) : (
+        <p>Loading...</p>
       )}
-      <Footer />
-    </>
+      <ToastContainer />
+    </Template>
   );
 }
 

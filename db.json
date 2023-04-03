@@ -41,66 +41,6 @@
       "description": "Esta es la descripcion del evento",
       "price": "1500",
       "image": "https://indierocks.b-cdn.net/wp-content/uploads/bfi_thumb/Lollapalooza-Argentina-2023-Editado-pw2aga3mdg6tz06whkqy8y1scszkvdi9uld9olap7o.png"
-    },
-    {
-      "place": "",
-      "datetime": "",
-      "capacidad": "",
-      "price": "",
-      "image": "C:\\fakepath\\Screenshot from 2023-03-30 01-52-53.png",
-      "title": "",
-      "description": "",
-      "id": 7
-    },
-    {
-      "place": "",
-      "datetime": "",
-      "capacidad": "",
-      "price": "",
-      "image": null,
-      "title": "",
-      "description": "",
-      "id": 8
-    },
-    {
-      "place": "",
-      "datetime": "",
-      "capacidad": "",
-      "price": "",
-      "image": "C:\\fakepath\\imagen.png",
-      "title": "",
-      "description": "",
-      "id": 9
-    },
-    {
-      "place": "dfdfdf",
-      "datetime": "2023-02-01T01:00",
-      "capacidad": 2,
-      "price": 2,
-      "image": "C:\\fakepath\\norelacionado.jpeg",
-      "title": "rfdf",
-      "description": "",
-      "id": 10
-    },
-    {
-      "place": "pwokdspijsdfaifd",
-      "time": "2023-02-01T01:01",
-      "capacidad": 2324,
-      "price": 6,
-      "image": "C:\\fakepath\\qrcode.png",
-      "title": "loopalspalsap",
-      "description": "dfdfdfdfddf dfdfdf",
-      "id": 11
-    },
-    {
-      "place": "sddwe",
-      "time": "2023-01-01T01:00",
-      "capacidad": 5451,
-      "price": 545,
-      "image": "C:\\fakepath\\logo.jpg",
-      "title": "dfdf",
-      "description": "sdssdsd",
-      "id": 12
     }
-  ]
+    ]
 }
