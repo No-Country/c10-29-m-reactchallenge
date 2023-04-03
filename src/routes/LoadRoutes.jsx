@@ -31,12 +31,15 @@ const GuestRoutes = () => {
 }
 
 const SellerRoutes = () => {
+
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
       <Route path="/about/" element={<About />} />
       <Route path="/contact-us/" element={<ContactUs />} />
       <Route path="/sell/" element={<Sell />} />
+      <Route path="/sell/:id" element={<Sell />} />
+      {/* <Route path="/update/:id" element={<Sell />} /> */}
       <Route path="/cards/:id" element={<Card />} />
       <Route path="/events/" element={<Events />} />
       <Route path="/profile/" element={<Profile />} />

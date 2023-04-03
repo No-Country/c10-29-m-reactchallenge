@@ -21,7 +21,6 @@
 .card-ticket img {
   display: block;
   height: 100%;
-  object-fit: contain;
   object-position: center;
   position: absolute;
   top: 0;

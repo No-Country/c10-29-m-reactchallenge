@@ -1,14 +1,17 @@
 import Template from "../../../layouts/Template/Index";
-import CreateEventForm from "../components/CreateEventForm";
+import CreateAndEditForm from "../components/CreateAndEditForm";
+import {useParams} from "react-router-dom";
 import "./Index.css";
 
-
-function Index() {
+function Index({ match}) {
+  // const id  = "f603c770-ee5e-4611-8a13-91c4f7c60612"; 
+  const { id } = useParams();
+  console.log("id", id)
   return (
-     
+
     <Template>
-      <CreateEventForm/>
- 
+      {/* <CreateEventForm/> */}
+      <CreateAndEditForm  match={id} />
     </Template>
   )
 }
