@@ -8,7 +8,7 @@ function Index() {
   return (
     <Animated animationIn="bounceIn" animationOut="fadeOut" isVisible={true}>
       <div className="signup-page">
-        <h1>bypass</h1>
+        <h1>Bypass</h1>
         <SignUp />
       </div>
     </Animated>

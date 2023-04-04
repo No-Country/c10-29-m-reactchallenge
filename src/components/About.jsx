@@ -10,10 +10,10 @@ const AboutUs = () => {
   <p>En nuestro equipo, contamos con expertos en tecnología, marketing y atención al cliente trabajando juntos para brindar la mejor experiencia posible a nuestros clientes..</p>
   
   <div>
-            <Link to={'/'}>
-            <button type="submit">Submit</button>
-            </Link>
-        </div>
+        <Link to={'/'}>
+        <button type="submit">Submit</button>
+        </Link>
+    </div>
 </div>
 
 
