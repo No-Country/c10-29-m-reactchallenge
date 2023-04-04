@@ -226,7 +226,7 @@ const SignUp = () => {
       <div>
         ¿Ya tenes una cuenta?
         <Link to="/sign-in">Login</Link>
-        now.
+         now.
       </div>
       <Reset />
     </div>

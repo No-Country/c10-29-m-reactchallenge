@@ -59,11 +59,13 @@ function Index() {
       {loading && <h1>Loading...</h1>}
       {currentEventById ? (
         <div className="ticket-card">
-          <img className="ticket-card__image" src={currentEventById.image} alt="" />
+          <img className="ticket-card__image" src={currentEventById.image}/>
           <div className="ticket-card__text">
             <h1>{currentEventById.title}</h1>
             <p>{currentEventById.description}</p>
+            <p>Valor de la entrada</p>
             <p>$ {currentEventById.price}</p>
+            <p>{currentEventById.dateTime}</p>
             <button
               className="ticket-card__button"
               onClick={() => {

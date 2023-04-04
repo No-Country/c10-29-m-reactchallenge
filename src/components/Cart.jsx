@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeToCart, emptyCart } from "../redux/features/cart/cartSlice";
 import purchaseService from "../services/purchases";
+import "./cart.css";
+
 
 const Cart = () => {
   const items = useSelector((state) => state.cart.items);
@@ -26,7 +28,7 @@ const Cart = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h2>Carrito de compras</h2>
       <ul>
         {items &&
