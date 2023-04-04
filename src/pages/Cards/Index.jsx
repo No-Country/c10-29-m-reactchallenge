@@ -14,7 +14,7 @@ const Cards = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div>
       <div className="cards-container">
         {eventsState && eventsState.map((card) => (
           <Link to={`/cards/${card.uid}`} key={card.uid}>
