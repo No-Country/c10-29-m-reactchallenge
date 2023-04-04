@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { ToastContainer, toast } from 'react-toastify';
-import Upload from "./Upload";
+import { uploadFile } from "../../../utils/firebaseConfig"
+// import Upload from "./Upload";
 import * as Yup from "yup";
 import salesService from "../../../services/sales";
 // import { userService, alertService } from '@/_services';
@@ -11,6 +12,7 @@ import salesService from "../../../services/sales";
 function CreateAndEditForm({ match }) {
   const id = match;
   const isAddMode = !id;
+  const [file, setFile] = useState(null);
   const user = useSelector((store) => store.auth?.user);
   const notify = () => toast.success("Evento creado con éxito!");
   //error evento 
@@ -21,7 +23,7 @@ function CreateAndEditForm({ match }) {
     time: "",
     ability: "",
     price: "",
-    image: "https://firebasestorage.googleapis.com/v0/b/no-country-ticket.appspot.com/o/1455da98-1051-4bc1-962d-c6fab39223ad?alt=media&token=95291e23-176a-4611-80bd-67a3547e9dac",
+    image: "",
     title: "",
     description: "",
   };
@@ -53,7 +55,7 @@ function CreateAndEditForm({ match }) {
     }
   }
 
-  function createUser(fields, setSubmitting) {
+  async function createUser(fields, setSubmitting) {
     // userService.create(fields)
     //     .then(() => {
     //         alertService.success('User added', { keepAfterRouteChange: true });
@@ -66,9 +68,12 @@ function CreateAndEditForm({ match }) {
     try {
       console.log("fields", fields);
       // alertService.success('User added', { keepAfterRouteChange: true });
-      salesService.createSale(fields, user.uid)
+      const url = await uploadFile(file);
+      salesService.createSale(fields, user.uid, url)
+      notify()
       // history.push('.');
     } catch (error) {
+      console.error(error)
       setSubmitting(false);
     }
   }
@@ -172,15 +177,16 @@ function CreateAndEditForm({ match }) {
             </div>
 
             <div>
-              {/* <label htmlFor="image">Imagen</label>
+              <label htmlFor="image">Imagen</label>
                   <Field
-                    type={"file"}
+                    type="file"
                     id="image"
                     name="image"
                     placeholder="Imagen de evento"
+                    onChange={(e) => setFile(e.target.files[0])}
                   />
-                  <ErrorMessage name="image" /> */}
-              <Upload />
+                  <ErrorMessage name="image" />
+              {/* <Upload /> */}
             </div>
 
             <div>

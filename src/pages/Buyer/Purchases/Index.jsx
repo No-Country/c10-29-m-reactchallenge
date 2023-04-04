@@ -42,7 +42,7 @@ function Index() {
                   return (
                     <tr key={purchase.uid}>
                       <td>{purchase.title}</td>
-                      <td>{purchase.time}</td>
+                      <td>{purchase.time.toLocaleString()}</td>
                       <td>{purchase.place}</td>
                       <td>{purchase.price}</td>
                       <td>

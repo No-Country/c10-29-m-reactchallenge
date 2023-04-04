@@ -76,7 +76,7 @@ const Navbar = () => {
                       &nbsp; Mis Compras
                     </Link>
                   </li>
-                  <li>
+                  <li className="cart">
                     <Link to="/cart/">
                       <AiOutlineShoppingCart />{" "}
                       <span className="cart-items">{cart.items.length}</span>{" "}
