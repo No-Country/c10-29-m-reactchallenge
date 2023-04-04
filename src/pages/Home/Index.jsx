@@ -30,7 +30,7 @@ const Home = () => {
               <Cards />
             {/* </AnimationOnScroll> */}
           </section>
-          <section>
+          <section className="this-week">
             <h2 className="title">Esta semana</h2>
             <AnimationOnScroll
               animateIn="animate__bounceInRight"

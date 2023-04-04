@@ -16,8 +16,8 @@ console.log("querySnapshot", querySnapshot);
   return data;
 };
 
-const createSale = async (sale, user_id) => {
-  const newSale = {...sale, user_id, uid: v4()};
+const createSale = async (sale, user_id, url) => {
+  const newSale = {...sale, user_id, uid: v4(), image: url};
   const docRef = await addDoc(collection(db, "events"), newSale);
   return docRef;
 }

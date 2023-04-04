@@ -1,9 +1,7 @@
 import React, { useRef } from "react";
-
 import {} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { app } from "../utils/firebaseConfig";
-
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { query, getDocs, collection, where, addDoc } from "firebase/firestore";
 

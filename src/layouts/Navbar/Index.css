@@ -119,11 +119,14 @@
   left: 0;
   right: 0;
 }
+.cart{
+  position: relative;
+}
 
 .cart-items{
  position: absolute;
  font-size: 0.7rem;
- top: calc(100% - 125%);
+ top: -3px;
  left: 5px;
  background-color: var(--red);
  border-radius: 50%;
@@ -169,7 +172,8 @@
   }
 
   .cart-items{
-    top: calc(100% - 90%);
-   }
+    top: -7px;
+    right: 0px;
+  }
    
 }
