@@ -26,7 +26,21 @@ const getEventById = async (id) => {
   return data;
 };
 
+const updateEvent = async (id, newData) => {
+  const eventRef = doc(eventsRef, id);
+  try {
+    await updateDoc(eventRef, newData);
+    console.log("Evento actualizado correctamente");
+  } catch (error) {
+    console.error("Error actualizando evento:", error);
+  }
+};
+
 export default {
   getAllEvents,
   getEventById,
-};
+  updateEvent,
+};   
+
+
+
