@@ -1,0 +1,17 @@
+.google {
+    display: flex;
+    justify-content: center;
+}
+
+.botonGoogle {
+    margin: 10px !important;
+    width: 300px !important;
+    border: none !important;
+    background-color: var(--white) !important;
+    color: var(--black) !important;
+    cursor: pointer !important;
+    /* background-image: url('https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2014/05/43837-logotipo-google-nuevo.jpg?tf=3840x');
+    background-repeat: no-repeat !important;
+    background-position: left !important;
+    padding-left: 10px !important; */
+}

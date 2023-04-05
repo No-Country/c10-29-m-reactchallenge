@@ -7,8 +7,8 @@ import "./Index.css";
 function Index() {
   return (
     <Animated animationIn="bounceIn" animationOut="fadeOut" isVisible={true}>
-      <div className="signup-page">
-        <h1>Bypass</h1>
+      <div>
+        <h1 className="signup-page">Bypass</h1>
         <SignUp />
       </div>
     </Animated>
