@@ -1,57 +1,27 @@
-import React, { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
+import React, { useState } from "react"; 
+import eventAPI from "../../../services/events"; 
 
-const Pagination = ({ pageNumber, info, updatePageNumber }) => {
-  let pageChange = (data) => {
-    updatePageNumber(data.selected + 1);
-  };
+const Pagination = () => { 
+  const [filteredEvents, setFilteredEvents] = useState([]); 
+  const [pageNumber, updatePageNumber] = useState(1); 
 
-  const [width, setWidth] = useState(window.innerWidth);
-  const updateDimensions = () => {
-    setWidth(window.innerWidth);
-  };
-  useEffect(() => {
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
+  
+  eventAPI.getAllEvents().then(allEvents => setFilteredEvents(allEvents));
 
-  return (
-    <>
-      <style jsx>
-        {`
-          @media (max-width: 768px) {
-            .pagination {
-              font-size: 12px;
-            }
-            .next,
-            .prev {
-              display: none;
-            }
-          }
-          @media (max-width: 768px) {
-            .pagination {
-              font-size: 14px;
-            }
-          }
-        `}
-      </style>
-      <ReactPaginate
-        className="pagination justify-content-center my-4 gap-4"
-        nextLabel="Next"
-        forcePage={pageNumber === 1 ? 0 : pageNumber - 1}
-        previousLabel="Prev"
-        previousClassName="btn btn-primary fs-5 prev text-white bg-dark"
-        nextClassName="btn btn-primary fs-5 next text-white bg-dark"
-        activeClassName="active"
-        marginPagesDisplayed={width < 576 ? 1 : 2}
-        pageRangeDisplayed={width < 576 ? 1 : 2}
-        pageCount={info?.pages}
-        onPageChange={pageChange}
-        pageClassName="page-item"
-        pageLinkClassName="page-link"
-      />
-    </>
-  );
-};
+  const pageSize = 10; 
+  const startIndex = (pageNumber - 1) * pageSize; 
+  const endIndex = startIndex + pageSize; 
+  const currentEvents = filteredEvents.slice(startIndex, endIndex); 
+
+  return ( 
+    <div> 
+      {/* Pagination buttons */} 
+      <div> 
+        <button disabled={pageNumber === 1} onClick={() => updatePageNumber(pageNumber - 1)}>Previous</button> 
+        <button disabled={endIndex >= filteredEvents.length} onClick={() => updatePageNumber(pageNumber + 1)}>Next</button> 
+      </div> 
+    </div> 
+  ); 
+}; 
 
 export default Pagination;
