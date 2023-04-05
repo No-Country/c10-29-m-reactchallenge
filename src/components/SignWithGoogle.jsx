@@ -4,6 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { app } from "../utils/firebaseConfig";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { query, getDocs, collection, where, addDoc } from "firebase/firestore";
+import "./SignWithGoogle.css";
 
 const SignWhitGoogle = () => {
   const signInWithGoogle = async () => {
@@ -32,8 +33,8 @@ const SignWhitGoogle = () => {
     }
   };
   return (
-    <div>
-      <button type="submit" onClick={signInWithGoogle}>
+    <div className="google">
+      <button className="botonGoogle" type="submit" onClick={signInWithGoogle}>
         Ingresa con Google
       </button>
     </div>
