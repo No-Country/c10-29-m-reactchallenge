@@ -5,7 +5,7 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
-
+//opcion original no-cuntry
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCDul9tAGS5YMoiz1xX4NvXbMexYoV0jpY",
 //   authDomain: "no-country-ticket.firebaseapp.com",
