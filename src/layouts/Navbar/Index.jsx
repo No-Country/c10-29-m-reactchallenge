@@ -6,6 +6,8 @@ import { emptyCart } from "../../redux/features/cart/cartSlice";
 import { Animated } from "react-animated-css";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { BiPurchaseTagAlt } from "react-icons/bi";
+import { ImTicket } from "react-icons/im";
+import {MdOutlineSell} from "react-icons/md";
 import logo from "../../assets/logo.png";
 import "./Index.css";
 
@@ -61,10 +63,12 @@ const Navbar = () => {
               {user?.role === "seller" && isLogged && (
                 <>
                   <li className="hvr-underline-from-center">
-                    <Link to="/events/">Mis Eventos</Link>
+                    <Link to="/events/">
+                      <ImTicket /> &nbsp; Mis Eventos
+                    </Link>
                   </li>
                   <li className="hvr-underline-from-center">
-                    <Link to="/sell/">Vender</Link>
+                    <Link to="/sell/"><MdOutlineSell />&nbsp; Vender</Link>
                   </li>
                 </>
               )}
@@ -98,7 +102,7 @@ const Navbar = () => {
                     className="hvr-underline-from-center"
                     onClick={() => {
                       dispatch(closeSession());
-                      dispatch(emptyCart())
+                      dispatch(emptyCart());
                     }}
                   >
                     <Link to="/">Cerrar Sesion</Link>

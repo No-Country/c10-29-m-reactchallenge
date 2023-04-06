@@ -4,6 +4,7 @@ import {v4} from 'uuid';
 
 const salesRef = collection(db, "events");
 
+// GET
 const getAllSalesByUserId = async (id) => {
     console.log("id", id);
     const q = query(salesRef, where("user_id", "==", id));
@@ -16,6 +17,21 @@ console.log("querySnapshot", querySnapshot);
   return data;
 };
 
+
+const getEventById = async (id) => {
+  const q = query(salesRef, where("uid", "==", id));
+  const querySnapshot = await getDocs(q);
+  let data = null;    
+
+  querySnapshot.forEach((doc) => {
+    data = doc.data();
+  });
+
+  return data;
+};
+
+
+// POST
 const createSale = async (sale, user_id, url) => {
   const newSale = {...sale, user_id, uid: v4(), image: url};
   const docRef = await addDoc(collection(db, "events"), newSale);
@@ -24,5 +40,6 @@ const createSale = async (sale, user_id, url) => {
 
 export default {
   getAllSalesByUserId,
+  getEventById,
   createSale,
 };

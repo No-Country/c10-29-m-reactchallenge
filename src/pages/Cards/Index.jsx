@@ -4,11 +4,14 @@ import { Link } from "react-router-dom";
 import { fetchGetAllEvents } from "../../redux/features/events/eventsSlice";
 import "./Index.css";
 
-const Cards = () => {
+const Cards = ({ searchTerm = "" }) => {
   
   const eventsState = useSelector((state) => state.events.events)  
   const dispatch = useDispatch();
-  
+
+  const filteredEvents = eventsState.filter((event) => {
+    return event.title && event.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
   useEffect(() => {
     dispatch(fetchGetAllEvents())
   }, []);
@@ -16,7 +19,7 @@ const Cards = () => {
   return (
     <div>
       <div className="cards-container">
-        {eventsState && eventsState.map((card) => (
+        {filteredEvents && filteredEvents.map((card) => (
           <Link to={`/cards/${card.uid}`} key={card.uid}>
             <div className="card-ticket">
               <img src={card.image} alt="" width="25%" />
