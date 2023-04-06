@@ -71,6 +71,7 @@
   background-color: var(--black);
   color: var(--white);
   transition: background-color 0.3s ease;
+  padding: 15px;
 }
 
 .ticket-card__button:hover {
