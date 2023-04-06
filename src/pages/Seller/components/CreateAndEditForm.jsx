@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { ToastContainer, toast } from 'react-toastify';
-import { uploadFile } from "../../../utils/firebaseConfig"
+import { ToastContainer, toast } from "react-toastify";
+import { uploadFile } from "../../../utils/firebaseConfig";
+// import Upload from "./Upload";
 import * as Yup from "yup";
 import salesService from "../../../services/sales";
 
@@ -13,7 +14,7 @@ function CreateAndEditForm({ match }) {
   const [file, setFile] = useState(null);
   const user = useSelector((store) => store.auth?.user);
   const notify = () => toast.success("Evento creado con éxito!");
-  //error evento 
+  //error evento
   const errorEvent = () => toast.error("Error al crear el evento");
 
   const initialValues = {
@@ -25,7 +26,6 @@ function CreateAndEditForm({ match }) {
     title: "",
     description: "",
   };
-
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("Title is required"),
@@ -67,16 +67,27 @@ function CreateAndEditForm({ match }) {
       console.log("fields", fields);
       // alertService.success('User added', { keepAfterRouteChange: true });
       const url = await uploadFile(file);
-      salesService.createSale(fields, user.uid, url)
-      notify()
+      salesService.createSale(fields, user.uid, url);
+      notify();
       // history.push('.');
     } catch (error) {
-      console.error(error)
+      console.error(error);
       setSubmitting(false);
     }
   }
 
-  function updateUser(id, fields, setSubmitting) {
+  async function updateUser(id, fields, setSubmitting) {
+    try {
+      const url = await uploadFile(file);
+      salesService.updateSale(fields, user.uid, url, id);
+    } catch (error) {
+      setSubmitting(false);
+    }
+
+    // const events = doc(db, "events", id);
+    // console.log("id", id);
+    // await updateDoc(events, fields);
+
     // userService.update(id, fields)
     //     .then(() => {
     //         alertService.success('User updated', { keepAfterRouteChange: true });
@@ -86,13 +97,6 @@ function CreateAndEditForm({ match }) {
     //         setSubmitting(false);
     //         alertService.error(error);
     //     });
-    try {
-      console.log("fields", fields);
-      // alertService.success('User added', { keepAfterRouteChange: true });
-      // history.push('.');
-    } catch (error) {
-      setSubmitting(false);
-    }
   }
 
   return (
@@ -107,20 +111,22 @@ function CreateAndEditForm({ match }) {
 
         useEffect(() => {
           if (!isAddMode) {
-              // get event and set form fields
-              salesService.getEventById(id).then(event => {
-                  const fields = [
-                  "place",
-                  "time",
-                  "ability",
-                  "price",
-                  // "image",
-                  "title",
-                  "description",
+            // get event and set form fields
+            salesService.getEventById(id).then((event) => {
+              const fields = [
+                "place",
+                "time",
+                "ability",
+                "price",
+                // "image",
+                "title",
+                "description",
               ];
-                  fields.forEach(field => setFieldValue(field, event[field], false));
-                  setEvent(event);
-              });
+              fields.forEach((field) =>
+                setFieldValue(field, event[field], false)
+              );
+              setEvent(event);
+            });
           }
         }, []);
 
@@ -184,14 +190,14 @@ function CreateAndEditForm({ match }) {
 
             <div>
               <label htmlFor="image">Imagen</label>
-                  <Field
-                    type="file"
-                    id="image"
-                    name="image"
-                    placeholder="Imagen de evento"
-                    onChange={(e) => setFile(e.target.files[0])}
-                  />
-                  <ErrorMessage name="image" />
+              <Field
+                type="file"
+                id="image"
+                name="image"
+                placeholder="Imagen de evento"
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+              <ErrorMessage name="image" />
               {/* <Upload /> */}
             </div>
 
@@ -213,14 +219,14 @@ function CreateAndEditForm({ match }) {
                 className="btn btn-primary"
               >
                 {isSubmitting && (
-                    <span className="spinner-border spinner-border-sm mr-1"></span>
-                    )}
+                  <span className="spinner-border spinner-border-sm mr-1"></span>
+                )}
                 Save
               </button>
               <Link to={isAddMode ? "." : ".."} className="btn btn-link">
                 Cancel
               </Link>
-                    <ToastContainer />
+              <ToastContainer />
             </div>
           </Form>
         );
