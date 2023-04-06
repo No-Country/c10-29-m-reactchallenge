@@ -7,10 +7,6 @@ import { uploadFile } from "../../../utils/firebaseConfig";
 // import Upload from "./Upload";
 import * as Yup from "yup";
 import salesService from "../../../services/sales";
-// import { userService, alertService } from '@/_services';
-import { db } from "../../../utils/firebaseConfig";
-import { collection } from "firebase/firestore";
-import { doc, updateDoc } from "firebase/firestore";
 
 function CreateAndEditForm({ match }) {
   const id = match;
@@ -26,7 +22,7 @@ function CreateAndEditForm({ match }) {
     time: "",
     ability: "",
     price: "",
-    image: "",
+    image: null,
     title: "",
     description: "",
   };
@@ -110,18 +106,28 @@ function CreateAndEditForm({ match }) {
       onSubmit={onSubmit}
     >
       {({ errors, touched, isSubmitting, setFieldValue }) => {
-        const [user, setUser] = useState({});
+        const [event, setEvent] = useState({});
         const [showPassword, setShowPassword] = useState(false);
 
         useEffect(() => {
-          // if (!isAddMode) {
-          //     // get user and set form fields
-          //     userService.getById(id).then(user => {
-          //         const fields = ['title', 'firstName', 'lastName', 'email', 'role'];
-          //         fields.forEach(field => setFieldValue(field, user[field], false));
-          //         setUser(user);
-          //     });
-          // }
+          if (!isAddMode) {
+            // get event and set form fields
+            salesService.getEventById(id).then((event) => {
+              const fields = [
+                "place",
+                "time",
+                "ability",
+                "price",
+                // "image",
+                "title",
+                "description",
+              ];
+              fields.forEach((field) =>
+                setFieldValue(field, event[field], false)
+              );
+              setEvent(event);
+            });
+          }
         }, []);
 
         return (

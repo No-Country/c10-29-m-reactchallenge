@@ -13,6 +13,7 @@ import { v4 } from "uuid";
 
 const salesRef = collection(db, "events");
 
+// GET
 const getAllSalesByUserId = async (id) => {
   console.log("id", id);
   const q = query(salesRef, where("user_id", "==", id));
@@ -25,6 +26,21 @@ const getAllSalesByUserId = async (id) => {
   return data;
 };
 
+
+const getEventById = async (id) => {
+  const q = query(salesRef, where("uid", "==", id));
+  const querySnapshot = await getDocs(q);
+  let data = null;    
+
+  querySnapshot.forEach((doc) => {
+    data = doc.data();
+  });
+
+  return data;
+};
+
+
+// POST
 const createSale = async (sale, user_id, url) => {
   const uid = "Event" + v4();
   const newSale = {
@@ -50,6 +66,7 @@ const updateSale = async (sale, user_id, url, id) => {
 
 export default {
   getAllSalesByUserId,
+  getEventById,
   createSale,
   updateSale,
 };

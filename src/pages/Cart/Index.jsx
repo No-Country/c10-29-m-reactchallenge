@@ -6,7 +6,7 @@ function Index() {
   return (
     <Template>
         <Cart />
-        <Pay />
+        {/* <Pay />/ */}
     </Template>
   )
 }

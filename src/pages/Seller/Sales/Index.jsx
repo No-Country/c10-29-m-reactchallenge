@@ -23,9 +23,7 @@ function Index() {
   console.log("sales", sales);
   return (
     <Template>
-      {/* <QRDownload data="https://www.ejemplo.com" /> */}
-      hola mundo
-      
+      {/* <QRDownload data="https://www.ejemplo.com" /> */}      
       <div className="container">
         <div className="row">
           <div className="col-12">
