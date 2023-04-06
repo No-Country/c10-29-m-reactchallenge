@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import bgMobile from "../../src/assets/images/bg-main-mobile.png"
 import bgDesktop from "../../src/assets/images/bg-main-desktop.png";
+import bgCardBack from "../../src/assets/images/bg-card-back.png";
+import bgCardFront from "../../src/assets/images/bg-card-front.png";
 import logo from "../../src/assets/images/bypass-logo.png";
 import tick from "../../src/assets/images/icon-complete.svg";
 import { format } from "date-fns";
+import "./Pay.css"
 
 
-
-export default function Pay () {
-    const [confirmed, setConfirmed] = useState(false);
+export default function Pay ({confirmed, setConfirmed, setDisplayCard}) {
+    // const [confirmed, setConfirmed] = useState(false);
     const [name, setName] = useState("");
     const [cardNumber, setCardNumber] = useState("");
     const [date, setDate] = useState("01/23");
@@ -16,22 +18,23 @@ export default function Pay () {
 
     return (
 <>
-        <section>
-          <div className="absolute -z-10 w-full">
+        <section className='card-container'>
+          {/* <div className="absolute -z-10 w-full">
             <picture>
               <source media="(min-width: 768px)" srcSet={bgDesktop} />
               <img src={bgMobile} alt="" className="w-full md:w-1/3" />
             </picture>
-          </div>
+          </div> */}
   
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 max-w-7xl mx-auto">
             <div className="mt-10 mx-5 grid grid-cols-1">
               <article className="front-card p-5 flex flex-col justify-between">
                 <img src={logo} alt="" className="w-20 lg:w-28" />
-  
+
                 <div>
                   <h2 className="text-white text-xl lg:text-3xl mb-6 tracking-widest">
                     {cardNumber}
+                    {/* <img src={bgCardFront} alt="" /> */}
                   </h2>
   
                   <ul className="flex items-center justify-between">
@@ -47,6 +50,7 @@ export default function Pay () {
   
               <article className="back-card relative lg:ml-20">
                 <p className="absolute right-10 text-lg lg:text-xl text-white tracking-widest">
+                  {/* <img src={bgCardBack} alt="" /> */}
                   {cvc}
                 </p>
               </article>
@@ -117,10 +121,13 @@ export default function Pay () {
                   <button onClick={() => setConfirmed(true)} className="btn">
                     Confirm
                   </button>
+                  <button className='btn btn-danger' onClick={() => setDisplayCard(false)}>
+                    Cancel
+                  </button>
                 </form>
               )}
   
-              {confirmed && <ThankYou setConfirmed={setConfirmed} />}
+              {confirmed && <ThankYou setConfirmed={setConfirmed} setDisplayCard = {setDisplayCard}/>}
             </div>
           </div>
         </section>
@@ -128,7 +135,7 @@ export default function Pay () {
     );
 }
 
-function ThankYou({ setConfirmed }) {
+function ThankYou({ setConfirmed, setDisplayCard }) {
     return (
       <>
         <div className="thank-you flex flex-col items-center justify-center lg:h-screen max-w-lg mx-auto">
@@ -140,7 +147,10 @@ function ThankYou({ setConfirmed }) {
             We've added your card details
           </p>
           <button
-            onClick={() => setConfirmed(false)}
+            onClick={() => {
+              setConfirmed(false)
+              setDisplayCard(false)
+            }}
             className="btn block mx-auto mt-10 w-full "
           >
             Continue
