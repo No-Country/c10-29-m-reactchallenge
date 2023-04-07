@@ -9,6 +9,7 @@ import Search from "./components/Search";
 import Cards from "../Cards/Index";
 import "./Index.css";
 
+
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState(""); // Estado para almacenar el término de búsqueda
 
@@ -16,6 +17,7 @@ const Home = () => {
     <>
       <Navbar  />
       <Carousel />
+   
       <main>
         <div className="container">
         <Search onSearch = {searchTerm} setSearchTerm = {setSearchTerm}/>
