@@ -226,9 +226,11 @@ const SignUp = () => {
                 <button type="submit" disabled={isSubmitting}>
                   Registrarse
                 </button>
-                <button type="submit">
-                  Volver
-                </button>
+                <Link className="volver" to="/" >
+                  <button type="submit">
+                    Volver
+                  </button>
+                </Link>
               </div>
           </Form>
         )}

@@ -1,85 +1,80 @@
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    color: #333;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2rem !important;
+  margin-bottom: 20px !important;
+  text-align: center;
+  color: var(--white) !important;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+th {
+  color: var(--white);
+  padding: 1rem 0.75rem;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  color: var(--white);
+}
+
+td:last-child {
+  text-align: center;
+}
+
+.btn-primary {
+  border: none !important;
+  cursor: pointer !important;
+  background-color: var(--black) !important;
+  color: var(--white) !important;
+  transition: background-color 0.3s ease !important;
+  padding: 15px !important;
+  border-radius: 10px !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--light-brown) !important;
+  color: var(--black) !important;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+@media (max-width: 767px) {
   table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 2rem;
+    font-size: 0.875rem;
   }
-  
-  th {
-    background-color: #007bff;
-    color: #fff;
-    font-weight: 700;
-    padding: 1rem 0.75rem;
-    text-align: left;
-    text-transform: uppercase;
+}
+
+@media (max-width: 575px) {
+  table {
+    font-size: 0.75rem;
   }
-  
+
+  th,
   td {
-    border: 1px solid #dee2e6;
-    padding: 0.75rem;
-    vertical-align: middle;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
   }
-  
+
+  th {
+    font-size: 0.875rem;
+  }
+
   td:last-child {
-    text-align: center;
+    text-align: right;
   }
-  
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 700;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.25rem;
-    text-transform: uppercase;
-  }
-  
-  .btn-primary:hover {
-    background-color: #0062cc;
-    border-color: #005cbf;
-    color: #fff;
-  }
-  
-  .btn-primary:focus {
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-  }
-  
-  @media (max-width: 767px) {
-    table {
-      font-size: 0.875rem;
-    }
-  }
-  
-  @media (max-width: 575px) {
-    table {
-      font-size: 0.75rem;
-    }
-  
-    th,
-    td {
-      padding: 0.5rem;
-    }
-  
-    th {
-      font-size: 0.875rem;
-    }
-  
-    td:last-child {
-      text-align: right;
-    }
-  }
-  
+}

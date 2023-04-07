@@ -43,6 +43,22 @@ input::placeholder {
     background-color: var(--black);
     color: var(--white);
     cursor: pointer;
+    border-radius: 360px;
+}
+
+.boton button:hover{
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.volver button{
+    background-color: var(--light-brown);
+    color: var(--white);
+}
+
+.volver button:hover{
+    background-color: var(--white);
+    color: var(--black);
 }
 
 .radio-buttons {
@@ -62,6 +78,4 @@ input::placeholder {
         flex-direction: column;
                 
     }
-
-    
 }

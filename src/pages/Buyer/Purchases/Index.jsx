@@ -31,7 +31,7 @@ function Index() {
               <thead>
                 <tr>
                   <th scope="col">Evento</th>
-                  <th scope="col">Fecha</th>
+                  <th scope="col">Fecha / Hora</th>
                   <th scope="col">Lugar</th>
                   <th scope="col">Precio</th>
                   <th scope="col">Acciones</th>
@@ -39,12 +39,13 @@ function Index() {
               </thead>
               <tbody>
                 {purchases.map((purchase) => { // Verificar si purchases es una lista vacía
+                  const purchaseDate = new Date(purchase.time)
                   return (
                     <tr key={purchase.uid}>
                       <td>{purchase.title}</td>
-                      <td>{purchase.time.toLocaleString()}</td>
+                      <td>{purchaseDate.toLocaleString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'})}</td>
                       <td>{purchase.place}</td>
-                      <td>{purchase.price}</td>
+                      <td>$ {purchase.price}</td>
                       <td>
                         <button className="btn btn-primary">Ver</button>
                       </td>
@@ -61,3 +62,5 @@ function Index() {
 }
 
 export default Index;
+
+

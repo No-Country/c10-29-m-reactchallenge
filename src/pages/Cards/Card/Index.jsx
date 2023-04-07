@@ -62,7 +62,15 @@ function Index() {
           <img className="ticket-card__image" src={currentEventById.image}/>
           <div className="ticket-card__text">
             <h1>{currentEventById.title}</h1>
-            <p className="horario">{currentEventById.time}</p>
+            <p className="horario">
+              {new Date(currentEventById.time).toLocaleDateString("es-ES", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric"
+              })}hs
+            </p>
             <p className="descripcion">{currentEventById.description}</p>
             <div className="valor">
             <p className="ban">GENERAL</p>
