@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetAllPurchasesByUserId } from "../../../redux/features/purchases/purchasesSlice";
 import Template from "../../../layouts/Template/Index";
@@ -48,7 +49,11 @@ function Index() {
                       <td>$ {purchase.price}</td>
                       <td>
                         <button className="btn btn-primary">Ver</button>
+                        <Link to={`/purchases/${purchase.uid}`}>
+                          <button className="btn btn-primary">Descargar</button>
+                        </Link>
                       </td>
+                      
                     </tr>
                   );
                 })}

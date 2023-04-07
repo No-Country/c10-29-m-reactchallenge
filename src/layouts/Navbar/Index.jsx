@@ -75,7 +75,7 @@ const Navbar = () => {
               {user?.role === "buyer" && isLogged && (
                 <>
                   <li className="hvr-underline-from-center">
-                    <Link to="/buy/">
+                    <Link to="/purchases/">
                       <BiPurchaseTagAlt />
                       &nbsp; Mis Compras
                     </Link>
