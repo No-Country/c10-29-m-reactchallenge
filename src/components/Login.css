@@ -21,12 +21,11 @@
   margin-bottom: 10px;
 }
 
-.login-title {
+/* .login-title {
   font-size: 28px;
   font-family: "Kanit", sans-serif;
   font-weight: 800;
-  margin-bottom: 20px;
-}
+} */
 
 .login-form label {
   font-size: 16px;
@@ -49,13 +48,14 @@
   border: none;
   background-color: var(--black);
   color: var(--white);
-  border-radius: 5px;
+  border-radius: 360px;
   cursor: pointer;
-  width: 100%;
+  width: 200px;
 }
 
 .login-form .form-button:hover {
-  opacity: 0.8;
+  background-color: var(--light-brown);
+  color: var(--white);
 }
 
 .login-form .error-message {

@@ -61,7 +61,7 @@ function Index() {
         <div className="ticket-card">
           <img className="ticket-card__image" src={currentEventById.image}/>
           <div className="ticket-card__text">
-            <h1>{currentEventById.title}</h1>
+            <h1 className="nombre-banda">{currentEventById.title}</h1>
             <p className="horario">
               {new Date(currentEventById.time).toLocaleDateString("es-ES", {
                 year: "numeric",
@@ -76,6 +76,7 @@ function Index() {
             <p className="ban">GENERAL</p>
               <p className="precio">${currentEventById.price}</p>
               </div>
+              {/* <p className="anti">ANTICIPADA</p> */}
             <button
               className="ticket-card__button"
               onClick={() => {

@@ -7,7 +7,6 @@ function Index() {
   return (
     <Animated animationIn="bounceIn" animationOut="fadeOut" isVisible={true}>
       <div className="login-page">
-        {/* <Login /> */}
         <h1>bypass</h1>
         <h2>¡Que gusto verte devuelta!</h2>
         <h4>Inicio de Sesion</h4>

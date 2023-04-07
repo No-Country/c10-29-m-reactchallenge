@@ -45,7 +45,7 @@ const Navbar = () => {
           <div className={`nav-elements  ${showNavbar && "active"}`}>
             <ul>
               <li className="hvr-underline-from-center">
-                <Link to="/about/">Sobre Nosotros</Link>
+                <Link to="/about/">¿Quienes somos?</Link>
               </li>
               <li className="hvr-underline-from-center">
                 <Link to="/contact-us/">Contacto</Link>

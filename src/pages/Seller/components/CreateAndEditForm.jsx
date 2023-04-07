@@ -213,19 +213,27 @@ function CreateAndEditForm({ match }) {
               <ErrorMessage name="description" />
             </div>
             <div className="form-group">
+              
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn btn-primary"
+                className="save"
               >
                 {isSubmitting && (
                   <span className="spinner-border spinner-border-sm mr-1"></span>
                 )}
-                Save
+                Guardar
               </button>
-              <Link to={isAddMode ? "." : ".."} className="btn btn-link">
-                Cancel
-              </Link>
+
+              <Link className="back" to="/" >
+                  <button type="submit">
+                    Volver
+                  </button>
+                </Link>
+
+              {/* <Link to={isAddMode ? "." : ".."} className="btn btn-link">
+                Cancelar
+              </Link> */}
               <ToastContainer />
             </div>
           </Form>
