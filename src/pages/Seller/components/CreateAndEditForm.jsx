@@ -7,6 +7,7 @@ import { uploadFile } from "../../../utils/firebaseConfig";
 // import Upload from "./Upload";
 import * as Yup from "yup";
 import salesService from "../../../services/sales";
+import "./CreateAndEditForm.css"
 
 function CreateAndEditForm({ match }) {
   const id = match;
@@ -212,7 +213,7 @@ function CreateAndEditForm({ match }) {
               />
               <ErrorMessage name="description" />
             </div>
-            <div className="form-group">
+            <div className="form-groupp">
               
               <button
                 type="submit"

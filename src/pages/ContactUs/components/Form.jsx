@@ -54,6 +54,8 @@ const ContactUs = () => {
       {({ isSubmitting }) => (
         <Form ref={form}>
           <div>
+            <h1 className="titulo-nosotros">ByPass</h1>
+            {/* <h2 className="feedback">Envianos tu feedback</h2> */}
             <label htmlFor="user_name">Nombre y Apellido: </label>
             <Field
               type="text"
@@ -87,8 +89,8 @@ const ContactUs = () => {
             <ErrorMessage className="error"  name="message" component="div" />
           </div>
 
-          <button type="submit">
-            Submit
+          <button className="enviar" type="submit">
+            Enviar !
           </button>
         </Form>
       )}

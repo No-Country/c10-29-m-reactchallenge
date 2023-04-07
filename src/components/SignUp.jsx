@@ -5,7 +5,6 @@ import {} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { app } from "../utils/firebaseConfig";
-
 import {
   getAuth,
   GoogleAuthProvider,
@@ -45,7 +44,7 @@ const SignUp = () => {
   };
   return (
     <div>
-      <h1 className="titulo">Creamos tu cuenta</h1>
+      <h1 className="titulo-cuenta">Creamos tu cuenta</h1>
       <Formik
         initialValues={{
           user_password: "",
@@ -222,7 +221,7 @@ const SignUp = () => {
                 </label>
               </div>
 
-              <div className="boton">
+              <div className="registro">
                 <button type="submit" disabled={isSubmitting}>
                   Registrarse
                 </button>
