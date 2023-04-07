@@ -6,7 +6,8 @@ import {
   About, 
   ContactUs, 
   Sell,
-  Buy,
+  Purchases,
+  Purchase,
   Login,
   SignUp,
   Card,  
@@ -55,7 +56,8 @@ const BuyerRoutes = () => {
       <Route path="/about" element={<About />} />
       <Route path="/contact-us" element={<ContactUs />} />
       <Route path="/cards/:id" element={<Card />} />
-      <Route path="/buy/" element={<Buy />} />
+      <Route path="/purchases/" element={<Purchases />} />
+      <Route path="/purchases/:id" element={<Purchase />} />
       <Route path="/cart/" element={<Cart />} />
       <Route path="/profile/" element={<Profile />} />
       <Route exact path="*" element={<NotMatch />} />
