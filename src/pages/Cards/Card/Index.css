@@ -7,11 +7,10 @@
 }
 
 .ticket-card__image {
-  width: 400px;
-  height: 400px;
-  object-fit: cover;
-  margin-right: 50px;
-  border-radius: 10px;
+  width: 550px;
+  height: 550px;
+  object-fit: fill;
+  border-radius: 5px;
 }
 
 .ticket-card__text {
@@ -29,10 +28,14 @@
   font-size: 5rem;
 }
 
+.nombre-banda{
+  font-size: 5rem !important;
+}
 
 .descripcion {
   color: var(--white);
   text-align: center;
+  width: 800px; 
 }
 
 .horario {

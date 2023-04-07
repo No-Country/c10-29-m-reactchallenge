@@ -2,7 +2,7 @@
   position: relative;
   color: var(--white);
   background-color: var(--black);
-  padding: 2rem 0!important;
+  padding: 20px 0!important;
 }
 
 .navbar-container {
