@@ -1,0 +1,22 @@
+.form-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group button {
+    background-color: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: 360px;
+    padding: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 150px;
+    margin: 10px;
+}
+
+.form-group button:hover{
+    background-color: var(--white) !important;
+    color: var(--black);
+}

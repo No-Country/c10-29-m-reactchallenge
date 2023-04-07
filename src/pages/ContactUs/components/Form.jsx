@@ -87,8 +87,8 @@ const ContactUs = () => {
             <ErrorMessage className="error"  name="message" component="div" />
           </div>
 
-          <button type="submit">
-            Submit
+          <button className="enviar" type="submit">
+            Enviar !
           </button>
         </Form>
       )}

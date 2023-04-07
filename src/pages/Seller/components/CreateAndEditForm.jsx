@@ -7,6 +7,7 @@ import { uploadFile } from "../../../utils/firebaseConfig";
 // import Upload from "./Upload";
 import * as Yup from "yup";
 import salesService from "../../../services/sales";
+import "./CreateAndEditForm.css"
 
 function CreateAndEditForm({ match }) {
   const id = match;
