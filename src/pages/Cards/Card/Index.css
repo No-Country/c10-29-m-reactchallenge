@@ -38,6 +38,7 @@
 .horario {
   font-size: 2rem;
   color: var(--white);
+  font-weight: 800;
 }
 
 .valor {
@@ -55,23 +56,26 @@
   background-color: var(--black);
   color: var(--white);
   border-radius: 10px 10px 0 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .precio {
   color: var(--black);
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
+  padding: 10px;
 }
 
 .ticket-card__button {
   margin-top: 20px;
   border: none;
   cursor: pointer;
-  background-color: var(--black);
+  background-color: var(--light-brown);
   color: var(--white);
   transition: background-color 0.3s ease;
-  padding: 15px;
+  border-radius: 20px;
+  width: 145px;
+  height: 40px;
 }
 
 .ticket-card__button:hover {
