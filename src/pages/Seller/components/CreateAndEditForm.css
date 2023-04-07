@@ -1,10 +1,10 @@
-.form-group {
+.form-groupp {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.form-group button {
+.form-groupp button {
     background-color: var(--black);
     color: var(--white);
     border: none;
@@ -16,7 +16,7 @@
     margin: 10px;
 }
 
-.form-group button:hover{
+.form-groupp button:hover{
     background-color: var(--white) !important;
     color: var(--black);
 }

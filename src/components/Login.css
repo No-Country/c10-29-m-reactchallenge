@@ -85,22 +85,22 @@
   width: 300px;
 }
 
-.custom-search-botton {
+.custom-search-button {
   position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  right: 5px;
-  top: 4px;
+  right: 0;
+  top: 0;
   border: 0;
   background: none;
-  width: 13%;
-  height: 40%;
+  width: 20%;
+  height: 100%;
   font-size: 2rem;
   color: var(--black);
   outline: none;
   margin: 0;
-  padding: 0 10px;
+  padding: 0;
   z-index: 2;
 }
 

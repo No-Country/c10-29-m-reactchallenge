@@ -1,5 +1,3 @@
-/* Cards.css */
-
 .cards-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -29,13 +27,9 @@
 }
 
 .card-ticket:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.card-ticket:hover img {
   transform: scale(1.1);
   transition: transform 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (max-width: 1024px) {

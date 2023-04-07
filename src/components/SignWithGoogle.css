@@ -7,12 +7,14 @@
     margin: 10px !important;
     width: 300px !important;
     border: none !important;
+    padding: 5px;
     background-color: var(--white) !important;
     color: var(--black) !important;
     cursor: pointer !important;
     border-radius: 20px !important;
-    /* background-image: url('https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2014/05/43837-logotipo-google-nuevo.jpg?tf=3840x');
-    background-repeat: no-repeat !important;
-    background-position: left !important;
-    padding-left: 10px !important; */
+}
+
+.botonGoogle:hover{
+    background-color: var(--black) !important;
+    color: var(--white) !important;
 }

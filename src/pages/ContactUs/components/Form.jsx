@@ -54,6 +54,8 @@ const ContactUs = () => {
       {({ isSubmitting }) => (
         <Form ref={form}>
           <div>
+            <h1 className="titulo-nosotros">ByPass</h1>
+            {/* <h2 className="feedback">Envianos tu feedback</h2> */}
             <label htmlFor="user_name">Nombre y Apellido: </label>
             <Field
               type="text"

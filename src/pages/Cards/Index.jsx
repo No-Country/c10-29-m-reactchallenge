@@ -22,7 +22,7 @@ const Cards = ({ searchTerm = "" }) => {
         {filteredEvents && filteredEvents.map((card) => (
           <Link to={`/cards/${card.uid}`} key={card.uid}>
             <div className="card-ticket">
-              <img src={card.image} alt="" width="25%" />
+              <img src={card.image}/>
             </div>
           </Link>
         ))}

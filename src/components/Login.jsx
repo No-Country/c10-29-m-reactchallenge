@@ -87,7 +87,7 @@ const Login = () => {
                 component="div"
               />
             </div>
-            <div className="form-group custom-search ">
+            <div className="custom-search">
               {/* <label htmlFor="user_password" className="form-label">
                 Contraseña:{" "}
               </label> */}

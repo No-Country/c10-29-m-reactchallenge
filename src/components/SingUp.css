@@ -1,6 +1,6 @@
-.titulo {
-    font-size: 1.5rem;
-    font-family: "Kanit", sans-serif;
+.titulo-cuenta {
+    font-size: 1.5rem !important;
+    /* font-family: "Kanit", sans-serif; */
     color: var(--white);
 }
 
@@ -30,15 +30,16 @@ input::placeholder {
     font-size: 1rem;
 }
 
-.boton {
+.registro {
     display: flex;
     justify-content: center;
     flex-direction: row;
 }
 
-.boton button {
+.registro button {
     margin: 10px;
     width: 150px;
+    padding: 10px;
     border: none;
     background-color: var(--black);
     color: var(--white);
@@ -46,7 +47,7 @@ input::placeholder {
     border-radius: 360px;
 }
 
-.boton button:hover{
+.registro button:hover{
     background-color: var(--white);
     color: var(--black);
 }
@@ -75,7 +76,6 @@ input::placeholder {
 
 @media (max-width: 768px) {
     .container1 {
-        flex-direction: column;
-                
+        flex-direction: column;      
     }
 }
