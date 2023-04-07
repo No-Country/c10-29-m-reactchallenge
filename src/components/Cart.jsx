@@ -12,16 +12,17 @@ const Cart = () => {
   const [displayCard, setDisplayCard] = useState(false);
   const items = useSelector((state) => state.cart.items);
   const total = useSelector((state) => state.cart.total);
-  const user = useSelector((state) => state.auth.user);
+  // const user = useSelector((state) => state.auth.user);
   const purchases = useSelector((state) => state.purchases.purchases);
   const dispatch = useDispatch();
 
   const emptyCartMessage = () => toast.error("No hay productos en el carrito");
-  const removeItemMessage = () => toast.error("Producto eliminado del carrito");
-
+  // const removeItemMessage = () => toast.error("Producto eliminado del carrito");
+  const productFoundMessage = () => toast.error("Alguno de los productos ya fue comprado");
+  
   const removeItem = (id) => {
     // console.log("remove item");
-    removeItemMessage();
+    // removeItemMessage();
     dispatch(removeToCart(id));
   };
 
@@ -29,6 +30,23 @@ const Cart = () => {
     dispatch(fetchGetAllPurchasesByUserId());
   }, []);
 
+  const verifyPurchase = () => {
+    // console.log("verificar compra");
+    // console.log(purchases);
+    let foundPurchase = false
+    items.forEach((item) => {
+      purchases.some((purchase) => {
+        console.log
+        if (item.uid === purchase.uid) {
+          foundPurchase = true;
+          return true;
+        }
+      });
+      return foundPurchase;
+    });
+    console.log("found purchase", foundPurchase);
+    return foundPurchase;
+  }
   const handlePurchase = async () => {
     // console.log("comprar");
     // // Add a new document with a generated id.
@@ -40,12 +58,18 @@ const Cart = () => {
     if (items.length === 0) {
       emptyCartMessage();
       return;
-    } else if (confirmed === true) {
-      console.log("compra confirmada");
-      console.log("confirmado", confirmed);
-      const purchase = await purchaseService.addPurchase(items);
-      console.log(purchases);
-      dispatch(emptyCart());
+    }else if (verifyPurchase()) {
+      productFoundMessage()
+      return;
+    } else {
+      setDisplayCard(true);
+      console.log("confirmed", confirmed);
+      if (confirmed) {
+        const purchase = await purchaseService.addPurchase(items);
+        console.log(purchases);
+        dispatch(emptyCart());
+        return;
+      }
     }
   };
 
@@ -82,7 +106,6 @@ const Cart = () => {
       <p className="cart-total">Total: {total}</p>
       <button
         onClick={() => {
-          setDisplayCard(true);
           handlePurchase();
         }}
         className="cart-purchase-btn"

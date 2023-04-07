@@ -2,8 +2,8 @@ import React, { useState, useRef } from "react";
 import QRCode from "qrcode.react";
 import html2canvas from "html2canvas";
 
-const QRDownload = () => {
-  const [qrCodeUrl, setQrCodeUrl] = useState("");
+const QRDownload = ({qrCodeUrl}) => {
+  // const [qrCodeUrl, setQrCodeUrl] = useState("");
   const qrCodeRef = useRef(null);
 
   // const downloadQRCode = () => {
@@ -77,19 +77,10 @@ const QRDownload = () => {
   return (
     <div>
       <div style={{ textAlign: "center" }}>
-        <input
-          type="text"
-          placeholder="Enter URL"
-          onChange={handleInputChange}
-        />
-        <br />
-        <br />
         <div style={{ display: "inline-block" }} ref={qrCodeRef}>
           <QRCode value={qrCodeUrl} size={256} />
         </div>
       </div>
-      <br />
-      <br />
       <div style={{ textAlign: "center" }}>
         <button onClick={downloadQRCode}>Download QR Code</button>
       </div>
