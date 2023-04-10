@@ -58,7 +58,7 @@ const Cards = ({ searchTerm = "", dateFilter = false, search = false }) => {
           {search && filteredEvents.length > 0 ? (
             filteredEvents.map((card) => (
               <Link to={`/cards/${card.uid}`} key={card.uid}>
-                <div className="card-ticket">
+                <div className={`card-ticket ${card.ability === 0 ? "sold-out" : ""}`}>
                   <img src={card.image} />
                 </div>
               </Link>
