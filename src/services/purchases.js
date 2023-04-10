@@ -24,17 +24,14 @@ const addPurchase = async (items) => {
 };
 
 const getAllPurchasesByUserId = async (id) => {
-  console.log("id", id);
   const q = query(purchaseRef, where("user_id", "==", id));
   const querySnapshot = await getDocs(q);
-  console.log("querySnapshot", querySnapshot);
   const data = [];
 
   querySnapshot.forEach((doc) => {
-    console.log("doc", doc);
+
     data.push(doc.data());
   });
-  console.log("data", data);
   return data;
 };
 

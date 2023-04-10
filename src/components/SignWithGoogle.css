@@ -14,6 +14,12 @@
     border-radius: 20px !important;
 }
 
+.botonGoogle:disabled {
+    background-color: var(--white) !important;
+    color: var(--black) !important;
+    cursor: not-allowed !important;
+}
+
 .botonGoogle:hover{
     background-color: var(--black) !important;
     color: var(--white) !important;
