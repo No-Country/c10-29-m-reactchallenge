@@ -1,0 +1,87 @@
+.titulo-cuenta {
+  font-size: 1.5rem !important;
+  /* font-family: "Kanit", sans-serif; */
+  color: var(--white);
+}
+
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  color: var(--white) !important;
+  font-size: 1rem;
+  margin: 0;
+  /* font-family: "Kanit", sans-serif; */
+}
+
+.fields {
+  margin: 20px;
+}
+
+.boxs {
+  width: 300px;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  font-size: 1rem;
+}
+
+.registro {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.registro button {
+  margin: 10px;
+  width: 150px;
+  padding: 10px;
+  border: none;
+  background-color: var(--black);
+  color: var(--white);
+  cursor: pointer;
+  border-radius: 360px;
+}
+
+.registro button:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.volver button {
+  background-color: var(--light-brown);
+  color: var(--white);
+}
+
+.volver button:hover {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.radio-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.log {
+  font-size: 1.5rem;
+  font-family: "Kanit", sans-serif;
+}
+
+.google-register-info {
+  color: var(--white);
+  font-size: 1rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .container1 {
+    flex-direction: column;
+  }
+}
