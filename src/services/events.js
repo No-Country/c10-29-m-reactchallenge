@@ -1,5 +1,13 @@
 import { db } from "../utils/firebaseConfig";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
+
 const eventsRef = collection(db, "events");
 
 const getAllEvents = async () => {
@@ -26,21 +34,21 @@ const getEventById = async (id) => {
   return data;
 };
 
-const updateEvent = async (id, newData) => {
-  const eventRef = doc(eventsRef, id);
-  try {
-    await updateDoc(eventRef, newData);
-    console.log("Evento actualizado correctamente");
-  } catch (error) {
-    console.error("Error actualizando evento:", error);
-  }
+const updateEventByAbility = async (event, id) => {
+  const { ability, ...rest } = event; // Extraer la propiedad 'ability' del objeto 'event'
+  const eventUpdated = {
+    ...rest, // Usar el resto de las propiedades del objeto 'event'
+    uid: id,
+    ability: ability > 0 ? ability - 1 : 0, // Actualizar el valor de 'ability'
+  };
+  console.log("id from update", id)
+  const events = doc(db, "events", id);
+
+  await updateDoc(events, eventUpdated);
 };
 
 export default {
   getAllEvents,
   getEventById,
-  updateEvent,
-};   
-
-
-
+  updateEventByAbility,
+};

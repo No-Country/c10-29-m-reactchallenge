@@ -27,16 +27,16 @@
   top: 6.15rem;
 }
 
-form,
+.form-cards,
 .thank-you {
   margin-top: 350px;
 }
 
-form label {
+.form-cards label {
   @apply block uppercase tracking-wider text-slate-800 mb-2 text-sm;
 }
 
-form input {
+.form-cards input {
   @apply border-2 border-slate-300 py-3 px-4 rounded outline-none w-full;
 }
 
@@ -57,7 +57,7 @@ form input {
     top: 8.3rem;
   }
 
-  form,
+  .form-cards,
   .thank-you {
     margin-top: 500px;
   }
@@ -75,7 +75,7 @@ form input {
     top: 8.3rem;
   }
 
-  form,
+  .form-cards,
   .thank-you {
     margin-top: 500px;
   }
@@ -96,7 +96,7 @@ form input {
     right: 0;
   }
 
-  form,
+  .form-cards,
   .thank-you {
     margin-top: 0;
   }

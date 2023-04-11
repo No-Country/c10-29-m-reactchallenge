@@ -5,6 +5,7 @@ import { addToCart } from "../../../redux/features/cart/cartSlice";
 import { fetchGetEventById } from "../../../redux/features/events/eventsSlice";
 import Template from "../../../layouts/Template/Index";
 import { ToastContainer, toast } from "react-toastify";
+import { Animated } from "react-animated-css";
 import "react-toastify/dist/ReactToastify.css";
 import "./Index.css";
 
@@ -12,23 +13,25 @@ function Index() {
   const { id } = useParams();
   const user = useSelector((state) => state.auth.user);
   const cart = useSelector((state) => state.cart.items);
-  const currentEventById = useSelector((state) => state.events.currentEventById);
+  const currentEventById = useSelector(
+    (state) => state.events.currentEventById
+  );
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  
-  const purchaseMessage = () => toast.success("La entrada se agrego al carrito :)");
-  const infoMessage = () => toast.error("La entrada ya se encuentra en el carrito");
-  
+
+  const purchaseMessage = () =>
+    toast.success("La entrada se agrego al carrito :)");
+  const infoMessage = () =>
+    toast.error("La entrada ya se encuentra en el carrito");
+
   // console.log("current", currentEventById);
-  
+
   useEffect(() => {
     setLoading(true);
     dispatch(fetchGetEventById(id));
     setLoading(false);
   }, [id]);
 
-  
-  
   // const addNewItem = () => {
   //   console.log(card);
   // };
@@ -37,12 +40,12 @@ function Index() {
   const checkeUser = () => {
     if (cart && user.role === "buyer") {
       // addNewItem();
-      if (!cart.find(item => item.uid === currentEventById.uid)){
+      if (!cart.find((item) => item.uid === currentEventById.uid)) {
         purchaseMessage();
-        const newEvent = {...currentEventById, user_id: user.uid};
+        const newEvent = { ...currentEventById, user_id: user.uid };
         dispatch(addToCart(newEvent));
         console.log("newEvent", newEvent);
-      }else{
+      } else {
         infoMessage();
       }
     } else {
@@ -59,29 +62,35 @@ function Index() {
       {loading && <h1>Loading...</h1>}
       {currentEventById ? (
         <div className="ticket-card">
-          <img className="ticket-card__image" src={currentEventById.image}/>
+          <div className="ticket-image__container">
+            <img className="ticket-card__image" src={currentEventById.image} />
+          </div>
           <div className="ticket-card__text">
             <h1 className="nombre-banda">{currentEventById.title}</h1>
+
             <p className="horario">
               {new Date(currentEventById.time).toLocaleDateString("es-ES", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
                 hour: "numeric",
-                minute: "numeric"
-              })}hs
+                minute: "numeric",
+              })}
+              hs
             </p>
             <p className="descripcion">{currentEventById.description}</p>
             <div className="valor">
-            <p className="ban">GENERAL</p>
+              <p className="ban">GENERAL</p>
               <p className="precio">${currentEventById.price}</p>
-              </div>
-              {/* <p className="anti">ANTICIPADA</p> */}
+            </div>
+            <p className="ability">Entradas Disponibles: {currentEventById.ability}</p>
             <button
               className="ticket-card__button"
               onClick={() => {
                 checkeUser();
               }}
+
+              disabled={currentEventById.ability === 0}
             >
               Comprar
             </button>

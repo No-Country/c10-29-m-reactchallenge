@@ -48,12 +48,10 @@ function Index() {
                       <td>{purchase.place}</td>
                       <td>$ {purchase.price}</td>
                       <td>
-                        <button className="btn btn-primary">Ver</button>
                         <Link to={`/purchases/${purchase.uid}`}>
                           <button className="btn btn-primary">Descargar</button>
                         </Link>
                       </td>
-                      
                     </tr>
                   );
                 })}

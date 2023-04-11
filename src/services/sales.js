@@ -53,12 +53,14 @@ const createSale = async (sale, user_id, url) => {
   return docRef;
 };
 
-const updateSale = async (sale, user_id, url, id) => {
+const updateSale = async (sale, user_id, id) => {
+  console.log("id", id)
+  const eventById = await getEventById(id)
   const newSale = {
     ...sale,
     user_id,
     uid: id,
-    image: url,
+    image: eventById.image
   };
   const events = doc(db, "events", id);
   await updateDoc(events, newSale);

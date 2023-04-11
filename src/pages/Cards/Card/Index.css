@@ -3,7 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.ticket-image__container{
+  width: 50%;
 }
 
 .ticket-card__image {
@@ -20,6 +25,7 @@
   align-items: center;
   margin: 100px;
   text-align: center;
+  width: 50%;
 }
 
 .ticket-card__text h1 {
@@ -35,7 +41,6 @@
 .descripcion {
   color: var(--white);
   text-align: center;
-  width: 800px; 
 }
 
 .horario {
@@ -86,10 +91,23 @@
   color: var(--black);
 }
 
+.ticket-card__button:disabled {
+  cursor: not-allowed;
+}
+
+.ability{
+  color: var(--black);
+}
+
 /* Estilos para pantallas pequeñas */
-@media (max-width: 768px) {
+
+@media (max-width: 1024px) {
   .ticket-card {
     flex-direction: column;
+  }
+
+  .ticket-image__container{
+    width: 40%;
   }
 
   .ticket-card__image {
@@ -101,6 +119,7 @@
 
   .ticket-card__text {
     margin: 20px;
+    width: 60%;
   }
 
   .ticket-card__text h1 {
@@ -122,5 +141,60 @@
   .ticket-card__image {
     margin-right: 0;
     margin-bottom: 20px;
+  }
+
+  .descripcion{
+    width: 100%;
+    word-wrap: break-word;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .ticket-card {
+    flex-direction: column;
+  }
+
+  .ticket-image__container{
+    width: 100%;
+  }
+
+  .ticket-card__image {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .ticket-card__text {
+    margin: 20px;
+    width: 100%;
+  }
+
+  .ticket-card__text h1 {
+    font-size: 3rem;
+  }
+
+  .ban {
+    font-size: 1rem;
+  }
+
+  .precio {
+    font-size: 1.2rem;
+  }
+
+  .ticket-card {
+    flex-direction: column;
+  }
+
+  .ticket-card__image {
+    margin-right: 0;
+    margin-bottom: 20px;
+
+  }
+
+  .descripcion{
+    width: 100%;
   }
 }

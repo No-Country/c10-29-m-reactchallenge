@@ -1,47 +1,23 @@
-import React, { useRef } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import "./SingUp.css";
+import React, { useEffect, useRef  } from "react";
+import { Formik, Form, Field, ErrorMessage,  } from "formik";
 import {} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { app } from "../utils/firebaseConfig";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
-import { query, getDocs, collection, where, addDoc } from "firebase/firestore";
-import SignWhitGoogle from "./SignWithGoogle";
-import Reset from "./Reset";
+import SignWithGoogle from "./SignWithGoogle";
+import signupValidation from "../utils/validation/signup";
+import { signUpUser } from "../services/auth";
+import { loginSuccess } from "../redux/features/auth/authenticationSlice";
+import { useDispatch } from "react-redux";
+import "./SignUp.css";
 
 const SignUp = () => {
-  const auth = getAuth(app);
   const db = getFirestore(app);
-  const googleProvider = new GoogleAuthProvider();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const formC = useRef();
-  const signInWithGoogle = async () => {
-    try {
-      const res = await signInWithPopup(auth, googleProvider);
-      console.log(res);
-      const user = res.user;
-      const q = query(collection(db, "users"), where("uid", "==", user.uid));
-      const docs = await getDocs(q);
-
-      if (docs.docs.length === 0) {
-        await addDoc(collection(db, "users"), {
-          uid: user.uid,
-          name: user.displayName,
-          authProvider: "google",
-          email: user.email,
-        });
-      }
-    } catch (err) {
-      console.error(err);
-      alert(err.message);
-    }
-  };
+  
   return (
     <div>
       <h1 className="titulo-cuenta">Creamos tu cuenta</h1>
@@ -55,73 +31,19 @@ const SignUp = () => {
           user_dni: "",
           role: "",
         }}
-        validate={(values) => {
-          const errors = {};
-          if (!values.user_name) {
-            errors.user_name = "Por favor ingrese su nombre completo";
-          }
-
-          if (!values.user_email) {
-            errors.user_email = "Por favor ingrese su correo electrónico";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.user_email)
-          ) {
-            errors.user_email =
-              "Por favor ingresar un correo electrónico válido";
-          }
-          if (!values.user_password) {
-            errors.user_password = "Por favor ingrese su clave";
-          }
-          // else if (/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])([A-Za-z\d$@$!%*?&]|[^ ]){8,15}$/) {
-          //   errors.user_password =
-          //     'Por favor ingresar contraseña Minimo 8 caracteres Maximo 15 Al menos una letra mayúscula Al menos una letra minucula Al menos un dígito No espacios en blanco Al menos 1 caracter especial ';
-          // }
-
-          if (!values.user_birthdate) {
-            errors.user_birthdate = "Por favor ingrese una fecha";
-          }
-          if (!values.user_dni) {
-            errors.user_dni = "Por favor ingrese su nuemero de DNI";
-          }
-          if (!values.user_phoneNumber) {
-            errors.user_phoneNumber = "Por favor ingrese su numero de telefono";
-          }
-          console.log(errors);
-        }}
+        validate={signupValidation}
         onSubmit={async (formvalue) => {
           try {
-            // const auth = getAuth();
-            const res = await createUserWithEmailAndPassword(
-              auth,
-              formvalue.user_email,
-              formvalue.user_password,
-              formvalue.user_name,
-              formvalue.user_birthdate,
-              formvalue.user_phoneNumber,
-              formvalue.user_dni,
-              formvalue.role
-            );
-            console.log(formvalue);
-            const user = res.user;
-            console.log("user", user);
-            console.log("res.user", user);
-            await addDoc(collection(db, "users"), {
-              uid: user.uid,
-              name: formvalue.user_name,
-              authProvider: "local",
-              email: formvalue.user_email,
-              birthdate: formvalue.user_birthdate,
-              phone: formvalue.user_phoneNumber,
-              dni: formvalue.user_dni,
-              role: formvalue.role,
-            });
+            const loggedUser = await signUpUser(formvalue);  
+            dispatch(loginSuccess(loggedUser));
+            navigate("/");
           } catch (err) {
             console.error(err);
             alert(err.message);
           }
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, values, setFieldValue }) => (
           <Form ref={formC}>
             <div className="container1">
               <div className="fields">
@@ -231,12 +153,13 @@ const SignUp = () => {
                   </button>
                 </Link>
               </div>
+              <p className="google-register-info">Para registrarse con Google debe elegir entre comprador o vendedor</p>
+              <SignWithGoogle />
           </Form>
         )}
       </Formik>
       
       
-      <SignWhitGoogle />
 
       {/* <div className="log">
         ¿Ya tenes una cuenta?
