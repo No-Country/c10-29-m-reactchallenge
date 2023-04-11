@@ -1,4 +1,5 @@
 import { db } from "../utils/firebaseConfig";
+
 import {
   collection,
   getDocs,
@@ -8,6 +9,7 @@ import {
   setDoc,
   doc,
   updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { v4 } from "uuid";
 
@@ -26,11 +28,10 @@ const getAllSalesByUserId = async (id) => {
   return data;
 };
 
-
 const getEventById = async (id) => {
   const q = query(salesRef, where("uid", "==", id));
   const querySnapshot = await getDocs(q);
-  let data = null;    
+  let data = null;
 
   querySnapshot.forEach((doc) => {
     data = doc.data();
@@ -38,7 +39,6 @@ const getEventById = async (id) => {
 
   return data;
 };
-
 
 // POST
 const createSale = async (sale, user_id, url) => {
@@ -66,9 +66,19 @@ const updateSale = async (sale, user_id, id) => {
   await updateDoc(events, newSale);
 };
 
+const deleteSale = async (uid) => {
+  // await deleteDoc(
+  //   doc(db, "event", "Eventd577c9c1-7a7c-4b47-8cf5-6dcc1b193d5c")
+  // );
+
+  //console.log(doc(db, "event", "Eventd577c9c1-7a7c-4b47-8cf5-6dcc1b193d5c"));
+  await deleteDoc(doc(db, "event", uid));
+  console.log("borrado");
+};
 export default {
   getAllSalesByUserId,
   getEventById,
   createSale,
   updateSale,
+  deleteSale,
 };
