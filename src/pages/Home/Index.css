@@ -3,7 +3,8 @@
     font-size: 3rem;
     color: var(--white);
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin: 20px;
+    text-align: center;
 }
 
 .outstanding, .this-week{

@@ -83,7 +83,7 @@ function Index() {
               <p className="ban">GENERAL</p>
               <p className="precio">${currentEventById.price}</p>
             </div>
-            <p className="ability">Cantidad de Entradas Disponibles: {currentEventById.ability}</p>
+            <p className="ability">Entradas Disponibles: {currentEventById.ability}</p>
             <button
               className="ticket-card__button"
               onClick={() => {

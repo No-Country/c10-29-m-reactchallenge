@@ -12,8 +12,8 @@
 }
 
 .ticket-card__image {
-  /* width: 550px;
-  height: 550px; */
+  width: 550px;
+  height: 550px;
   object-fit: fill;
   border-radius: 5px;
 }
@@ -93,6 +93,10 @@
 
 .ticket-card__button:disabled {
   cursor: not-allowed;
+}
+
+.ability{
+  color: var(--black);
 }
 
 /* Estilos para pantallas pequeñas */

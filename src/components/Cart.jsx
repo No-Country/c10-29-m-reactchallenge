@@ -100,14 +100,14 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-      <h2 className="cart-title">Carrito de compras</h2>
+      <h2 className="cart-title">Productos agregados</h2>
       <ul className="cart-items-list">
         {items &&
           items.map((item) => {
             return (
               <div key={item.uid} className="cart-item-container">
                 <li key={item.uid} className="cart-item">
-                  {item.title} - {item.price}
+                  {item.title} - $ {item.price}
                   <button
                     onClick={() => removeItem(item.uid)}
                     className="cart-item-remove-btn"
@@ -119,18 +119,20 @@ const Cart = () => {
             );
           })}
       </ul>
-      <p className="cart-total">Total: {total}</p>
-      <button
-        onClick={() => {
-          handlePurchase();
-        }}
-        className="cart-purchase-btn"
-      >
-        Comprar
-      </button>
-      <button onClick={handleEmptyCart} className="cart-empty-btn">
-        Vaciar carrito
-      </button>
+      <p className="cart-total">Total: $ {total}</p>
+      <div className="botones-carrito">
+        <button
+          onClick={() => {
+            handlePurchase();
+          }}
+          className="cart-purchase-btn"
+        >
+          Comprar
+        </button>
+        <button onClick={handleEmptyCart} className="cart-empty-btn">
+          Vaciar carrito
+        </button>
+      </div>
       {displayCard && (
         <Pay
           confirmed={confirmed}
