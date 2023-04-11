@@ -7,7 +7,7 @@ import { uploadFile } from "../../../utils/firebaseConfig";
 // import Upload from "./Upload";
 import * as Yup from "yup";
 import salesService from "../../../services/sales";
-import "./CreateAndEditForm.css"
+import "./CreateAndEditForm.css";
 
 function CreateAndEditForm({ match }) {
   const id = match;
@@ -20,6 +20,7 @@ function CreateAndEditForm({ match }) {
 
   const initialValues = {
     place: "",
+    provincia: "",
     time: "",
     ability: "",
     price: "",
@@ -116,6 +117,7 @@ function CreateAndEditForm({ match }) {
             salesService.getEventById(id).then((event) => {
               const fields = [
                 "place",
+                "provincia",
                 "time",
                 "ability",
                 "price",
@@ -142,6 +144,7 @@ function CreateAndEditForm({ match }) {
                 name="title"
                 placeholder="Nombre del evento"
               />
+
               <ErrorMessage name="title" />
             </div>
 
@@ -155,7 +158,34 @@ function CreateAndEditForm({ match }) {
               />
               <ErrorMessage name="place" />
             </div>
-
+            <div>
+              <label htmlFor="provincia">Provincia</label>
+              <Field as="select" name="provincia" id="provincia">
+                <option value="Buenos Aires">Buenos Aires</option>
+                <option value="CABA">CABA</option>
+                <option value="Catamarca">Catamarca</option>
+                <option value="Chaco">Chaco</option>
+                <option value="Chubut">Chubut</option>
+                <option value="Córdoba">Córdoba</option>
+                <option value="Corrientes">Corrientes</option>
+                <option value="Entre Ríos">Entre Ríos</option>
+                <option value="Formosa">Formosa</option>
+                <option value="Jujuy">Jujuy</option>
+                <option value="La Pampa">La Pampa</option>
+                <option value="La Rioja">La Rioja</option>
+                <option value="Mendoza">Mendoza</option>
+                <option value="Misiones">Misiones</option>
+                <option value="Neuquén">Neuquén</option>
+                <option value="Río Negro">Río Negro</option>
+                <option value="Salta">Salta</option>
+                <option value="San Juan">San Juan</option>
+                <option value="San Luis">San Luis</option>
+                <option value="Santa Cruz">Santa Cruz</option>
+                <option value="Santa Fe">Santa Fe</option>
+                <option value="Santiago del Estero">Santiago del Estero</option>
+                <option value="Tierra del Fuego">Tierra del Fuego</option>
+              </Field>
+            </div>
             <div>
               <label htmlFor="time">Fecha/horario</label>
               <Field
@@ -214,23 +244,16 @@ function CreateAndEditForm({ match }) {
               <ErrorMessage name="description" />
             </div>
             <div className="form-groupp">
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="save"
-              >
+              <button type="submit" disabled={isSubmitting} className="save">
                 {isSubmitting && (
                   <span className="spinner-border spinner-border-sm mr-1"></span>
                 )}
                 Guardar
               </button>
 
-              <Link className="back" to="/" >
-                  <button type="submit">
-                    Volver
-                  </button>
-                </Link>
+              <Link className="back" to="/">
+                <button type="submit">Volver</button>
+              </Link>
 
               {/* <Link to={isAddMode ? "." : ".."} className="btn btn-link">
                 Cancelar
