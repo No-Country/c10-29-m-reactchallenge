@@ -100,7 +100,7 @@ function CreateAndEditForm({ match }) {
         return (
           <Form>
             <h1>{isAddMode ? "Crear Evento" : "Modificar evento"}</h1>
-            <div>
+            <div className="formulario-eventos">
               <label htmlFor="title">Nombre</label>
               <Field
                 type="text"
@@ -114,7 +114,7 @@ function CreateAndEditForm({ match }) {
               </div>
             </div>
 
-            <div>
+            <div className="formulario-eventos">
               <label htmlFor="place">Lugar</label>
               <Field
                 type="text"
@@ -126,8 +126,9 @@ function CreateAndEditForm({ match }) {
                 <ErrorMessage className="error-message" name="place" />
               </div>
             </div>
-            <div>
-              <label htmlFor="provincia">Provincia</label>
+
+            <div className="formulario-eventos">
+              <label className="form-provincias" htmlFor="provincia">Provincia</label>
               <Field as="select" name="provincia" id="provincia">
                 <option value="Buenos Aires">Buenos Aires</option>
                 <option value="CABA">CABA</option>
@@ -167,7 +168,7 @@ function CreateAndEditForm({ match }) {
               </div>
             </div>
 
-            <div>
+            <div className="formulario-eventos">
               <label htmlFor="ability">Capacidad</label>
               <Field
                 type="number"
@@ -181,7 +182,7 @@ function CreateAndEditForm({ match }) {
               </div>
             </div>
 
-            <div>
+            <div className="formulario-eventos">
               <label htmlFor="price">Precio</label>
               <Field
                 type="number"
@@ -194,7 +195,7 @@ function CreateAndEditForm({ match }) {
               </div>
             </div>
 
-            <div>
+            <div className="formulario-eventos">
               <label htmlFor="image">Imagen</label>
               <Field
                 type="file"
@@ -218,7 +219,7 @@ function CreateAndEditForm({ match }) {
               )}
             </div>
 
-            <div>
+            <div className="formulario-eventos">
               <label htmlFor="description">Descripcion</label>
               <Field
                 as="textarea"

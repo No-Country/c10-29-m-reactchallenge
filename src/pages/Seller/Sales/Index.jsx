@@ -57,7 +57,10 @@ function Index() {
                   sales.map((sale) => (
                     <tr key={sale.uid}>
                       <td>{sale.title}</td>
-                      <td>{sale.time.toLocaleString()}</td>
+                      <td>{new Date(sale.time).toLocaleString('es-ES', {
+                          dateStyle: 'short',
+                          timeStyle: 'short',
+                        })}hs</td>
                       <td>{sale.place}</td>
                       <td>{sale.price}</td>
                       <td>

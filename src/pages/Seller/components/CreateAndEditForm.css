@@ -27,3 +27,16 @@
     margin: 0;
     font-style: italic;
 }
+
+.formulario-eventos input{
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.formulario-eventos label{
+    font-size: 1.1rem;
+}
+
+.form-provincias{
+    margin-right: 10px;
+}
