@@ -80,7 +80,7 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
                 <div>
                   <label htmlFor="card_number">Card Number</label>
                   <input
-                    type="text"
+                    type="number"
                     name="card_number"
                     id="card_number"
                     placeholder="e.g. 1234 5678 9012 3456"

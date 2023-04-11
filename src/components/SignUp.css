@@ -21,12 +21,16 @@ label {
   margin: 20px;
 }
 
-.boxs {
-  width: 300px;
+.fields input{
+  padding: 9px;
+}
+
+.fields input::placeholder {
   font-size: 1rem;
 }
 
-input::placeholder {
+.boxs {
+  width: 300px;
   font-size: 1rem;
 }
 
