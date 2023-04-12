@@ -1,28 +1,42 @@
-.titulo-cuenta {
-  font-size: 1.5rem !important;
-  /* font-family: "Kanit", sans-serif; */
-  color: var(--white);
-}
-
-.container1 {
-  display: flex;
-  justify-content: center;
+.signup-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 2rem;
   align-items: center;
+  justify-items: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
-label {
+.title-register {
+  font-size: 1.5rem !important;
+  color: var(--white);
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.signup-form label {
   color: var(--white) !important;
+  width: 100%;
   font-size: 1rem;
   margin: 0;
   /* font-family: "Kanit", sans-serif; */
 }
 
 .fields {
-  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem;
+  width: 100%;
 }
 
-.fields input{
-  padding: 9px;
+.fields label{
+  margin-bottom: 1rem;
+}
+
+.fields input {
+  padding: 1rem;
+  width: 100%;
 }
 
 .fields input::placeholder {
@@ -34,16 +48,19 @@ label {
   font-size: 1rem;
 }
 
-.registro {
+.register-buttons {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: row;
+  grid-column: span 2;
+  width: 70%;
 }
 
-.registro button {
-  margin: 10px;
-  width: 150px;
-  padding: 10px;
+.register-buttons button {
+  margin: 1rem;
+  width: 100%;
+  padding: 1rem;
   border: none;
   background-color: var(--black);
   color: var(--white);
@@ -51,26 +68,18 @@ label {
   border-radius: 360px;
 }
 
-.registro button:hover {
-  background-color: var(--white);
-  color: var(--black);
-}
-
-.volver button {
+.register-buttons button:hover {
   background-color: var(--light-brown);
   color: var(--white);
-}
-
-.volver button:hover {
-  background-color: var(--white);
-  color: var(--black);
 }
 
 .radio-buttons {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   margin-bottom: 20px;
   text-align: center;
+  grid-column: span 2;
 }
 
 .log {
@@ -82,10 +91,58 @@ label {
   color: var(--white);
   font-size: 1rem;
   text-align: center;
+margin: 0.5rem 0;
 }
 
-@media (max-width: 768px) {
-  .container1 {
-    flex-direction: column;
+/* media queries 480, 768, 1024 using max-width*/
+
+@media screen and (max-width: 480px) {
+  .signup-form {
+    display: flex;
+    margin: 1rem 0;
+    width: 90%!important;
+    margin: 0 auto;
+  }
+  .register-buttons {
+    width: 100%;
+  }
+  .fields {
+    margin: 1rem;
+  }
+  .boxs {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .signup-form {
+    grid-template-columns: 1fr!important;
+    width: 90%!important;
+  }
+  .register-buttons {
+    width: 100%;
+  }
+  .fields {
+    margin: 1rem;
+  }
+  .boxs {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .signup-form {
+    grid-template-columns: 1fr!important;
+    width: 90%;
+  }
+
+  .register-buttons {
+    width: 100%;
+  }
+  .fields {
+    margin: 1rem;
+  }
+  .boxs {
+    width: 100%;
   }
 }
