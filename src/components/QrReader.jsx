@@ -20,6 +20,7 @@ function QrR() {
 
   const handleScanButtonClick = () => {
     setScanning(true);
+    setResult("");
   };
 
   return (
