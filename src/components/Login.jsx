@@ -6,15 +6,16 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { loginSuccess } from "../redux/features/auth/authenticationSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import usersService from "../services/users";
 import "./Login.css";
+import { signInUser } from "../services/auth";
+import SignWithGoogle from "./SignWithGoogle";
 
 const Login = () => {
   const [inputType, setInputType] = useState("password");
   const formC = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const errorLoggin = () => toast.error("Usuario o contraseña incorrectos");
+  const errorLoggin = (error) => toast.error("Usuario o contraseña incorrectos");
 
   const toggleInput = () => {
     setInputType(inputType === "password" ? "text" : "password");
@@ -26,7 +27,9 @@ const Login = () => {
         initialValues={{ user_password: "", user_email: "" }}
         validate={(values) => {
           const errors = {};
-
+          if (values.authProvider !== "local") {
+            return;
+          }
           if (!values.user_email) {
             errors.user_email = "Por favor ingrese su correo electrónico";
           } else if (
@@ -46,26 +49,11 @@ const Login = () => {
         }}
         onSubmit={async (formvalue) => {
           try {
-            const auth = getAuth();
-
-            await signInWithEmailAndPassword(
-              auth,
-              formvalue.user_email,
-              formvalue.user_password
-            ).then(async (userCredential) => {
-              const user = userCredential.user;
-              const loggedUser = await usersService.getUserById(user.uid);
-
-              if (loggedUser) {
-                console.log("loggedUser", loggedUser);
-                dispatch(loginSuccess(loggedUser));
-                navigate("/");
-              } else {
-                errorLoggin();
-              }
-            });
+            const loggedUser = await signInUser(formvalue);
+            dispatch(loginSuccess(loggedUser));
+            navigate("/"); 
           } catch (error) {
-            errorLoggin();
+            errorLoggin(error);
           }
         }}
       >
@@ -97,7 +85,7 @@ const Login = () => {
                 placeholder="Ingrese su contraseña"
                 className="form-input custom-search-input"
               />
-              <button type="button" className="custom-search-botton" onClick={toggleInput}>
+              <button type="button" className="custom-search-button" onClick={toggleInput}>
                 {inputType === "password" ? (<AiOutlineEye />) : (<AiOutlineEyeInvisible />)}
               </button>
               <ErrorMessage
@@ -115,6 +103,7 @@ const Login = () => {
             >
               Ingresar
             </button>
+            <SignWithGoogle isLoggin={true} />
             <ToastContainer />
           </Form>
         )}

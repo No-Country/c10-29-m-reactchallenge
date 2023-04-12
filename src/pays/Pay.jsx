@@ -8,7 +8,7 @@ import tick from "../../src/assets/images/icon-complete.svg";
 import { format } from "date-fns";
 import "./Pay.css";
 
-export default function Pay({ confirmed, setConfirmed, setDisplayCard }) {
+export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePurchase }) {
   // const [confirmed, setConfirmed] = useState(false);
   const [name, setName] = useState("");
   const [cardNumber, setCardNumber] = useState("");
@@ -18,7 +18,6 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setConfirmed(true);
-    console.log("confirmed", confirmed);
     // setDisplayCard(true);
   };
 
@@ -81,7 +80,7 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard }) {
                 <div>
                   <label htmlFor="card_number">Card Number</label>
                   <input
-                    type="text"
+                    type="number"
                     name="card_number"
                     id="card_number"
                     placeholder="e.g. 1234 5678 9012 3456"
@@ -139,6 +138,7 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard }) {
             {confirmed && (
               <ThankYou
                 setDisplayCard={setDisplayCard}
+                handlePurchase={handlePurchase}
               />
             )}
           </div>
@@ -148,7 +148,7 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard }) {
   );
 }
 
-function ThankYou({ setConfirmed, setDisplayCard }) {
+function ThankYou({ setDisplayCard, handlePurchase }) {
   return (
     <>
       <div className="thank-you flex flex-col items-center justify-center lg:h-screen max-w-lg mx-auto">
@@ -161,6 +161,7 @@ function ThankYou({ setConfirmed, setDisplayCard }) {
         </p>
         <button
           onClick={() => {
+            handlePurchase();
             setDisplayCard(false);
           }}
           className="btn block mx-auto mt-10 w-full "

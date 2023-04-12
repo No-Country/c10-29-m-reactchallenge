@@ -1,9 +1,9 @@
 import { db } from "../utils/firebaseConfig";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, addDoc } from "firebase/firestore";
 
 const usersRef = collection(db, "users");
 
-const getUserById = async (id) => {
+export const getUserById = async (id) => {
   const q = query(usersRef, where("uid", "==", id));
   const querySnapshot = await getDocs(q);
   let data = null;
@@ -15,6 +15,6 @@ const getUserById = async (id) => {
   return data;
 };
 
-export default {
-  getUserById,
+export const createUser = async (user) => {
+  await addDoc(collection(db, "users"), user);
 };

@@ -5,6 +5,8 @@ import { removeToCart, emptyCart } from "../redux/features/cart/cartSlice";
 import { ToastContainer, toast } from "react-toastify";
 import purchaseService from "../services/purchases";
 import Pay from "../pays/Pay";
+import eventsServices from "../services/events"
+import purchasesServices from "../services/purchases"
 import "./cart.css";
 
 const Cart = () => {
@@ -12,8 +14,8 @@ const Cart = () => {
   const [displayCard, setDisplayCard] = useState(false);
   const items = useSelector((state) => state.cart.items);
   const total = useSelector((state) => state.cart.total);
-  // const user = useSelector((state) => state.auth.user);
-  const purchases = useSelector((state) => state.purchases.purchases);
+  const user = useSelector((state) => state.auth.user);
+  const [purchases, setPurchases] = useState([])
   const dispatch = useDispatch();
 
   const emptyCartMessage = () => toast.error("No hay productos en el carrito");
@@ -27,7 +29,10 @@ const Cart = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchGetAllPurchasesByUserId());
+    purchasesServices.getAllPurchasesByUserId(user.uid).then((purchases) => {
+      setPurchases(purchases)
+      console.log("purchases", purchases);
+    })
   }, []);
 
   const verifyPurchase = () => {
@@ -65,8 +70,19 @@ const Cart = () => {
       setDisplayCard(true);
       console.log("confirmed", confirmed);
       if (confirmed) {
+        console.log("comprar");
         const purchase = await purchaseService.addPurchase(items);
-        console.log(purchases);
+        items.forEach( async (item)=> {
+          // try catch
+          try {
+            console.log("item from cart", item)
+            const eventFound = await eventsServices.getEventById(item.uid)
+            await eventsServices.updateEventByAbility(eventFound, eventFound.uid)
+          } catch (error) {
+            console.error(error)
+          }
+        })
+        console.log(purchases); 
         dispatch(emptyCart());
         return;
       }
@@ -84,14 +100,14 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-      <h2 className="cart-title">Carrito de compras</h2>
+      <h2 className="cart-title">Productos agregados</h2>
       <ul className="cart-items-list">
         {items &&
           items.map((item) => {
             return (
               <div key={item.uid} className="cart-item-container">
                 <li key={item.uid} className="cart-item">
-                  {item.title} - {item.price}
+                  {item.title} - $ {item.price}
                   <button
                     onClick={() => removeItem(item.uid)}
                     className="cart-item-remove-btn"
@@ -103,23 +119,26 @@ const Cart = () => {
             );
           })}
       </ul>
-      <p className="cart-total">Total: {total}</p>
-      <button
-        onClick={() => {
-          handlePurchase();
-        }}
-        className="cart-purchase-btn"
-      >
-        Comprar
-      </button>
-      <button onClick={handleEmptyCart} className="cart-empty-btn">
-        Vaciar carrito
-      </button>
+      <p className="cart-total">Total: $ {total}</p>
+      <div className="botones-carrito">
+        <button
+          onClick={() => {
+            handlePurchase();
+          }}
+          className="cart-purchase-btn"
+        >
+          Comprar
+        </button>
+        <button onClick={handleEmptyCart} className="cart-empty-btn">
+          Vaciar carrito
+        </button>
+      </div>
       {displayCard && (
         <Pay
           confirmed={confirmed}
           setConfirmed={setConfirmed}
           setDisplayCard={setDisplayCard}
+          handlePurchase={handlePurchase}
         />
       )}
       <ToastContainer />

@@ -21,16 +21,9 @@ const Home = () => {
    
       <main>
         <div className="container">
-       
         <Search onSearch = {searchTerm} setSearchTerm = {setSearchTerm}/>
-
-        
         {/* <Pagination/>
          <FilterData /> */}
-           
-    
-
-       
           <section className="outstanding">
             <h2 className="title">Destacados</h2>
             
@@ -38,7 +31,7 @@ const Home = () => {
               animateIn="animate__bounceInLeft"
               animateOnce={true}
             > */}
-              <Cards searchTerm={searchTerm} />
+              <Cards searchTerm={searchTerm} search = {true} />
             {/* </AnimationOnScroll> */}
           </section>
           <section className="this-week">
@@ -47,7 +40,7 @@ const Home = () => {
               animateIn="animate__bounceInRight"
               animateOnce={true}
             >
-              <Cards searchTerm={searchTerm}  />
+              <Cards searchTerm={searchTerm} dateFilter = {true}  />
             </AnimationOnScroll>
           </section>
         </div>
