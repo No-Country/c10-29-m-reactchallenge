@@ -7,6 +7,7 @@ import { BsPencilSquare, BsFillTrash3Fill } from "react-icons/bs";
 // import QRDownload from "../../../components/QR";
 import "./Index.css";
 import salesService from "../../../services/sales";
+import QrR from "../../../components/QrReader";
 
 function Index() {
   const user = useSelector((store) => store.auth?.user);
@@ -83,6 +84,7 @@ function Index() {
                   ))}
               </tbody>
             </table>
+            <QrR />
           </div>
         </div>
       </div>
