@@ -13,7 +13,8 @@ function Index() {
         <Login />
         <hr />
         <p>
-          ¿Todavia no tenes cuenta en bypass? 
+          ¿Todavia no tenes cuenta en bypass?  <br />
+          <br />
           <Link to="/sign-up" className="home-button">
             Registrate
           </Link>

@@ -72,9 +72,10 @@ const deleteSale = async (uid) => {
   // );
 
   //console.log(doc(db, "event", "Eventd577c9c1-7a7c-4b47-8cf5-6dcc1b193d5c"));
-  await deleteDoc(doc(db, "event", uid));
+  await deleteDoc(doc(db, "events", uid));
   console.log("borrado");
 };
+
 export default {
   getAllSalesByUserId,
   getEventById,
