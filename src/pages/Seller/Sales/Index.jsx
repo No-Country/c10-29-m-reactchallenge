@@ -5,6 +5,7 @@ import { fetchGetAllSalesByUserId } from "../../../redux/features/sales/salesSli
 import Template from "../../../layouts/Template/Index";
 import { BsPencilSquare, BsFillTrash3Fill } from "react-icons/bs";
 import salesService from "../../../services/sales";
+import QrR from "../../../components/QrReader";
 import { deleteEvent } from "../../../redux/features/events/eventsSlice";
 import { ToastContainer } from "react-toastify";
 import { toastError, toastSuccess } from "../../../utils/messages/message";
@@ -105,6 +106,7 @@ function Index() {
                   ))}
               </tbody>
             </table>
+            <QrR />
           </div>
         </div>
       </div>
