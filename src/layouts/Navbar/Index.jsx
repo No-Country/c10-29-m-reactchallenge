@@ -77,7 +77,7 @@ const Navbar = () => {
                   <li className="hvr-underline-from-center">
                     <Link to="/purchases/">
                       <BiPurchaseTagAlt />
-                      &nbsp; Mis Compras
+                      &nbsp; Mis Tickets
                     </Link>
                   </li>
                   <li className="cart">

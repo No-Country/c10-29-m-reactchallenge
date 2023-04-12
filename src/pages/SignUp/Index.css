@@ -1,5 +1,37 @@
 .signup-page{
-    font-size: 5rem;
-    margin-top: 50px;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-button{
+    font-size: 16px;
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border: none;
+    color: var(--black);
+    background-color: var(--white);
+    cursor: pointer;
+    /* width: 100%; */
+    margin-top: 20px;
+}
+
+.home-button:hover{
+    color: var(--white);
+}
+
+.signup-page-title{
+    font-size: 4rem!important;
     font-family: "Kanit", sans-serif;
+    font-weight: 800;
+    color: var(--white);
+    text-transform: lowercase;
+}
+
+.info-register{
+    color: var(--white);
+    text-align: center;
 }
