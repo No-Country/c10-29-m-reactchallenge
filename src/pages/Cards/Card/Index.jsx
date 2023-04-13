@@ -5,7 +5,7 @@ import { addToCart } from "../../../redux/features/cart/cartSlice";
 import { fetchGetEventById } from "../../../redux/features/events/eventsSlice";
 import Template from "../../../layouts/Template/Index";
 import { ToastContainer, toast } from "react-toastify";
-import { Animated } from "react-animated-css";
+// import { Animated } from "react-animated-css";
 import "react-toastify/dist/ReactToastify.css";
 import "./Index.css";
 
@@ -64,6 +64,7 @@ function Index() {
         <div className="ticket-card">
           <div className="ticket-image__container">
             <img className="ticket-card__image" src={currentEventById.image} />
+            <p className="place">►Lugar: {currentEventById.place}</p>
           </div>
           <div className="ticket-card__text">
             <h1 className="nombre-banda">{currentEventById.title}</h1>

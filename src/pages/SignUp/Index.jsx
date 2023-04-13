@@ -12,14 +12,17 @@ function Index() {
         <SignUp />
         <p className="info-register">
           ¿Ya tienes cuenta en bypass? 
+          </p>
           <br />
-          <Link to="/sign-in" className="home-button">
-            Iniciar Sesion
-          </Link>
-        </p>
-        <Link to="/" className="home-button">
-          Ir al Inicio
-        </Link>
+          <div className="botones-sign">
+            <Link to="/sign-in" className="home-button">
+              Iniciar Sesion
+            </Link>
+          
+            <Link to="/" className="home-button">
+              Ir al Inicio
+            </Link>
+        </div>
       </div>
     </Animated>
   );

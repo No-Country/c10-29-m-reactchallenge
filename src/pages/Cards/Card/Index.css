@@ -99,6 +99,15 @@
   color: var(--black);
 }
 
+.place{
+  text-align: start;
+  margin: 10px;
+  color: var(--white);
+  font-size: 1.5rem;
+  padding-left: 20px;
+  font-family: "Kanit", sans-serif;
+}
+
 /* Estilos para pantallas pequeñas */
 
 @media (max-width: 1024px) {
