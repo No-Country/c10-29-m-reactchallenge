@@ -6,6 +6,7 @@ export { default as Update } from "./Seller/Update/Index";
 export { default as Purchases } from "./Buyer/Purchases/Index";
 export { default as Purchase } from "./Buyer/Purchase/Index";
 export { default as Login } from "./Login/Index";
+export { default as QrScanner } from "./Seller/QrScanner/Index";
 export { default as SignUp } from "./SignUp/Index";
 export { default as Card } from "./Cards/Card/Index";
 export { default as Events } from "./Seller/Sales/Index";

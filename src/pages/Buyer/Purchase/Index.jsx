@@ -8,8 +8,14 @@ function Index() {
 
   return (
     <Template>
-      <QR qrCodeUrl={id} />
-      <Link to="/purchases/">Mis Compras</Link>
+      <div className="container-sm">
+        <h3>Felicidades</h3>
+        <h3>¡Realizaste tu compra con exito!</h3>
+        <div className="qr-container-purchase">
+          <QR qrCodeUrl={id} />
+        </div>
+        <p>Descarga tu QR y presnetalo el dia del evento</p>
+      </div>
     </Template>
   );
 }

@@ -22,6 +22,7 @@ const Home = () => {
       <Carousel />
 
       <main>
+
         <div className="container">
           <div className="buscadores">
           <Search className="buscador" onSearch={searchTerm} setSearchTerm={setSearchTerm} />

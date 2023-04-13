@@ -19,7 +19,7 @@ function QrR() {
   };
 
   const handleScanButtonClick = () => {
-    setScanning(true);
+    setScanning(!scanning);
     setResult("");
   };
 
@@ -29,15 +29,20 @@ function QrR() {
       {scanning && (
         <QrReader
           delay={300}
-          onError={handleScanError}
+          constraints={{
+            video: { facingMode: 'environment' }, // Opciones de video para solicitar la cámara trasera
+            audio: false, // Opción de audio configurada en false para desactivar la solicitud de audio
+          }}          onError={handleScanError}
           onScan={handleScan}
-          style={{ width: "20%" }}
+          style={{ width: "50%", height: "auto" }} // Modificar estilo para ocupar el ancho completo
         />
       )}
-      {result && console.log(result)}
+       {result && result.text}
       {error && console.log(error)}
-    </div>
+      
+      </div>
   );
 }
+
 
 export default QrR;
