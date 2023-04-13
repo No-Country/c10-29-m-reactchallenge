@@ -21,16 +21,20 @@
 }
 
 .form button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
   border: none;
-  font-size: 1rem;
+  color: var(--white);
+  background-color: var(--black);
   cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
   transition: all 0.3s ease;
+  border-radius: 360px;
 }
 
 .form button:hover {
-  background-color: #0062cc;
+  color: var(--balck);
+  background-color: var(--white);
 }

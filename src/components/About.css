@@ -50,9 +50,46 @@
     margin-bottom: 20px;
   }
 
+  .buscadores{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .buscador input{
+    padding: 10px;
+    color: var(--light-brown);
+  }
+
+  .prov input{
+    padding: 10px;
+    color: var(--light-brown);
+  }
+
+
   /* Ajustar el tamaño del botón */
   .about-us button {
     font-size: 1rem;
     padding: 12px 20px;
+  }
+
+  .nosotros-img{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nosotros-img img{
+    width: 700px;
+    height: auto;
+  }
+
+  .contenido-nosotros p{
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    color: var(--white);
   }
 }
