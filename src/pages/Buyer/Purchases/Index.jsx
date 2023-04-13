@@ -35,7 +35,7 @@ function Index() {
                   <th scope="col">Fecha / Hora</th>
                   <th scope="col">Lugar</th>
                   <th scope="col">Precio</th>
-                  <th scope="col">Acciones</th>
+                  <th scope="col" style={{textAlign: "center"}}>Acciones</th>
                 </tr>
               </thead>
               <tbody>
