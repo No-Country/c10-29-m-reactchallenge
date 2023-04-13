@@ -93,7 +93,7 @@
 
 .cart-empty-btn:hover{
   color: var(--black);
-  background-color: var(--white);
+  background-color: var(--red);
 }
 
 .image-cart img{

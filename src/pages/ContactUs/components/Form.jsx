@@ -52,11 +52,12 @@ const ContactUs = () => {
       }}
     >
       {({ isSubmitting }) => (
-        <Form ref={form}>
-          <div>
+        <Form ref={form} className="formularios">
+          
+          <div className="contacto">
             <h1 className="titulo-nosotros">ByPass</h1>
-            {/* <h2 className="feedback">Envianos tu feedback</h2> */}
-            <label htmlFor="user_name">Nombre y Apellido: </label>
+            <h2 className="feedback">Envianos tu feedback</h2>
+            <label className="label-contacto " htmlFor="user_name">Nombre y Apellido: </label>
             <Field
               type="text"
               name="user_name"
@@ -64,10 +65,10 @@ const ContactUs = () => {
               placeholder="Ingrese su nombre completo"
             />
             <ErrorMessage  className="error" name="user_name" component="div" />
-          </div>
+          
 
           <div>
-          <label htmlFor="user_email">Email: </label>
+          <label className="label-contacto" htmlFor="user_email">Email: </label>
             <Field
               type="email"
               name="user_email"
@@ -78,7 +79,7 @@ const ContactUs = () => {
           </div>
 
           <div>
-            <label htmlFor="user_name">Mensaje: </label>
+            <label className="label-contacto" htmlFor="user_name">Mensaje: </label>
             <Field
               as="textarea"
               type="text"
@@ -92,6 +93,21 @@ const ContactUs = () => {
           <button className="enviar" type="submit">
             Enviar !
           </button>
+          
+        </div>
+          
+          <div className="preguntas">
+            <h2>Preguntas Frecuntes</h2>
+            <p>• No puedo ingresar a mi cuenta</p>
+            <p>• No puedo descargar mis entradas</p>
+            <p>• ¿Que debo ingresar en el evento?</p>
+            <p>• Ingreso de menores</p>
+            <p>• Certificado de Discapacidad</p>
+            <p>• ¿Como debolver una entrada?</p>
+            <p>• ¿Donde debo mostrar el Codigo QR?</p>
+          </div>
+
+          
         </Form>
       )}
     </Formik>

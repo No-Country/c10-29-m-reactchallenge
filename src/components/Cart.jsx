@@ -129,7 +129,7 @@ const Cart = () => {
                   <td>{item.title}</td>
                   <td>{item.place}</td>
                   <td style={{textAlign: "center"}}>1</td>
-                  <td>{item.time}</td>
+                  <td>{new Date(item.time).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</td>
                   <td>$ {item.price}</td>
                   <td>
                     <button
