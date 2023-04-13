@@ -41,7 +41,6 @@ const updateEventByAbility = async (event, id) => {
     uid: id,
     ability: ability > 0 ? ability - 1 : 0, // Actualizar el valor de 'ability'
   };
-  console.log("id from update", id)
   const events = doc(db, "events", id);
 
   await updateDoc(events, eventUpdated);

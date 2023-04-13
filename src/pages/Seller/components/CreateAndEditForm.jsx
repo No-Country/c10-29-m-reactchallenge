@@ -42,7 +42,6 @@ function CreateAndEditForm({ match }) {
 
   async function createEvent(fields, setSubmitting) {
     try {
-      console.log("fields", fields);
       const url = await uploadFile(file);
       salesService.createSale(fields, user.uid, url);
       eventCreated();

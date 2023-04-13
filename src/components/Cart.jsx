@@ -19,30 +19,24 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const emptyCartMessage = () => toast.error("No hay productos en el carrito");
-  // const removeItemMessage = () => toast.error("Producto eliminado del carrito");
   const productFoundMessage = () =>
     toast.error("Alguno de los productos ya fue comprado");
 
   const removeItem = (id) => {
-    // console.log("remove item");
-    // removeItemMessage();
     dispatch(removeToCart(id));
   };
 
   useEffect(() => {
     purchasesServices.getAllPurchasesByUserId(user.uid).then((purchases) => {
       setPurchases(purchases);
-      console.log("purchases", purchases);
     });
   }, []);
 
   const verifyPurchase = () => {
-    // console.log("verificar compra");
-    // console.log(purchases);
+    // Verifico si existe la entrada dentro de mis compras (purchases)
     let foundPurchase = false;
     items.forEach((item) => {
       purchases.some((purchase) => {
-        console.log;
         if (item.uid === purchase.uid) {
           foundPurchase = true;
           return true;
@@ -50,17 +44,10 @@ const Cart = () => {
       });
       return foundPurchase;
     });
-    console.log("found purchase", foundPurchase);
+
     return foundPurchase;
   };
   const handlePurchase = async () => {
-    // console.log("comprar");
-    // // Add a new document with a generated id.
-    // const docRef = await addDoc(collection(db, "cities"), {
-    //   name: "Tokyo",
-    //   country: "Japan",
-    // });
-    // console.log("Document written with ID: ", docRef.id);
     if (items.length === 0) {
       emptyCartMessage();
       return;
@@ -69,14 +56,14 @@ const Cart = () => {
       return;
     } else {
       setDisplayCard(true);
-      console.log("confirmed", confirmed);
+
       if (confirmed) {
-        console.log("comprar");
-        const purchase = await purchaseService.addPurchase(items);
+
+        await purchaseService.addPurchase(items);
+
+        // Actualizo la cantidad de entradas disponibles
         items.forEach(async (item) => {
-          // try catch
           try {
-            console.log("item from cart", item);
             const eventFound = await eventsServices.getEventById(item.uid);
             await eventsServices.updateEventByAbility(
               eventFound,
@@ -86,7 +73,7 @@ const Cart = () => {
             console.error(error);
           }
         });
-        console.log(purchases);
+
         dispatch(emptyCart());
         return;
       }
@@ -94,7 +81,7 @@ const Cart = () => {
   };
 
   const handleEmptyCart = () => {
-    // console.log("vaciar carrito");
+    //
     if (items.length === 0) {
       emptyCartMessage();
       return;
@@ -105,45 +92,52 @@ const Cart = () => {
   return (
     <div className="cart-container">
       <h2 className="cart-title">Productos agregados</h2>
-      <div style = {{margin: "1rem"}}>
-
-      
-      <table className="table" >
-        <thead className="thead-dark">
-          <tr>
-            <th></th>
-            <th scope="col">Evento</th>
-            <th scope="col">Lugar</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Subtotal</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {items &&
-            items.map((item) => {
-              return (
-                <tr key={item.uid}>
-                  <td className="image-cart"><img src={item.image}/></td>
-                  <td>{item.title}</td>
-                  <td>{item.place}</td>
-                  <td style={{textAlign: "center"}}>1</td>
-                  <td>{new Date(item.time).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</td>
-                  <td>$ {item.price}</td>
-                  <td>
-                    <button
-                      onClick={() => removeItem(item.uid)}
-                      className="cart-item-remove-btn"
-                    >
-                      X
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-        </tbody>
-      </table>
+      <div style={{ margin: "1rem" }}>
+        <table className="table">
+          <thead className="thead-dark">
+            <tr>
+              <th></th>
+              <th scope="col">Evento</th>
+              <th scope="col">Lugar</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {items &&
+              items.map((item) => {
+                return (
+                  <tr key={item.uid}>
+                    <td className="image-cart">
+                      <img src={item.image} />
+                    </td>
+                    <td>{item.title}</td>
+                    <td>{item.place}</td>
+                    <td style={{ textAlign: "center" }}>1</td>
+                    <td>
+                      {new Date(item.time).toLocaleDateString("es-ES", {
+                        weekday: "long",
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </td>
+                    <td>$ {item.price}</td>
+                    <td>
+                      <button
+                        onClick={() => removeItem(item.uid)}
+                        className="cart-item-remove-btn"
+                      >
+                        X
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </table>
       </div>
       <p className="cart-total">Total: $ {total}</p>
       <div className="botones-carrito">

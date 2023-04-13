@@ -12,7 +12,6 @@ const Upload = () => {
         e.preventDefault();
         try {
             const result = await uploadFile(file);
-            console.log(result);
         } catch (error) {
             console.error(error)
             alert("Fallo interno intente mas tarde")

@@ -30,25 +30,8 @@ const ContactUs = () => {
         return errors;
       }}
       onSubmit={(values, {resetForm}) => {
-        // Manda el formulario por email
-        // emailjs
-        //   .sendForm(
-        //     "service_ou20n4s",
-        //     "template_wj21vho",
-        //     form.current,
-        //     "q7F_0S11ujMSP8WIp"
-        //   )
-        //   .then(
-        //     (result) => {
-        //       console.log(result.text);
-        //     },
-        //     (error) => {
-        //       console.log(error.text);
-        //     }
-        //   );
           alert("Mensaje enviado")
           resetForm()
-
       }}
     >
       {({ isSubmitting }) => (

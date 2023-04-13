@@ -24,7 +24,7 @@ function Index() {
   const infoMessage = () =>
     toast.error("La entrada ya se encuentra en el carrito");
 
-  // console.log("current", currentEventById);
+  //
 
   useEffect(() => {
     setLoading(true);
@@ -32,11 +32,7 @@ function Index() {
     setLoading(false);
   }, [id]);
 
-  // const addNewItem = () => {
-  //   console.log(card);
-  // };
-  console.log("currentEventByID", currentEventById);
-  console.log("user id", user.uid);
+
   const checkeUser = () => {
     if (cart && user.role === "buyer") {
       // addNewItem();
@@ -44,7 +40,7 @@ function Index() {
         purchaseMessage();
         const newEvent = { ...currentEventById, user_id: user.uid };
         dispatch(addToCart(newEvent));
-        console.log("newEvent", newEvent);
+      
       } else {
         infoMessage();
       }
@@ -55,7 +51,7 @@ function Index() {
     }
   };
 
-  // console.log("current", currentEventById);
+  //
 
   return (
     <Template>

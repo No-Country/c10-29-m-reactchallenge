@@ -34,7 +34,7 @@ function Index() {
       salesDeleted();
       dispatch(fetchGetAllSalesByUserId(user.uid));
     } catch (error) {
-      console.log(error);
+      console.error(error);
       salesError();
     }
   };
