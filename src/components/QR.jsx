@@ -82,7 +82,7 @@ const QRDownload = ({qrCodeUrl}) => {
         </div>
       </div>
       <div style={{ textAlign: "center" }}>
-        <button onClick={downloadQRCode}>Download QR Code</button>
+        <button onClick={downloadQRCode}>Descargar codigo QR</button>
       </div>
     </div>
   );
