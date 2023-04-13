@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import eventAPI from "../../../services/events";
+import "./Search.css"
 
 const Search = ({ searchTerm, setSearchTerm }) => {
   // const [searchTerm, setSearchTerm] = useState('');
@@ -13,7 +14,7 @@ const Search = ({ searchTerm, setSearchTerm }) => {
   };
 
   return (
-    <div>
+    <div className="buscador">
       <input 
         type="text" 
         onChange={handleInputChange} 

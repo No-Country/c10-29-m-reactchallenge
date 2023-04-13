@@ -3,6 +3,8 @@ import QrReader from "react-qr-scanner";
 import purchasesService from "../services/purchases";
 import { ToastContainer } from "react-toastify";
 import { toastError, toastSuccess, toastWarning } from "../utils/messages/message";
+import "./QrReader.css"
+
 
 function QrR() {
   const [result, setResult] = useState("");
@@ -55,7 +57,7 @@ function QrR() {
   };
 
   return (
-    <div>
+    <div className="qr-reader">
       <button onClick={handleScanButtonClick}>Escanear QR</button>
       {scanning && (
         <QrReader
