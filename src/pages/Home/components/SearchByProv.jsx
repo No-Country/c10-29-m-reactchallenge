@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import eventAPI from "../../../services/events";
+import "./SearchByProv.css"
 
 const SearchByProv = ({ searchTerm, setSearchTerm }) => {
   const [filteredEvents, setFilteredEvents] = useState([]);
@@ -10,7 +11,7 @@ const SearchByProv = ({ searchTerm, setSearchTerm }) => {
   }
 
   return (
-    <div>
+    <div className="buscador-prov">
       <select value={searchTerm} onChange={handleSelectProv}>
         <option value="">Todas las provincias</option>
         <option value="Buenos Aires">Buenos Aires</option>

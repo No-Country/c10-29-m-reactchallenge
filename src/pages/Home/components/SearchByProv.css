@@ -1,0 +1,9 @@
+.buscador-prov{
+    padding: 10px;
+    background-color: var(--light-brown);
+    border-radius: 10px;
+}
+
+.buscador-prov input{
+    border-radius: 10px;
+}
