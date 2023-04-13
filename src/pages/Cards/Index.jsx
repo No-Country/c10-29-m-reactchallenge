@@ -5,10 +5,16 @@ import { fetchGetAllEvents } from "../../redux/features/events/eventsSlice";
 import eventsService from "../../services/events";
 import "./Index.css";
 
-const Cards = ({ searchTerm = "", dateFilter = false, search = false }) => {
+const Cards = ({
+  searchTerm = "",
+  dateFilter = false,
+  search = false,
+  filterProv,
+}) => {
   // const eventsState = useSelector((state) => state.events.events);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
+  //const [provinceFilter, setProvinceFilter] = useState("");
 
   useEffect(() => {
     // dispatch(fetchGetAllEvents());
@@ -20,12 +26,19 @@ const Cards = ({ searchTerm = "", dateFilter = false, search = false }) => {
     });
   }, []);
 
-  const filteredEvents = events.filter((event) => {
-    return (
-      event.title &&
-      event.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
+  const filteredEvents = events
+    .filter((event) => {
+      return (
+        event.title &&
+        event.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    })
+    .filter((event) => {
+      if (filterProv) {
+        return event.provincia === filterProv;
+      }
+      return true;
+    });
 
   const currentDate = new Date();
   const firstDayOfWeek = new Date(currentDate);
@@ -58,7 +71,11 @@ const Cards = ({ searchTerm = "", dateFilter = false, search = false }) => {
           {search && filteredEvents.length > 0 ? (
             filteredEvents.map((card) => (
               <Link to={`/cards/${card.uid}`} key={card.uid}>
-                <div className={`card-ticket ${card.ability === 0 ? "sold-out" : ""}`}>
+                <div
+                  className={`card-ticket ${
+                    card.ability === 0 ? "sold-out" : ""
+                  }`}
+                >
                   <img src={card.image} />
                 </div>
               </Link>
@@ -80,7 +97,6 @@ const Cards = ({ searchTerm = "", dateFilter = false, search = false }) => {
       )}
     </div>
   );
-  
 };
 
 export default Cards;
