@@ -20,7 +20,7 @@ const Home = () => {
       <Carousel />
    
       <main>
-        <div className="container">
+        <div className="container-sm">
         <Search onSearch = {searchTerm} setSearchTerm = {setSearchTerm}/>
         {/* <Pagination/>
          <FilterData /> */}

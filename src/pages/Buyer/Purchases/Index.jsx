@@ -20,7 +20,7 @@ function Index() {
   return (
     <Template>
       {/* <QRDownload data="https://www.ejemplo.com" /> */}
-      <div className="container">
+      <div className="container-sm">
         <div className="row">
           <div className="col-12">
             <h1>Mis compras</h1>

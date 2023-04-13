@@ -10,7 +10,7 @@ import "./Index.css";
 function Footer() {
   return (
     <footer className="footer">
-      <div className="container">
+      <div className="container-sm">
         <div className="footer-container">
           <div className="info">
             <p>
