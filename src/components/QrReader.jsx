@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import QrReader from "react-qr-scanner";
+import "./QrReader.css"
 
 function QrR() {
   const [result, setResult] = useState("");
@@ -24,7 +25,7 @@ function QrR() {
   };
 
   return (
-    <div>
+    <div className="qr-reader">
       <button onClick={handleScanButtonClick}>Escanear QR</button>
       {scanning && (
         <QrReader
