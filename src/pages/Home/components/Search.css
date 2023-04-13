@@ -1,0 +1,9 @@
+.buscador{
+    padding: 10px;
+    background-color: var(--light-brown);
+    border-radius: 10px;
+}
+
+.buscador input{
+    border-radius: 10px;
+}
