@@ -1,11 +1,22 @@
 import React, { useState } from "react";
 import QrReader from "react-qr-scanner";
+import purchasesService from "../services/purchases";
+import { ToastContainer } from "react-toastify";
+import { toastError, toastSuccess, toastWarning } from "../utils/messages/message";
 
 function QrR() {
   const [result, setResult] = useState("");
   const [error, setError] = useState("");
   const [scanning, setScanning] = useState(false);
+  const purchaseAllowed = () => toastSuccess("Entrada habilitada");
+  const purchaseNotAllowed = () => toastWarning("Entrada no habilitada");
+  const purchaseNotFound = () => toastError("Entrada no encontrada");
 
+  const getPurchaseById = async (id) => {
+    const response = await purchasesService.getPurchaseById(id);
+
+    return response;
+  };
   const handleScan = (data) => {
     if (data) {
       setResult(data);
@@ -23,6 +34,26 @@ function QrR() {
     setResult("");
   };
 
+  const handleQR = async (id) => {
+    console.log(id);
+    const purchase = await getPurchaseById(id)
+        console.log(purchase);
+
+    if (!purchase) {
+      purchaseNotFound();
+      return;
+    } else if (purchase) {
+      if (purchase[0].available === true) {
+        purchaseAllowed();
+        purchasesService.updatePurchaseByAvailable(purchase[0], purchase[0].uid)
+        return
+      } else {
+        purchaseNotAllowed();
+        return
+      }
+    }
+  };
+
   return (
     <div>
       <button onClick={handleScanButtonClick}>Escanear QR</button>
@@ -30,19 +61,25 @@ function QrR() {
         <QrReader
           delay={300}
           constraints={{
-            video: { facingMode: 'environment' }, // Opciones de video para solicitar la cámara trasera
+            video: { facingMode: "environment" }, // Opciones de video para solicitar la cámara trasera
             audio: false, // Opción de audio configurada en false para desactivar la solicitud de audio
-          }}          onError={handleScanError}
+          }}
+          onError={handleScanError}
           onScan={handleScan}
           style={{ width: "50%", height: "auto" }} // Modificar estilo para ocupar el ancho completo
         />
       )}
-       {result && result.text}
-      {error && console.log(error)}
-      
-      </div>
+
+      {result && (
+        <div>
+          <button onClick={() => handleQR(result.text)}>Analizar QR</button>
+        </div>
+      )}
+      {result && result.text}
+
+      <ToastContainer />
+    </div>
   );
 }
-
 
 export default QrR;

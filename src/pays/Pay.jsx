@@ -9,14 +9,13 @@ import { format } from "date-fns";
 import "./Pay.css";
 
 export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePurchase }) {
-  // const [confirmed, setConfirmed] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState(""); 
   const [cardNumber, setCardNumber] = useState("");
   const [date, setDate] = useState("01/23");
   const [cvc, setCvc] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setConfirmed(true);
     // setDisplayCard(true);
   };
@@ -80,7 +79,7 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
                 <div>
                   <label htmlFor="card_number">Card Number</label>
                   <input
-                    type="number"
+                    type="text"
                     name="card_number"
                     id="card_number"
                     placeholder="e.g. 1234 5678 9012 3456"

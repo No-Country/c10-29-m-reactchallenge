@@ -1,11 +1,22 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import QR from "../../../components/QR";
 import Template from "../../../layouts/Template/Index";
 
 function Index() {
   const { id } = useParams();
+  // const [purchase, setPurchases] = useState([]);
 
+  // useEffect(() => {
+  //   purchasesService.getPurchaseById(id).then((response) => {
+  //     setPurchases(response);
+  //   }
+  //   )
+  // }, [])
+
+  // console.log(purchase);
+  
   return (
     <Template>
       <div className="container-sm">

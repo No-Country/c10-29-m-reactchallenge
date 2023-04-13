@@ -59,7 +59,6 @@ export const signUpUser = async (values) => {
 };
 
 export const signInUser = async (values) => {
-    console.log(values);
     if (values.authProvider === "google") {
         return authWithGoogle(values);
     }

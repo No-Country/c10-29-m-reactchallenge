@@ -22,7 +22,6 @@ const Cards = ({
     eventsService.getAllEvents().then((res) => {
       setEvents(res);
       setLoading(false);
-      console.log("res", res);
     });
   }, []);
 
@@ -47,12 +46,10 @@ const Cards = ({
   lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 6);
 
   const filteredEvenstByDate = events.filter((event) => {
-    // console.log(event.time);
     const dateEvent = new Date(event.time);
-    // console.log("dateEvent", dateEvent);
+
     const eventTime = dateEvent.getTime(); // Obtén el valor de tiempo en milisegundos
-    // console.log("eventTime", eventTime);
-    // console.log("firstDayOfWeek", firstDayOfWeek.getTime());
+
     return (
       eventTime >= firstDayOfWeek.getTime() &&
       eventTime <= lastDayOfWeek.getTime()

@@ -21,7 +21,7 @@ const Home = () => {
       <Navbar />
       <Carousel />
 
-      <main>
+      <main className="container-sm">
 
         <div className="container">
           <div className="buscadores">

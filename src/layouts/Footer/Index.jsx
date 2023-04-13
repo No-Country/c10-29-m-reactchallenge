@@ -14,36 +14,60 @@ function Footer() {
         <div className="footer-container">
           <div className="info">
             <p>
-              Bypass no se hace responsable de la calidad o satisfaccion de los
+              Bypass no se hace responsable de la calidad o satisfacción de los
               eventos publicados, Bypass es un sistema que presta servicios de
               venta y compra de entradas online.
               <br />
-              Al usar este sitio usted acepta los terminos y condiciones de la
-              aplicacion. Copyright ® 2023 Bypass.
+              Al usar este sitio usted acepta los términos y condiciones de la
+              aplicación. Copyright ® 2023 Bypass. Todos los derechos reservados.
             </p>
             <div className="social">
               <span>
                 <a href="https://www.facebook.com" target="_blank">
-                <FaFacebookF />
+                  <FaFacebookF />
                 </a>
               </span>
               <span>
-              <a href="https://www.instagram.com" target="_blank">
-                <FaInstagram />
+                <a href="https://www.instagram.com" target="_blank">
+                  <FaInstagram />
                 </a>
               </span>
               <span>
-              <a href="https://www.twitter.com" target="_blank">
-                <FaTwitter />
+                <a href="https://www.twitter.com" target="_blank">
+                  <FaTwitter />
                 </a>
               </span>
             </div>
           </div>
           <div className="media">
-            <p> <span><FaWhatsapp /></span> Atencion al comprador: +54 9 11 1111 1111</p>
-            <p> <span><FaWhatsapp /></span> Atencion al comprador: +54 9 11 1111 1111 </p>
-            <p> <span><MdEmail /></span> info@bypass.com.ar</p>
-            <p> <span><AiOutlineClockCircle /></span> Horarios de atencion de Lunes a Sábado de 09:00 a 23:00 hs</p>
+            <p>
+              {" "}
+              <span>
+                <FaWhatsapp />
+              </span>{" "}
+              Atencion al comprador: +54 9 11 1111 1111
+            </p>
+            <p>
+              {" "}
+              <span>
+                <FaWhatsapp />
+              </span>{" "}
+              Atencion al comprador: +54 9 11 1111 1111{" "}
+            </p>
+            <p>
+              {" "}
+              <span>
+                <MdEmail />
+              </span>{" "}
+              info@bypass.com.ar
+            </p>
+            <p>
+              {" "}
+              <span>
+                <AiOutlineClockCircle />
+              </span>{" "}
+              Horarios de atencion de Lunes a Sábado de 09:00 a 23:00 hs
+            </p>
           </div>
         </div>
       </div>
