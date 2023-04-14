@@ -10,14 +10,12 @@ import { signUpUser } from "../services/auth";
 import { loginSuccess } from "../redux/features/auth/authenticationSlice";
 import { useDispatch } from "react-redux";
 import "./SignUp.css";
-import { toastError } from "../utils/messages/message";
-import { ToastContainer } from "react-toastify";
 
 const SignUp = () => {
   const db = getFirestore(app);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const errorAuthenticationMessage = () => toastError("Correo ya registrado")
+
   const formC = useRef();
 
   return (
@@ -32,32 +30,20 @@ const SignUp = () => {
           user_phoneNumber: "",
           user_dni: "",
           role: "",
-          authProvider: "local"
         }}
-        validate={async (values) => signupValidation(values)}
-        onSubmit={async (formvalue, {resetForm}) => {
+        validate={signupValidation}
+        onSubmit={async (formvalue) => {
           try {
             const loggedUser = await signUpUser(formvalue);
-            if (loggedUser){
-              dispatch(loginSuccess(loggedUser));
-              navigate("/");
-            }
+            dispatch(loginSuccess(loggedUser));
+            navigate("/");
           } catch (err) {
-            console.log({err});
-            if (err.code === "auth/email-already-in-use"){
-              errorAuthenticationMessage()
-              return
-            }
-
-            if (err.code === "auth/popup-closed-by-user"){
-              resetForm()
-              return
-            }
-
+            console.error(err);
+            alert(err.message);
           }
         }}
       >
-        {({ isSubmitting, errors, setFieldValue }) => (
+        {({ isSubmitting, values, setFieldValue }) => (
           <Form ref={formC} className="signup-form">
             <div className="fields">
               <label htmlFor="user_name">Nombre y Apellido</label>
@@ -66,10 +52,11 @@ const SignUp = () => {
                 name="user_name"
                 placeholder="Ingrese su nombre completo"
               />
-              <div className="error-message">
-              {errors.user_name ? <div>{errors.user_name}</div> : null}
-                <ErrorMessage className="error" name="user_name" />
-              </div>
+              <ErrorMessage
+                className="error"
+                name="user_name"
+                component="div"
+              />
             </div>
             <div className="fields">
               <label htmlFor="user_email">Email</label>
@@ -78,9 +65,11 @@ const SignUp = () => {
                 name="user_email"
                 placeholder="Ingrese su correo electronico"
               />
-              <div className="error-message">
-                <ErrorMessage className="error" name="user_email" />
-              </div>
+              <ErrorMessage
+                className="error"
+                name="user_email"
+                component="div"
+              />
             </div>
 
             <div className="fields">
@@ -90,9 +79,11 @@ const SignUp = () => {
                 name="user_password"
                 placeholder="Minimo 8 caracteres"
               />
-              <div className="error-message">
-                <ErrorMessage className="error" name="user_password" />
-              </div>
+              <ErrorMessage
+                className="error"
+                name="user_password"
+                component="div"
+              />
             </div>
             <div className="fields">
               <label htmlFor="user_birthdate">Fecha de nacimiento</label>
@@ -101,9 +92,11 @@ const SignUp = () => {
                 name="user_birthdate"
                 placeholder="Fecha de nacimiento"
               />
-              <div className="error-message">
-                <ErrorMessage className="error" name="user_birthdate" />
-              </div>
+              <ErrorMessage
+                className="error"
+                name="user_birthdate"
+                component="div"
+              />
             </div>
 
             <div className="fields">
@@ -113,9 +106,11 @@ const SignUp = () => {
                 name="user_phoneNumber"
                 placeholder="Numero de telefono"
               />
-              <div className="error-message">
-                <ErrorMessage className="error" name="user_phoneNumber" />
-              </div>
+              <ErrorMessage
+                className="error"
+                name="user_phoneNumber"
+                component="div"
+              />
             </div>
             <div className="fields">
               <label htmlFor="user_dni">DNI</label>
@@ -124,9 +119,7 @@ const SignUp = () => {
                 name="user_dni"
                 placeholder="Numero de DNI"
               />
-              <div className="error-message">
-                <ErrorMessage className="error" name="user_dni" />
-              </div>
+              <ErrorMessage className="error" name="user_dni" component="div" />
             </div>
 
             <div
@@ -136,16 +129,13 @@ const SignUp = () => {
             >
               <div style={{ display: "flex" }}>
                 <label>
-                  <Field type="radio" name="role" value="buyer"/>
+                  <Field type="radio" name="role" value="buyer" />
                   Espectador
                 </label>
                 <label>
                   <Field type="radio" name="role" value="seller" />
                   Productor
                 </label>
-              </div>
-              <div className="error-message">
-                <ErrorMessage className="error" name="role" />
               </div>
               <p className="google-register-info">
                 Para registrarse con Google debe elegir entre espectador o
@@ -159,8 +149,6 @@ const SignUp = () => {
               </button>
               <SignWithGoogle />
             </div>
-            <ToastContainer />
-
           </Form>
         )}
       </Formik>

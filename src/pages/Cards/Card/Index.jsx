@@ -8,11 +8,13 @@ import { ToastContainer, toast } from "react-toastify";
 // import { Animated } from "react-animated-css";
 import "react-toastify/dist/ReactToastify.css";
 import "./Index.css";
+import Comment from "./Comment";
 
 function Index() {
   const { id } = useParams();
   const user = useSelector((state) => state.auth.user);
   const cart = useSelector((state) => state.cart.items);
+
   const currentEventById = useSelector(
     (state) => state.events.currentEventById
   );
@@ -32,7 +34,6 @@ function Index() {
     setLoading(false);
   }, [id]);
 
-
   const checkeUser = () => {
     if (cart && user.role === "buyer") {
       // addNewItem();
@@ -40,7 +41,6 @@ function Index() {
         purchaseMessage();
         const newEvent = { ...currentEventById, user_id: user.uid };
         dispatch(addToCart(newEvent));
-      
       } else {
         infoMessage();
       }
@@ -80,13 +80,14 @@ function Index() {
               <p className="ban">GENERAL</p>
               <p className="precio">${currentEventById.price}</p>
             </div>
-            <p className="ability">Entradas Disponibles: {currentEventById.ability}</p>
+            <p className="ability">
+              Entradas Disponibles: {currentEventById.ability}
+            </p>
             <button
               className="ticket-card__button"
               onClick={() => {
                 checkeUser();
               }}
-
               disabled={currentEventById.ability === 0}
             >
               Comprar
@@ -97,6 +98,7 @@ function Index() {
         <p>Loading...</p>
       )}
       <ToastContainer />
+      <Comment />
     </Template>
   );
 }
