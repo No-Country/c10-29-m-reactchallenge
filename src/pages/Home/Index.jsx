@@ -6,13 +6,15 @@ import Footer from "../../layouts/Footer/Index";
 import Carousel from "./components/Carousel";
 import Search from "./components/Search";
 //import Pagination from "./components/Pagination";
-//import FilterData from "./components/FilterData";
+import FilterData from "./components/FilterData";
 import Cards from "../Cards/Index";
 import "./Index.css";
 
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState(""); // Estado para almacenar el término de búsqueda
+  const [selectedDate, setSelectedDate] = useState("");
+
   
   return (
     <>
@@ -22,8 +24,8 @@ const Home = () => {
       <main>
         <div className="container">
         <Search onSearch = {searchTerm} setSearchTerm = {setSearchTerm}/>
-        {/* <Pagination/>
-         <FilterData /> */}
+        <FilterData  onDate = {selectedDate} setSelectedDate = {setSelectedDate} />
+        {/* <Pagination/>*/}
           <section className="outstanding">
             <h2 className="title">Destacados</h2>
             
