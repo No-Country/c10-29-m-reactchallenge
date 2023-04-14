@@ -11,11 +11,11 @@ import { db } from "../../../utils/firebaseConfig";
 function Comment() {
   const { id } = useParams();
   const user = useSelector((state) => state.auth.user);
-  const cart = useSelector((state) => state.cart.items);
 
   const currentEventById = useSelector(
     (state) => state.events.currentEventById
   );
+
   const dispatch = useDispatch();
   const [form, setForm] = useState({ coment: "" });
 
@@ -41,6 +41,7 @@ function Comment() {
         ? [...currentEventById.coments, newComent]
         : [newComent],
     });
+    dispatch(fetchGetEventById(id));
   };
 
   useEffect(() => {
