@@ -72,7 +72,7 @@ function Comment() {
               <p className="comment">{coment.text.coment}</p>
             </div>
           );
-        })}
+        }).reverse()}
       </div>
     </div>
   );

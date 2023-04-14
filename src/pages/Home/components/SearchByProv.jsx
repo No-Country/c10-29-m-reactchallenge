@@ -9,7 +9,7 @@ const SearchByProv = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <div className="buscador-prov">
-      <select value={searchTerm} onChange={handleSelectProv}>
+      <select className="search-select" value={searchTerm} onChange={handleSelectProv}>
         <option value="">Todas las provincias</option>
         <option value="Buenos Aires">Buenos Aires</option>
         <option>CABA</option>

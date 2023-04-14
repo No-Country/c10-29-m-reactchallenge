@@ -4,6 +4,7 @@
   justify-content: space-between;
   width: 90%;
   gap: 3rem;
+
 }
 
 .title-form{
@@ -68,6 +69,7 @@
     font-size: 1.1rem;
     font-weight: 700;
     margin: .5rem 0!important;
+    color: var(--white);
 }
 
 .form-provincias {
@@ -117,6 +119,7 @@
     width: 100%;
     gap: 3rem;
     padding: 0.5rem 0;
+    color: var(--black);
 }
 
 .event-info-image{

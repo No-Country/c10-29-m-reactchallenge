@@ -17,8 +17,8 @@ const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterProv, setFilterProv] = useState("");
   const [filterDate, setFilterDate] = useState("");
-  console.log("filterdate", filterDate);
-  console.log("searchTerm", searchTerm);
+  // console.log("filterdate", filterDate);
+  // console.log("searchTerm", searchTerm);
   return (
     <>
       <Navbar />

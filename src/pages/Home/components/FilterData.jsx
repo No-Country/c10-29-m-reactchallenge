@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./FilterData.css";
 
 function FilterData({ searchTerm, setSearchTerm }) {
   const [selectedDate, setSelectedDate] = useState(Date.now());
@@ -12,12 +13,14 @@ function FilterData({ searchTerm, setSearchTerm }) {
   };
 
   return (
-    <div>
+    <div className="filter-data-container">
       <DatePicker
         value={searchTerm}
         selected={selectedDate}
         onChange={handleDateChange}
         dateFormat="dd/MM/yyyy"
+        placeholderText="Fecha"
+    className="date-search-cards"
       />
     </div>
   );
