@@ -5,7 +5,7 @@ import { addToCart } from "../../../redux/features/cart/cartSlice";
 import { fetchGetEventById } from "../../../redux/features/events/eventsSlice";
 import Template from "../../../layouts/Template/Index";
 import { ToastContainer, toast } from "react-toastify";
-import { Animated } from "react-animated-css";
+// import { Animated } from "react-animated-css";
 import "react-toastify/dist/ReactToastify.css";
 import "./Index.css";
 import Comment from "./Comment";
@@ -26,7 +26,7 @@ function Index() {
   const infoMessage = () =>
     toast.error("La entrada ya se encuentra en el carrito");
 
-  // console.log("current", currentEventById);
+  //
 
   useEffect(() => {
     setLoading(true);
@@ -34,11 +34,6 @@ function Index() {
     setLoading(false);
   }, [id]);
 
-  // const addNewItem = () => {
-  //   console.log(card);
-  // };
-  // console.log("currentEventByID", currentEventById);
-  // console.log("user id", user.uid);
   const checkeUser = () => {
     if (cart && user.role === "buyer") {
       // addNewItem();
@@ -46,7 +41,6 @@ function Index() {
         purchaseMessage();
         const newEvent = { ...currentEventById, user_id: user.uid };
         dispatch(addToCart(newEvent));
-        console.log("newEvent", newEvent);
       } else {
         infoMessage();
       }
@@ -57,7 +51,7 @@ function Index() {
     }
   };
 
-  // console.log("current", currentEventById);
+  //
 
   return (
     <Template>
@@ -66,6 +60,7 @@ function Index() {
         <div className="ticket-card">
           <div className="ticket-image__container">
             <img className="ticket-card__image" src={currentEventById.image} />
+            <p className="place">►Lugar: {currentEventById.place}</p>
           </div>
           <div className="ticket-card__text">
             <h1 className="nombre-banda">{currentEventById.title}</h1>

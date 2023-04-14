@@ -5,7 +5,6 @@ export const fetchGetAllSalesByUserId = createAsyncThunk(
   'sales/getAllSalesByUserId',
   async (id) => {
     const response = await salesService.getAllSalesByUserId(id);
-    console.log("response", response)
     return response;
   }
 );

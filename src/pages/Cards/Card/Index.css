@@ -98,6 +98,66 @@
 .ability {
   color: var(--black);
 }
+
+.place {
+  text-align: start;
+  margin: 10px;
+  color: var(--white);
+  font-size: 1.5rem;
+  padding-left: 20px;
+  font-family: "Kanit", sans-serif;
+}
+
+/* Estilos para pantallas pequeñas */
+
+@media (max-width: 1024px) {
+  .ticket-card {
+    flex-direction: column;
+  }
+
+  .ticket-image__container {
+    width: 40%;
+  }
+
+  .ticket-card__image {
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .ticket-card__text {
+    margin: 20px;
+    width: 60%;
+  }
+
+  .ticket-card__text h1 {
+    font-size: 3rem;
+  }
+
+  .ban {
+    font-size: 1rem;
+  }
+
+  .precio {
+    font-size: 1.2rem;
+  }
+
+  .ticket-card {
+    flex-direction: column;
+  }
+
+  .ticket-card__image {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .descripcion {
+    width: 100%;
+    word-wrap: break-word;
+  }
+}
+
 .comment-section {
   margin: 20px;
   padding: 10px;
@@ -152,56 +212,6 @@
   margin-top: 10px;
   padding: 10px;
 }
-/* Estilos para pantallas pequeñas */
-
-@media (max-width: 1024px) {
-  .ticket-card {
-    flex-direction: column;
-  }
-
-  .ticket-image__container {
-    width: 40%;
-  }
-
-  .ticket-card__image {
-    width: 100%;
-    height: auto;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .ticket-card__text {
-    margin: 20px;
-    width: 60%;
-  }
-
-  .ticket-card__text h1 {
-    font-size: 3rem;
-  }
-
-  .ban {
-    font-size: 1rem;
-  }
-
-  .precio {
-    font-size: 1.2rem;
-  }
-
-  .ticket-card {
-    flex-direction: column;
-  }
-
-  .ticket-card__image {
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .descripcion {
-    width: 100%;
-    word-wrap: break-word;
-  }
-}
-
 @media (max-width: 768px) {
   .ticket-card {
     flex-direction: column;

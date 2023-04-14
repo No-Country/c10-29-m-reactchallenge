@@ -34,7 +34,7 @@ function Index() {
       salesDeleted();
       dispatch(fetchGetAllSalesByUserId(user.uid));
     } catch (error) {
-      console.log(error);
+      console.error(error);
       salesError();
     }
   };
@@ -45,7 +45,7 @@ function Index() {
 
   return (
     <Template>
-      <div className="container">
+      <div className="container-sm">
         <div className="row">
           <div className="col-12">
             <h1>Mis Eventos</h1>
@@ -106,7 +106,6 @@ function Index() {
                   ))}
               </tbody>
             </table>
-            <QrR />
           </div>
         </div>
       </div>

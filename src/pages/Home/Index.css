@@ -10,3 +10,14 @@
 .outstanding, .this-week{
     width: 100%;
 }
+
+.buscadores {
+    display: flex;
+    justify-content: space-around;
+}
+
+@media (max-width: 768px) {
+    .buscadores{
+        flex-wrap: wrap;
+    }
+}

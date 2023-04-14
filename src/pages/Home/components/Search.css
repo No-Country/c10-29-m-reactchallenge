@@ -1,0 +1,20 @@
+.buscador {
+    padding: 10px;
+    background-color: var(--light-brown);
+    border-radius: 10px;
+}
+
+.buscador input {
+    border-radius: 10px;
+}
+
+.buscador input {
+    padding: 5px;
+    color: var(--light-brown);
+}
+
+@media (max-width: 768px) {
+    .buscador{
+        margin-bottom: 10px;
+    }
+}

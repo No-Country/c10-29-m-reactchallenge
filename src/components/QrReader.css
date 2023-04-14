@@ -1,0 +1,15 @@
+.qr-reader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.qr-reader button{
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+@media (max-width: 768px){
+    
+}

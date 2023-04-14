@@ -127,7 +127,7 @@ const SignUp = () => {
               role="group"
               aria-labelledby="my-radio-group"
             >
-              <div style={{display: "flex"}}>
+              <div style={{ display: "flex" }}>
                 <label>
                   <Field type="radio" name="role" value="buyer" />
                   Espectador

@@ -21,10 +21,13 @@ const Home = () => {
       <Navbar />
       <Carousel />
 
-      <main>
+      <main className="container-sm">
+
         <div className="container">
-          <Search onSearch={searchTerm} setSearchTerm={setSearchTerm} />
-          <SearchByProv onSearch={filterProv} setSearchTerm={setFilterProv} />
+          <div className="buscadores">
+          <Search className="buscador" onSearch={searchTerm} setSearchTerm={setSearchTerm} />
+          <SearchByProv className="prov" onSearch={filterProv} setSearchTerm={setFilterProv} />
+          </div>
           {/* <Pagination/>
          <FilterData /> */}
           <section className="outstanding">
