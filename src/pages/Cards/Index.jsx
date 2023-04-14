@@ -10,6 +10,9 @@ const Cards = ({
   dateFilter = false,
   search = false,
   filterProv,
+  selectedDate,
+
+
 }) => {
   // const eventsState = useSelector((state) => state.events.events);
   const [events, setEvents] = useState([]);
@@ -25,6 +28,7 @@ const Cards = ({
     });
   }, []);
 
+
   const filteredEvents = events
     .filter((event) => {
       return (
@@ -37,7 +41,15 @@ const Cards = ({
         return event.provincia === filterProv;
       }
       return true;
-    });
+
+    })
+    .filter((event) => {
+        if (event.date) {
+          
+          return event.date.getTime() === selectedDate.getTime();
+        }
+        return false;
+
 
   const currentDate = new Date();
   const firstDayOfWeek = new Date(currentDate);

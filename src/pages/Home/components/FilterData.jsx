@@ -1,35 +1,30 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { setFilterDate } from '../../../redux/features/FilteredData/dataSlice';
+import React, { useState, useEffect } from "react";
 
-function FilterData() {
-  const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const events = useSelector(state => state.events.items);
-  const filteredEvents = events.filter(event => {
-        return (event.date.getDate() === selectedDate.getDate() &&
-                event.date.getMonth() === selectedDate.getMonth() &&
-                event.date.getFullYear() === selectedDate.getFullYear())
-  });
+function FilterData({ selectedDate, setSelectedDate }) {
+ 
+  
+  const [filteredEvents, setFilteredEvents] = useState([]);
 
-  const handleDateChange = date => {
-    setSelectedDate(date);
-    dispatch(setFilterDate(date));
+  
+  const handleSelectDate = e => {
+    setSelectedDate(e.target.value);
   };
+
+ 
+
+  useEffect(() => {
+    // Assuming events is an array of events to be filtered
+    const filteredEventsByDate = filteredEvents.filter(event => event.date === selectedDate);
+    setFilteredEvents(filteredEventsByDate);
+  }, [selectedDate]);
 
   return (
     <div>
-      <DatePicker
-        selected={selectedDate}
-        onChange={handleDateChange}
-        dateFormat="dd/MM/yyyy"
-      />
+      <input type="date" value={selectedDate} onChange={handleSelectDate} />
       <ul>
-      {filteredEvents.map(event => (
-        <li key={event.id}>{event.name} - {event.date.toString()}</li>
-      ))}
+        {filteredEvents.map(event => (
+          <li key={event.id}>{event.name}</li>
+        ))}
       </ul>
     </div>
   );
