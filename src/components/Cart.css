@@ -42,13 +42,14 @@
 }
 
 
-.cart-item-remove-btn {
-  padding: 0.25rem;
-  background-color: var(--red);
+.cart-item-remove-btn{
+  padding: 1rem ;
+  background-color: var(--black);
   color: white;
   border: none;
   cursor: pointer;
   margin-left: 10px;
+  border-radius: 10px
 }
 
 .cart-total {
@@ -92,18 +93,21 @@
 
 .cart-empty-btn:hover{
   color: var(--black);
-  background-color: var(--white);
+  background-color: var(--red);
 }
 
-/* 
-  .card-container{
-    background-color: white;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    width: 90%;
-    height: 95%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  } */
+.image-cart img{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .cart-item-image img{
+    width: 10%;
+    height: 100%;
+    object-fit: cover;
+    /* border-radius: 0.5rem; */
+  }
+}

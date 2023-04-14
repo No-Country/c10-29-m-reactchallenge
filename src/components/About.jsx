@@ -1,25 +1,44 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import "./About.css";
 
 const AboutUs = () => {
   return (
-    <div class="about-us">
-  <h2>Sobre Nosotros</h2>
-  <p>En Bypass, nuestro objetivo es hacer que la compra y venta de entradas digitales para eventos sea más fácil y accesible para todos. Ya sea que estés buscando entradas para un concierto, un partido de deportes, un festival de música o cualquier otro evento, estamos aquí para ayudarte a conectarte con vendedores confiables y hacer que la experiencia de comprar y vender entradas sea lo más simple posible.</p>
+    <div className="about-us">
+      <div className="nosotros-img">
+        <img src="../src/assets/logo.png" alt="Logo" />
+        <img src="../src\assets\images\1.png" alt="" />
+      </div>
 
-  <p>Nuestro equipo está compuesto por profesionales altamente capacitados y apasionados por los eventos en vivo y la tecnología, lo que nos permite ofrecer una plataforma fácil de usar, segura y confiable para comprar y vender entradas digitales.</p>
+      <div className="contenido-nosotros">
+        <p>
+          Somo una plataforma dedicada la comercializacion de tickets para todo
+          tipo de eventos. Nuestro equipo esta coformado por profecionales de
+          alto nivel !Tan apacionados como vos por la musica, los deportes y el
+          arte!
+        </p>
+      </div>
 
-  <p>Con Bypass, puedes estar seguro de que estás obteniendo entradas auténticas y legítimas para el evento que deseas asistir. Además, nuestro sistema de pagos seguro y encriptado te brinda tranquilidad al momento de realizar transacciones en líne</p>
-  
-  <div>
+      <div className="nosotros-img">
+        <img src="../src\assets\images\1.png" alt="" />
+        <img src="../src/assets/logo.png" alt="Logo" />
+      </div>
+
+      <div className="contenido-nosotros">
+        <p>
+          Somo una plataforma dedicada la comercializacion de tickets para todo
+          tipo de eventos. Nuestro equipo esta coformado por profecionales de
+          alto nivel !Tan apacionados como vos por la musica, los deportes y el
+          arte!
+        </p>
+      </div>
+
+      {/* <div>
         <Link to={'/'}>
         <button type="submit">Submit</button>
         </Link>
+    </div> */}
     </div>
-</div>
-
-
   );
 };
 

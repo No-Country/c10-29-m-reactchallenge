@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom'
-import './Index.css'
+import { Link } from "react-router-dom";
+import "./Index.css";
 
 const NotMatch = () => {
   return (
     <div className="container-not-found">
-      <div class="mainbox">
-        <div class="err">404</div>
-        <div class="msg">
+      <div className="mainbox">
+        <div className="err">404</div>
+        <div className="msg">
           Maybe this page moved? Got deleted? Is hiding out in quarantine? Never
           existed in the first place?
           <p>

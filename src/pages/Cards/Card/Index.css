@@ -7,7 +7,7 @@
   padding: 1rem;
 }
 
-.ticket-image__container{
+.ticket-image__container {
   width: 50%;
 }
 
@@ -34,7 +34,7 @@
   font-size: 5rem;
 }
 
-.nombre-banda{
+.nombre-banda {
   font-size: 4.5rem !important;
 }
 
@@ -95,8 +95,17 @@
   cursor: not-allowed;
 }
 
-.ability{
+.ability {
   color: var(--black);
+}
+
+.place {
+  text-align: start;
+  margin: 10px;
+  color: var(--white);
+  font-size: 1.5rem;
+  padding-left: 20px;
+  font-family: "Kanit", sans-serif;
 }
 
 /* Estilos para pantallas pequeñas */
@@ -106,7 +115,7 @@
     flex-direction: column;
   }
 
-  .ticket-image__container{
+  .ticket-image__container {
     width: 40%;
   }
 
@@ -143,20 +152,72 @@
     margin-bottom: 20px;
   }
 
-  .descripcion{
+  .descripcion {
     width: 100%;
     word-wrap: break-word;
   }
 }
 
+.comment-section {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 90%;
+}
+.comment-section input {
+  display: flex;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  width: 95%;
+}
+.comment-section form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: 1px solid var(--light-brown);
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
 
-
+.comment-all-users {
+  margin-top: 30px;
+  width: 100%;
+  border: 1px solid var(--light-brown);
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
+.comment-user-contein {
+  margin-top: 30px;
+  width: 100%;
+  border-bottom-style: solid;
+  /* border: 1px solid ;
+  border-radius: 15px; */
+  padding: 10px;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--light-brown);
+}
+.comment-user-name {
+  font-weight: bold;
+  color: aliceblue;
+  text-decoration: underline;
+  display: flex;
+  justify-content: space-between;
+}
+.comment {
+  margin-top: 10px;
+  padding: 10px;
+}
 @media (max-width: 768px) {
   .ticket-card {
     flex-direction: column;
   }
 
-  .ticket-image__container{
+  .ticket-image__container {
     width: 100%;
   }
 
@@ -191,10 +252,9 @@
   .ticket-card__image {
     margin-right: 0;
     margin-bottom: 20px;
-
   }
 
-  .descripcion{
+  .descripcion {
     width: 100%;
   }
 }

@@ -20,7 +20,7 @@ function Index() {
   return (
     <Template>
       {/* <QRDownload data="https://www.ejemplo.com" /> */}
-      <div className="container">
+      <div className="container-sm">
         <div className="row">
           <div className="col-12">
             <h1>Mis compras</h1>
@@ -35,7 +35,7 @@ function Index() {
                   <th scope="col">Fecha / Hora</th>
                   <th scope="col">Lugar</th>
                   <th scope="col">Precio</th>
-                  <th scope="col">Acciones</th>
+                  <th scope="col" style={{textAlign: "center"}}>Acciones</th>
                 </tr>
               </thead>
               <tbody>

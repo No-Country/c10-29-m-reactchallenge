@@ -42,7 +42,6 @@ const CreateEventForm = () => {
     // handle form submission logic here
     //const newEvent = await ticketsService.create(values);
     // dispatch(addEvent(newEvent));
-    console.log(values);
     // resetForm();
     try {
       const docRef = await addDoc(collection(db, "events"), {
@@ -57,7 +56,6 @@ const CreateEventForm = () => {
         description: values.description,
       });
 
-      console.log("Document written with ID: ", docRef.id);
       notify();
     } catch (e) {
       console.error("Error adding document: ", e);

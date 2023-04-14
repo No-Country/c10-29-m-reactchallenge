@@ -6,7 +6,8 @@ import { emptyCart } from "../../redux/features/cart/cartSlice";
 import { Animated } from "react-animated-css";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { BiPurchaseTagAlt } from "react-icons/bi";
-import { ImTicket } from "react-icons/im";
+import { ImTicket, } from "react-icons/im";
+import { IoMdQrScanner } from "react-icons/io";
 import {MdOutlineSell} from "react-icons/md";
 import logo from "../../assets/logo.png";
 import "./Index.css";
@@ -25,7 +26,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="container">
+      <div className="container-sm">
         <div className="navbar-container">
           <div className="bypass-logo">
             <Link to="/">
@@ -70,6 +71,9 @@ const Navbar = () => {
                   <li className="hvr-underline-from-center">
                     <Link to="/sell/"><MdOutlineSell />&nbsp; Vender</Link>
                   </li>
+                  <li className="hvr-underline-from-center">
+                    <Link to="/scan-qr/"><IoMdQrScanner />&nbsp; Escanear QR</Link>
+                  </li>
                 </>
               )}
               {user?.role === "buyer" && isLogged && (
@@ -77,7 +81,7 @@ const Navbar = () => {
                   <li className="hvr-underline-from-center">
                     <Link to="/purchases/">
                       <BiPurchaseTagAlt />
-                      &nbsp; Mis Compras
+                      &nbsp; Mis Tickets
                     </Link>
                   </li>
                   <li className="cart">
