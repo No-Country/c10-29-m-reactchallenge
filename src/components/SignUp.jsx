@@ -31,7 +31,7 @@ const SignUp = () => {
           user_dni: "",
           role: "",
         }}
-        validate={signupValidation}
+        validate={(values) => signupValidation(values)}
         onSubmit={async (formvalue) => {
           try {
             const loggedUser = await signUpUser(formvalue);

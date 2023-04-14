@@ -30,17 +30,28 @@ export const authWithGoogle = async (values) => {
 };
 
 export const signUpWithEmail = async (values) => {
-  const { user } = await createUserWithEmailAndPassword(auth, {
-    ...values,
-  });
+  // Validación del correo electrónico
+  if (typeof values.user_email !== "string" || !values.user_email.match(/^\S+@\S+\.\S+$/)) {
+    throw new Error("Correo electrónico inválido");
+  }
+
+  // const { user } = await createUserWithEmailAndPassword(auth, {
+  //   ...values,
+  // });
+  
+  const {user}  = await createUserWithEmailAndPassword(auth, values.user_email, values.user_password);
+  console.log("user", user);
+
   const userToCreate = {
     ...values,
-    ...user,
+    uid: user.uid,
     authProvider: "local",
   };
+  console.log("userToCreate", userToCreate);
   await createUser(userToCreate);
   return userToCreate;
 };
+
 
 export const signInWithEmail = async (values) => {
     const { user } = await signInWithEmailAndPassword(auth, 
