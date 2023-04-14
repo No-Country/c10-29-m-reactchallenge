@@ -47,6 +47,7 @@ const Cart = () => {
 
     return foundPurchase;
   };
+  
   const handlePurchase = async () => {
     if (items.length === 0) {
       emptyCartMessage();
@@ -87,6 +88,8 @@ const Cart = () => {
       return;
     }
     dispatch(emptyCart());
+    setDisplayCard(false);
+    
   };
 
   return (
@@ -149,9 +152,12 @@ const Cart = () => {
         >
           Comprar
         </button>
+
+        {items.length > 0 && (
         <button onClick={handleEmptyCart} className="cart-empty-btn">
           Vaciar carrito
         </button>
+        )}
       </div>
       {displayCard && (
         <Pay
