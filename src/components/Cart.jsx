@@ -23,7 +23,13 @@ const Cart = () => {
     toast.error("Alguno de los productos ya fue comprado");
 
   const removeItem = (id) => {
+
     dispatch(removeToCart(id));
+    if (items.length === 0) {
+      console.log("No hay productos en el carrito");
+      setDisplayCard(false);
+      return;
+    }
   };
 
   useEffect(() => {
