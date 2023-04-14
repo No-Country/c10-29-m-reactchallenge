@@ -10,23 +10,38 @@ import Search from "./components/Search";
 import Cards from "../Cards/Index";
 import "./Index.css";
 import SearchByProv from "./components/SearchByProv";
+import FilterData from "./components/FilterData";
 
 const Home = () => {
   // Estado para almacenar el término de búsqueda
   const [searchTerm, setSearchTerm] = useState("");
   const [filterProv, setFilterProv] = useState("");
-
+  const [filterDate, setFilterDate] = useState("");
+  console.log("filterdate", filterDate);
+  console.log("searchTerm", searchTerm);
   return (
     <>
       <Navbar />
       <Carousel />
 
       <main className="container-sm">
-
         <div className="container">
           <div className="buscadores">
-          <Search className="buscador" onSearch={searchTerm} setSearchTerm={setSearchTerm} />
-          <SearchByProv className="prov" onSearch={filterProv} setSearchTerm={setFilterProv} />
+            <Search
+              className="buscador"
+              onSearch={searchTerm}
+              setSearchTerm={setSearchTerm}
+            />
+            <SearchByProv
+              className="prov"
+              onSearch={filterProv}
+              setSearchTerm={setFilterProv}
+            />
+            <FilterData
+              className="prov"
+              onSearch={filterDate}
+              setSearchTerm={setFilterDate}
+            />
           </div>
           {/* <Pagination/>
          <FilterData /> */}
@@ -41,6 +56,7 @@ const Home = () => {
               searchTerm={searchTerm}
               search={true}
               filterProv={filterProv}
+              filterDate={filterDate}
             />
             {/* </AnimationOnScroll> */}
           </section>

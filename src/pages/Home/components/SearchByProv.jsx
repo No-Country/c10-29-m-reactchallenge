@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import eventAPI from "../../../services/events";
-import "./SearchByProv.css"
+import "./SearchByProv.css";
 
 const SearchByProv = ({ searchTerm, setSearchTerm }) => {
-  const [filteredEvents, setFilteredEvents] = useState([]);
-
   function handleSelectProv(e) {
     const prov = e.target.value;
     setSearchTerm(prov);
@@ -38,11 +35,6 @@ const SearchByProv = ({ searchTerm, setSearchTerm }) => {
         <option value="Santiago del Estero">Santiago del Estero</option>
         <option value="Tierra del Fuego">Tierra del Fuego</option>
       </select>
-      <ul>
-        {filteredEvents.map((event) => (
-          <li key={event.prov}>{event.title}</li>
-        ))}
-      </ul>
     </div>
   );
 };
