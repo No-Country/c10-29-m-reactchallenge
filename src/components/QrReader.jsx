@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import QrReader from "react-qr-scanner";
 import purchasesService from "../services/purchases";
 import { ToastContainer } from "react-toastify";
-import { toastError, toastSuccess, toastWarning } from "../utils/messages/message";
-import "./QrReader.css"
-
+import {
+  toastError,
+  toastSuccess,
+  toastWarning,
+} from "../utils/messages/message";
+import "./QrReader.css";
 
 function QrR() {
   const [result, setResult] = useState("");
@@ -38,20 +41,23 @@ function QrR() {
 
   const handleQR = async (id) => {
     console.log(id);
-    const purchase = await getPurchaseById(id)
-        console.log(purchase);
+    const purchase = await getPurchaseById(id);
+    console.log(purchase);
 
-    if (!purchase) {
+    if (!purchase.length) {
       purchaseNotFound();
       return;
-    } else if (purchase) {
+    } else if (purchase.length) {
       if (purchase[0].available === true) {
         purchaseAllowed();
-        purchasesService.updatePurchaseByAvailable(purchase[0], purchase[0].uid)
-        return
+        purchasesService.updatePurchaseByAvailable(
+          purchase[0],
+          purchase[0].uid
+        );
+        return;
       } else {
         purchaseNotAllowed();
-        return
+        return;
       }
     }
   };

@@ -17,6 +17,7 @@ const SignWithGoogle = ({ formik, isLoggin }) => {
   const signInWithGoogle = async () => {
     setFieldValue("authProvider", "google");
   };
+  
   return (
     <button
       className="botonGoogle"
