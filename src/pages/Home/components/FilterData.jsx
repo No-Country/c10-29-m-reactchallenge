@@ -1,36 +1,24 @@
-import React, { useState } from 'react';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { useSelector, useDispatch } from 'react-redux';
-import { setFilterDate } from '../../../redux/features/FilteredData/dataSlice';
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-function FilterData() {
-  const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const events = useSelector(state => state.events.items);
-  const filteredEvents = events.filter(event => {
-        return (event.date.getDate() === selectedDate.getDate() &&
-                event.date.getMonth() === selectedDate.getMonth() &&
-                event.date.getFullYear() === selectedDate.getFullYear())
-  });
+function FilterData({ searchTerm, setSearchTerm }) {
+  const [selectedDate, setSelectedDate] = useState(Date.now());
 
-  const handleDateChange = date => {
-    setSelectedDate(date);
-    dispatch(setFilterDate(date));
+  const handleDateChange = (e) => {
+    setSelectedDate(e);
+    setSearchTerm(e);
+    console.log(e);
   };
 
   return (
     <div>
       <DatePicker
+        value={searchTerm}
         selected={selectedDate}
         onChange={handleDateChange}
         dateFormat="dd/MM/yyyy"
       />
-      <ul>
-      {filteredEvents.map(event => (
-        <li key={event.id}>{event.name} - {event.date.toString()}</li>
-      ))}
-      </ul>
     </div>
   );
 }

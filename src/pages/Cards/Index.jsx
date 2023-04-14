@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchGetAllEvents } from "../../redux/features/events/eventsSlice";
 import eventsService from "../../services/events";
 import "./Index.css";
 
@@ -10,14 +8,12 @@ const Cards = ({
   dateFilter = false,
   search = false,
   filterProv,
+  filterDate,
 }) => {
-  // const eventsState = useSelector((state) => state.events.events);
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
-  //const [provinceFilter, setProvinceFilter] = useState("");
 
   useEffect(() => {
-    // dispatch(fetchGetAllEvents());
     setLoading(true);
     eventsService.getAllEvents().then((res) => {
       setEvents(res);
@@ -35,6 +31,23 @@ const Cards = ({
     .filter((event) => {
       if (filterProv) {
         return event.provincia === filterProv;
+      }
+      return true;
+    })
+    .filter((event) => {
+      if (filterDate) {
+        const fechaFilt = new Date(filterDate);
+        const opciones2 = { day: "numeric", month: "numeric", year: "numeric" };
+        const fechaFormateada2 = fechaFilt.toLocaleDateString(
+          undefined,
+          opciones2
+        );
+
+        const fecha = new Date(event.time);
+        const opciones = { day: "numeric", month: "numeric", year: "numeric" };
+        const fechaFormateada = fecha.toLocaleDateString(undefined, opciones);
+
+        return fechaFormateada === fechaFormateada2;
       }
       return true;
     });
