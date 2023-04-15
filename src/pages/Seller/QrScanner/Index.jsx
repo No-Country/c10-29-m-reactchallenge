@@ -5,7 +5,7 @@ import QrReader from "../../../components/QrReader";
 function Index() {
   return (
     <Template>
-      <div className="container-sm">
+      <div className="container-sm qr-reader-container">
         <QrReader />
       </div>
     </Template>

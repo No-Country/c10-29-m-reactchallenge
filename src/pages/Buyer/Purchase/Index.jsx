@@ -21,12 +21,12 @@ function Index() {
   return (
     <Template>
       <div className="qr-descarga">
+        <h3 className="qr-sub">¡Realizaste tu compra con exito!</h3>
         <h1 className="qr-titulo">Felicidades</h1>
-        <h3 className="qr-sub">¡ Realizaste tu compra con exito !</h3>
         <div className="qr-container-purchase">
           <QR qrCodeUrl={id} />
         </div>
-        <p className="qr-p">Descarga tu QR y presnetalo el dia del evento</p>
+        <p className="qr-p">Descarga tu QR y presentalo el dia del evento</p>
       </div>
     </Template>
   );

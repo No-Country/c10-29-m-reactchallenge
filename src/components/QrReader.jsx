@@ -83,7 +83,6 @@ function QrR() {
           <button onClick={() => handleQR(result.text)}>Analizar QR</button>
         </div>
       )}
-      {result && result.text}
 
       <ToastContainer />
     </div>
