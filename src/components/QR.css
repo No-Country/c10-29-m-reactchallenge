@@ -1,4 +1,4 @@
-.qr-container{
+/* .qr-container{
     margin: 0 auto;
     width: 70%;
     height: 70%;
@@ -43,14 +43,17 @@
   width: 150px;
   height: 150px;
   margin-bottom: 20px;
+} */
+
+.qr-button{
+  margin: 1rem 0;
+  padding: 1rem 2rem;
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 10px;
 }
 
-.download-btn {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.qr-button:hover{
+  background-color: var(--light-brown);
+  color: var(--black);
 }

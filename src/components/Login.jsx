@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <Formik
-        initialValues={{ user_password: "", user_email: "" }}
+        initialValues={{ user_password: "", user_email: "", authProvider: "local" }}
         validate={(values) => {
           const errors = {};
           if (values.authProvider !== "local") {
