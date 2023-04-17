@@ -120,7 +120,7 @@ const Cart = () => {
                 return (
                   <tr key={item.uid}>
                     <td className="image-cart">
-                      <img src={item.image} />
+                      <img src={item.image} alt="Imagen del producto" />
                     </td>
                     <td>{item.title}</td>
                     <td>{item.place}</td>
@@ -158,11 +158,11 @@ const Cart = () => {
         >
           Comprar
         </button>
-
+    
         {items.length > 0 && (
-        <button onClick={handleEmptyCart} className="cart-empty-btn">
-          Vaciar carrito
-        </button>
+          <button onClick={handleEmptyCart} className="cart-empty-btn">
+            Vaciar carrito
+          </button>
         )}
       </div>
       {displayCard && (
@@ -174,7 +174,8 @@ const Cart = () => {
         />
       )}
       <ToastContainer />
-    </div>
+  </div>
+  
   );
 };
 
