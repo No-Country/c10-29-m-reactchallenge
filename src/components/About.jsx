@@ -7,7 +7,7 @@ const AboutUs = () => {
     <div className="about-us">
       <div className="nosotros-img">
         <img src="../src/assets/logo.png" alt="Logo" />
-        <img src="../src/assets/images/1.png" alt="" />
+        <img src="../src/assets/images/1.webp" alt="" />
       </div>
 
       <div className="contenido-nosotros">
@@ -20,7 +20,7 @@ const AboutUs = () => {
       </div>
 
       <div className="nosotros-img">
-        <img src="../src/assets/images/2.png" alt="" />
+        <img src="../src/assets/images/2.webp" alt="" />
         <div>
           <p>¿Y cuál es nuestra misión?</p>
           <p>¿Cuáles son los objetivos?</p>
@@ -44,7 +44,7 @@ const AboutUs = () => {
           <p>Empatía</p>
           <p className="textP">Nuestros principales valores</p>
         </div>
-        <img src="../src/assets/images/3.png" alt="" />
+        <img src="../src/assets/images/3.webp" alt="" />
       </div>
 
       <div className="nosotros-text">
