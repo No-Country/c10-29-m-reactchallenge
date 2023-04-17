@@ -20,15 +20,15 @@ const AboutUs = () => {
       </div>
 
       <div className="nosotros-img">
-        <div>
-        <p>Y ¿Cuál es nuestra mision?</p>
-          <p>¿Cuales sonlos objetivos?</p>
-          </div>
         <img src="../src\assets\images\2.png" alt="" />
+        <div>
+          <p>Y ¿Cuál es nuestra mision?</p>
+          <p>¿Cuales sonlos objetivos?</p>
+        </div>
         
       </div>
 
-      <div className="contenido-nosotros">
+      <div className="contenido-nosotrosText">
         <p>
           Nuestra mision es es hacer la compra y venta de e-tickets mas sencillo y accesible para todos. 
           Ya sea que estes buscando entradas para un concierto, un partido, un show en el teatro, podes contar con Bypass para ayudarte a conectarte con los productores mas confiables, y lograr que tu experiencia de compra o venta sea la mejor posible. Siempre desde tu comodidad y al alcance de tu celular o tu computadora,
@@ -37,7 +37,29 @@ const AboutUs = () => {
         </p>
       </div>
 
-      
+      <div className="nosotros-img">
+        <div>
+        <p>Confianza
+            Pasion
+            Empatia
+          </p>
+          <p  className="textP">Nuestros principales valores </p>
+          </div>
+        <img src="../src\assets\images\3.png" alt="" />
+      </div>
+
+      <div className="nosotros-text">
+        <p>Con Bypass, puedes estar seguro de que estas obteniendo entradas autenticas y legitimas, nuestro sistema de pagos es seguro y encriptado, te brindamos tranquilidad al momento de realizar la transaccion online.</p>
+
+        <p>Estamos y queremos ser parte de tu pasion, acercarte mas aun a tus artistas o actividades favoritas.
+            ¡Conta siempre con Bypass para llegar a donde mas te gusta !</p>
+      </div>
+
+
+
+
+
+
 
       {/* <div>
         <Link to={'/'}>
