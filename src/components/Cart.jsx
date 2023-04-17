@@ -88,7 +88,6 @@ const Cart = () => {
   };
 
   const handleEmptyCart = () => {
-    //
     if (items.length === 0) {
       emptyCartMessage();
       return;
