@@ -7,8 +7,8 @@ import { Animated } from "react-animated-css";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { BiPurchaseTagAlt } from "react-icons/bi";
 import { ImTicket } from "react-icons/im";
-import {MdOutlineSell} from "react-icons/md";
-import logo from "../../assets/logo.png";
+import { MdOutlineSell } from "react-icons/md";
+import logo from "../../assets/images/logo.png";
 import "./Index.css";
 
 const Navbar = () => {
