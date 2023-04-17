@@ -67,16 +67,27 @@
   }
 
   .nosotros-img img{
-    width: 700px;
+    width: 650px;
     height: auto;
+    border-radius: 5px;
+    
   }
 
   .contenido-nosotros p{
     text-align: center;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding-left: 10%;
+    padding-right: 10%;
     margin-top: 150px;
     margin-bottom: 150px;
     color: var(--white);
+    font-size: 2rem;
+  }
+
+  .nosotros-img p{
+    text-align: center;
+    color: var(--white);
+    font-size: 3rem;
   }
 }
+
+
