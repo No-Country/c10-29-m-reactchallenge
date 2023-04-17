@@ -69,7 +69,7 @@ function Comment() {
                 <span>{coment.user_name}</span>
                 <span>{coment.date}</span>
               </div>
-              <p className="comment">{coment.text.coment}</p>
+              <p className="comment">• {coment.text.coment}</p>
             </div>
           );
         }).reverse()}

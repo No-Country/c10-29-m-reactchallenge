@@ -7,13 +7,11 @@ import "./Index.css";
 
 function Index() {
   return (
-
     <div>
       <Navbar />
      <About/>
       <Footer />
     </div>
-
   )
 }
 
