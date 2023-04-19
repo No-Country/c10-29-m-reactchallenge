@@ -36,7 +36,7 @@ const Navbar = () => {
                 animationInDuration={1000}
                 isVisible={true}
               >
-                <img src={logo} alt="" />
+                {/* <img src={logo} alt="" /> */}
               </Animated>
             </Link>
             <div className="menu-icon" onClick={handleShowNavbar}>
