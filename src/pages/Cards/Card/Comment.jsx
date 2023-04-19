@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Index.css";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../utils/firebaseConfig";
+import StarRating from '../../../../src/components/star/starRating'
 
 function Comment() {
   const { id } = useParams();
@@ -68,6 +69,7 @@ function Comment() {
               <div className="comment-user-name">
                 <span>{coment.user_name}</span>
                 <span>{coment.date}</span>
+                 <StarRating/>
               </div>
               <p className="comment">• {coment.text.coment}</p>
             </div>
