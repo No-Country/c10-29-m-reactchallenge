@@ -10,6 +10,7 @@ import { ImTicket } from "react-icons/im";
 import { MdOutlineSell } from "react-icons/md";
 import logo from "../../assets/images/logo.png";
 import "./Index.css";
+import { IoMdQrScanner } from "react-icons/io";
 
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
