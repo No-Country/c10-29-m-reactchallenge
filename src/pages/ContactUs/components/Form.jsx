@@ -38,8 +38,6 @@ const ContactUs = () => {
           
           <div className="contacto">
             <div>
-              <h1 className="titulo-nosotros">ByPass</h1>
-              <h2 className="feedback">Envianos tu feedback</h2>
               <label className="label-contacto" htmlFor="user_name">Nombre y Apellido: </label>
               <Field
                 type="text"
@@ -76,18 +74,7 @@ const ContactUs = () => {
           <button className="enviar" type="submit">
             Enviar !
           </button>
-        </div>
-      
-          <div className="preguntas">
-            <h2>Preguntas Frecuentes</h2>
-            <p>• No puedo ingresar a mi cuenta</p>
-            <p>• No puedo descargar mis entradas</p>
-            <p>• ¿Cómo debo ingresar al evento?</p>
-            <p>• Ingreso de menores</p>
-            <p>• Certificado de Discapacidad</p>
-            <p>• ¿Cómo devolver una entrada?</p>
-            <p>• ¿Dónde debo mostrar el Código QR?</p>
-          </div>          
+        </div>       
         </Form>
       )}
     </Formik>

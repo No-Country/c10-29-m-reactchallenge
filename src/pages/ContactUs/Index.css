@@ -1,0 +1,52 @@
+.title-contact {
+  font-size: 4rem !important;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: lowercase;
+}
+
+.feedback-contact {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--white);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.preguntas {
+  color: var(--white);
+}
+
+.preguntas h2 {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.preguntas p {
+  font-size: 1.2rem;
+  margin: 10px;
+}
+
+.questions-answered{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.question-answered{
+    color: var(--white);
+}
+
+.question-answered h3{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
