@@ -33,7 +33,7 @@ const StarRating = () => {
                     </label>
                 );
             })}
-            {/* <p><h3>Calificam</h3>{rating}</p> */}
+            {/* <p><h3>Calificame</h3>{rating}</p> */}
         </div>
     );
 };
