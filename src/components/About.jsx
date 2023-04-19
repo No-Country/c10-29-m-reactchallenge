@@ -1,13 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import logo from "../assets/images/logo.png"
+import image1 from "../assets/images/1.webp"
+import image2 from "../assets/images/2.webp"
+import image3 from "../assets/images/3.webp"
 import "./About.css";
 
 const AboutUs = () => {
   return (
     <div className="about-us">
       <div className="nosotros-img">
-        <img src="../src/assets/logo.png" alt="Logo" />
-        <img src="../src/assets/images/1.webp" alt="Grupo de rock" />
+        <img src={logo} alt="Logo" width="25%" />
+        <img src={image1} alt="Grupo de rock" />
       </div>
 
       <div className="contenido-nosotros">
@@ -20,7 +23,7 @@ const AboutUs = () => {
       </div>
 
       <div className="nosotros-img">
-        <img src="../src/assets/images/2.webp" alt="Niño corriendo" />
+        <img src={image2} alt="Niño corriendo" />
         <div>
           <p>¿Y cuál es nuestra misión?</p>
           <p>¿Cuáles son los objetivos?</p>
@@ -43,7 +46,7 @@ const AboutUs = () => {
           <p>Empatía</p>
           <p className="textP">Nuestros principales valores</p>
         </div>
-        <img src="../src/assets/images/3.webp" alt="Imagen butacas" />
+        <img src={image3} alt="Imagen butacas" />
       </div>
 
       <div className="nosotros-text">
