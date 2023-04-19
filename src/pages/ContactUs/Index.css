@@ -2,12 +2,11 @@
   font-size: 4rem !important;
   font-weight: 600;
   margin-bottom: 20px;
-  text-transform: lowercase;
 }
 
 .feedback-contact {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
   color: var(--white);
   font-weight: 600;
   margin-bottom: 1rem;
@@ -15,9 +14,10 @@
 
 .contact-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  gap: 5rem;
+  align-items: center;
+  gap: 3rem;
 }
 
 .preguntas {
@@ -26,27 +26,59 @@
 
 .preguntas h2 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2rem !important;
 }
 
 .preguntas p {
-  font-size: 1.2rem;
+  font-size: 1.2rem !important;
   margin: 10px;
 }
 
-.questions-answered{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 4rem;
+.questions-answered {
+  display: flex;
+  flex-direction: column !important;
+  gap: 2rem;
+  margin-top: 4rem;
 }
 
-.question-answered{
-    color: var(--white);
+.question-answered {
+  color: var(--white);
 }
 
-.question-answered h3{
+.question-answered h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .title-contact {
+    font-size: 6rem !important;
+  }
+
+  .feedback-contact {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-container {
+    flex-direction: row;
+    gap: 5rem;
+  }
+
+  .preguntas h2 {
+    font-size: 3rem;
+  }
+
+  .preguntas p {
     font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+  }
+
+  .questions-answered {
+    flex-direction: row;
+  }
+
+  .question-answered {
+    width: 50%;
+  }
 }

@@ -7,7 +7,7 @@ import "./Index.css";
 function Index() {
   return (
     <Template>
-      <h1 className="title-contact">bypass</h1>
+      <h1 className="title-contact">BYPASS</h1>
       <h2 className="feedback-contact">Envianos tu feedback</h2>
       <div className="contact-container">
         <Form />
