@@ -6,9 +6,9 @@ import { emptyCart } from "../../redux/features/cart/cartSlice";
 import { Animated } from "react-animated-css";
 import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
 import { BiPurchaseTagAlt } from "react-icons/bi";
-import { ImTicket, } from "react-icons/im";
+import { ImTicket } from "react-icons/im";
 import { IoMdQrScanner } from "react-icons/io";
-import {MdOutlineSell} from "react-icons/md";
+import { MdOutlineSell } from "react-icons/md";
 import logo from "../../assets/logo.png";
 import "./Index.css";
 
@@ -69,10 +69,16 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className="hvr-underline-from-center">
-                    <Link to="/sell/"><MdOutlineSell />&nbsp; Vender</Link>
+                    <Link to="/sell/">
+                      <MdOutlineSell />
+                      &nbsp; Vender
+                    </Link>
                   </li>
                   <li className="hvr-underline-from-center">
-                    <Link to="/scan-qr/"><IoMdQrScanner />&nbsp; Escanear QR</Link>
+                    <Link to="/scan-qr/">
+                      <IoMdQrScanner />
+                      &nbsp; Escanear QR
+                    </Link>
                   </li>
                 </>
               )}
@@ -93,7 +99,40 @@ const Navbar = () => {
                   </li>
                 </>
               )}
-
+              {user?.role === "admin" && isLogged && (
+                <>
+                  <li className="hvr-underline-from-center">
+                    <Link to="/purchases/">
+                      <BiPurchaseTagAlt />
+                      &nbsp; Tickets vendidos
+                    </Link>
+                  </li>
+                  <li className="cart">
+                    <Link to="/cart/">
+                      <AiOutlineShoppingCart />{" "}
+                      <span className="cart-items">{cart.items.length}</span>{" "}
+                      &nbsp; Mi Carrito
+                    </Link>
+                  </li>
+                  <li className="hvr-underline-from-center">
+                    <Link to="/events/">
+                      <ImTicket /> &nbsp; Eventos
+                    </Link>
+                  </li>
+                  <li className="hvr-underline-from-center">
+                    <Link to="/sell/">
+                      <MdOutlineSell />
+                      &nbsp; Vender
+                    </Link>
+                  </li>
+                  <li className="hvr-underline-from-center">
+                    <Link to="/scan-qr/">
+                      <IoMdQrScanner />
+                      &nbsp; Escanear QR
+                    </Link>
+                  </li>
+                </>
+              )}
               {user?.role !== "guest" && (
                 <>
                   <li className="hvr-underline-from-center">

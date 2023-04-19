@@ -35,7 +35,7 @@ function Index() {
   }, [id]);
 
   const checkeUser = () => {
-    if (cart && user.role === "buyer") {
+    if ((cart && user.role === "buyer") || user.role === "admin") {
       // addNewItem();
       if (!cart.find((item) => item.uid === currentEventById.uid)) {
         purchaseMessage();

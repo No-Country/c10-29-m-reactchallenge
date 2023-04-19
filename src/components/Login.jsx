@@ -14,7 +14,8 @@ const Login = () => {
   const formC = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const errorLoggin = (error) => toast.error("Usuario o contraseña incorrectos");
+  const errorLoggin = (error) =>
+    toast.error("Usuario o contraseña incorrectos");
 
   const toggleInput = () => {
     setInputType(inputType === "password" ? "text" : "password");
@@ -23,7 +24,11 @@ const Login = () => {
   return (
     <div className="login-container">
       <Formik
-        initialValues={{ user_password: "", user_email: "", authProvider: "local" }}
+        initialValues={{
+          user_password: "",
+          user_email: "",
+          authProvider: "local",
+        }}
         validate={(values) => {
           const errors = {};
           if (values.authProvider !== "local") {
@@ -50,7 +55,8 @@ const Login = () => {
           try {
             const loggedUser = await signInUser(formvalue);
             dispatch(loginSuccess(loggedUser));
-            navigate("/"); 
+            console.log("loggeduser", loggedUser);
+            navigate("/");
           } catch (error) {
             errorLoggin(error);
           }
@@ -84,8 +90,16 @@ const Login = () => {
                 placeholder="Ingrese su contraseña"
                 className="form-input custom-search-input"
               />
-              <button type="button" className="custom-search-button" onClick={toggleInput}>
-                {inputType === "password" ? (<AiOutlineEye />) : (<AiOutlineEyeInvisible />)}
+              <button
+                type="button"
+                className="custom-search-button"
+                onClick={toggleInput}
+              >
+                {inputType === "password" ? (
+                  <AiOutlineEye />
+                ) : (
+                  <AiOutlineEyeInvisible />
+                )}
               </button>
               <ErrorMessage
                 className="error-message"

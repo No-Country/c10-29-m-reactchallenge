@@ -1,21 +1,23 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
-import { 
-  Home, 
-  About, 
-  ContactUs, 
+import {
+  Home,
+  About,
+  ContactUs,
   Sell,
   Purchases,
+  PurchasesAdmin,
   Purchase,
   Login,
   SignUp,
-  Card,  
+  Card,
   Cart,
   Profile,
   Events,
+  EventsAdmin,
   NotMatch,
-  QrScanner
+  QrScanner,
 } from "../pages";
 
 const GuestRoutes = () => {
@@ -29,11 +31,10 @@ const GuestRoutes = () => {
       <Route path="/sign-up/" element={<SignUp />} />
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
-  )
-}
+  );
+};
 
 const SellerRoutes = () => {
-
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
@@ -42,14 +43,32 @@ const SellerRoutes = () => {
       <Route path="/sell/" element={<Sell />} />
       <Route path="/sell/:id" element={<Sell />} />
       <Route path="/cards/:id" element={<Card />} />
-      <Route path="/scan-qr/" element={<QrScanner/>} />
+      <Route path="/scan-qr/" element={<QrScanner />} />
       <Route path="/events/" element={<Events />} />
       <Route path="/profile/" element={<Profile />} />
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
-  )
-}
-
+  );
+};
+const AdminRoutes = () => {
+  return (
+    <Routes>
+      <Route exact path="/" element={<Home />} />
+      <Route path="/about/" element={<About />} />
+      <Route path="/contact-us/" element={<ContactUs />} />
+      <Route path="/sell/" element={<Sell />} />
+      <Route path="/sell/:id" element={<Sell />} />
+      <Route path="/cards/:id" element={<Card />} />
+      <Route path="/scan-qr/" element={<QrScanner />} />
+      <Route path="/events/" element={<EventsAdmin />} />
+      <Route path="/purchases/" element={<PurchasesAdmin />} />
+      <Route path="/purchases/:id" element={<Purchase />} />
+      <Route path="/profile/" element={<Profile />} />
+      <Route path="/cart/" element={<Cart />} />
+      <Route exact path="*" element={<NotMatch />} />
+    </Routes>
+  );
+};
 const BuyerRoutes = () => {
   return (
     <Routes>
@@ -63,13 +82,14 @@ const BuyerRoutes = () => {
       <Route path="/profile/" element={<Profile />} />
       <Route exact path="*" element={<NotMatch />} />
     </Routes>
-  )
-}
+  );
+};
 
 const routesByRole = {
-  seller: <SellerRoutes/>,
-  buyer: <BuyerRoutes/>,
-  guest: <GuestRoutes/>,
+  seller: <SellerRoutes />,
+  buyer: <BuyerRoutes />,
+  guest: <GuestRoutes />,
+  admin: <AdminRoutes />,
 };
 
 const LoadRoutes = () => {
