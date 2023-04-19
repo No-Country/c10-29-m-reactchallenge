@@ -107,28 +107,9 @@ const Navbar = () => {
                       &nbsp; Tickets vendidos
                     </Link>
                   </li>
-                  <li className="cart">
-                    <Link to="/cart/">
-                      <AiOutlineShoppingCart />{" "}
-                      <span className="cart-items">{cart.items.length}</span>{" "}
-                      &nbsp; Mi Carrito
-                    </Link>
-                  </li>
                   <li className="hvr-underline-from-center">
                     <Link to="/events/">
                       <ImTicket /> &nbsp; Eventos
-                    </Link>
-                  </li>
-                  <li className="hvr-underline-from-center">
-                    <Link to="/sell/">
-                      <MdOutlineSell />
-                      &nbsp; Vender
-                    </Link>
-                  </li>
-                  <li className="hvr-underline-from-center">
-                    <Link to="/scan-qr/">
-                      <IoMdQrScanner />
-                      &nbsp; Escanear QR
                     </Link>
                   </li>
                 </>
