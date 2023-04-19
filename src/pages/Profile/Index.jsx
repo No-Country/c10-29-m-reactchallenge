@@ -1,20 +1,21 @@
-import { useDispatch, useSelector } from 'react-redux'
-import Template from '../../layouts/Template/Index'
-import ProfileForm from './components/ProfileForm'
+import { useDispatch, useSelector } from "react-redux";
+import Template from "../../layouts/Template/Index";
+import ProfileForm from "./components/ProfileForm";
 
 function Index() {
-  const user = useSelector((store) => store.auth?.user)
-  const dispatch = useDispatch()
+  const user = useSelector((store) => store.auth?.user);
+  const dispatch = useDispatch();
 
   return (
     <Template>
-        <h1>
-          {user?.role === 'seller' && 'Bienvenido vendedor'}
-          {user?.role === 'buyer' && 'Bienvenido comprador'} - {user.name}
-        </h1>
-        <ProfileForm  user ={user} />
+      <h1>
+        {user?.role === "seller" && "Bienvenido vendedor"}
+        {user?.role === "buyer" && "Bienvenido comprador"} - {user.name}
+        {user?.role === "admin" && "Bienvenido administrador"} - {user.name}
+      </h1>
+      <ProfileForm user={user} />
     </Template>
-  )
+  );
 }
 
-export default Index
+export default Index;

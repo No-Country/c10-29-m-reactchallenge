@@ -33,12 +33,13 @@ export const authSlice = createSlice({
     },
     loginSuccess: (state, action) => {
       state.user = action.payload;
+      console.log(action.payload);
       state.user.status = "succeeded";
       state.isLogged = true;
       localStorage.setItem("user", JSON.stringify(state.user));
     },
     updateProfile: (state, action) => {
-      state.user = {...state.user, ...action.payload}
+      state.user = { ...state.user, ...action.payload };
       localStorage.setItem("user", JSON.stringify(state.user));
     },
     closeSession: (state) => {
@@ -57,6 +58,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const { loginStart, loginSuccess, updateProfile, closeSession } = authSlice.actions; // exportamos las acciones del slice
+export const { loginStart, loginSuccess, updateProfile, closeSession } =
+  authSlice.actions; // exportamos las acciones del slice
 
 export default authSlice.reducer; // exportamos el reducer del slice.
