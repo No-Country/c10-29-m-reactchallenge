@@ -11,8 +11,10 @@ import "./Pay.css";
 export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePurchase }) {
   const [name, setName] = useState(""); 
   const [cardNumber, setCardNumber] = useState("");
-  const [date, setDate] = useState("01/23");
+  //const [date, setDate] = useState("01/23");
   const [cvc, setCvc] = useState("");
+  const [date, setDate] = useState(new Date().toISOString().substring(0, 7));
+
 
   const handleSubmit = (e) => {
     // e.preventDefault();
@@ -31,14 +33,14 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
           </div> */}
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 max-w-7xl mx-auto">
-          <div className="mt-10 mx-5 grid grid-cols-1">
+          {/* <div className="mt-10 mx-5 grid grid-cols-1">
             <article className="front-card p-5 flex flex-col justify-between">
               <img src={logo} alt="" className="w-20 lg:w-28" />
 
               <div>
-                <h2 className="text-white text-xl lg:text-3xl mb-6 tracking-widest">
+                <h2 className="text-white text-l lg:text-3xl mb-6 tracking-widest">
                   {cardNumber}
-                  {/* <img src={bgCardFront} alt="" /> */}
+                  
                 </h2>
 
                 <ul className="flex items-center justify-between">
@@ -54,22 +56,22 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
 
             <article className="back-card relative lg:ml-20">
               <p className="absolute right-10 text-lg lg:text-xl text-white tracking-widest">
-                {/* <img src={bgCardBack} alt="" /> */}
+               
                 {cvc}
               </p>
             </article>
-          </div>
+          </div> */}
 
-          <div className="pt-8 px-5 pb-20">
+          <div className="pt-8 px-5 pb-20 cards-info">
             {!confirmed && (
-              <form onSubmit={handleSubmit} className="flex flex-col justify-center gap-8 max-w-lg lg:h-screen">
+              <form onSubmit={handleSubmit} className="gap-8 max-w-lg lg:h-screen">
                 <div>
-                  <label htmlFor="cardholder_name">Cardholder Name</label>
+                  <label htmlFor="cardholder_name">Nombre del titular</label>
                   <input
                     type="text"
                     name="cardholder_name"
                     id="cardholder_name"
-                    placeholder="e.g. Jane Appleseed"
+                    placeholder=" Jane Appleseed"
                     required
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -77,12 +79,12 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
                 </div>
 
                 <div>
-                  <label htmlFor="card_number">Card Number</label>
+                  <label htmlFor="card_number">Número de tarjeta</label>
                   <input
-                    type="text"
+                    type="number"
                     name="card_number"
                     id="card_number"
-                    placeholder="e.g. 1234 5678 9012 3456"
+                    placeholder=" 1234 5678 9012 3456"
                     required
                     maxLength={19}
                     value={cardNumber
@@ -95,14 +97,14 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
 
                 <article className="flex items-center justify-between gap-8">
                   <div className="flex-1">
-                    <label htmlFor="expiry_date">Exp. Date (MM/YY)</label>
+                    <label htmlFor="expiry_date">Fecha de EXP.</label>
                     <input
                       type="month"
                       name="expiry_date"
                       id="expiry_date"
                       placeholder="MM YY"
                       required
-                      value={date}
+                      value={date.substring(0, 7)}
                       onChange={(e) => setDate(e.target.value)}
                     />
                   </div>
@@ -113,7 +115,7 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
                       type="number"
                       name="cvc"
                       id="cvc"
-                      placeholder="e.g. 123"
+                      placeholder=" 123"
                       maxLength={3}
                       required
                       value={cvc}
@@ -122,15 +124,18 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
                   </div>
                 </article>
 
-                <button type="submit" className="btn">
-                  Confirm
-                </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => setDisplayCard(false)}
-                >
-                  Cancel
-                </button>
+                <div className="boton-tarjeta">
+                  <button type="submit" className="btn-card">
+                    Confirmar
+                  </button>
+                  
+                  <button
+                    className="btn-card"
+                    onClick={() => setDisplayCard(false)}
+                  >
+                    Cancelar
+                  </button>
+                </div>
               </form>
             )}
 
@@ -153,10 +158,10 @@ function ThankYou({ setDisplayCard, handlePurchase }) {
       <div className="thank-you flex flex-col items-center justify-center lg:h-screen max-w-lg mx-auto">
         <img src={tick} alt="" className="block mx-auto" />
         <h1 className="text-slate-800 text-3xl my-6 uppercase text-center">
-          Thank you!
+          Gracias
         </h1>
         <p className="text-slate-400 text-center">
-          We've added your card details
+          Por tu compra
         </p>
         <button
           onClick={() => {

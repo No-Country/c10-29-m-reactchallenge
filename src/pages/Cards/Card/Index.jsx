@@ -95,7 +95,7 @@ function Index() {
           </div>
         </div>
       ) : (
-        <p>Loading...</p>
+        <p>Cargando...</p>
       )}
       <ToastContainer />
       <Comment />

@@ -116,7 +116,7 @@ const Login = () => {
             >
               Ingresar
             </button>
-            <SignWithGoogle isLoggin={true} />
+            <SignWithGoogle isLogging={true} />
             <ToastContainer />
           </Form>
         )}

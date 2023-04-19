@@ -29,21 +29,48 @@
 
 .form-cards,
 .thank-you {
-  margin-top: 350px;
+  margin-top: 30px;
 }
 
-.form-cards label {
-  @apply block uppercase tracking-wider text-slate-800 mb-2 text-sm;
+.cards-info{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
-.form-cards input {
-  @apply border-2 border-slate-300 py-3 px-4 rounded outline-none w-full;
+.cards-info input{
+  padding-left: 20px;
 }
 
-.btn {
-  background-color: hsl(110, 76%, 43%);
-  @apply py-3 px-6 rounded shadow text-white text-base tracking-wide lg:text-lg;
+.cards-info label{
+  margin-right: 10px;
 }
+
+.boton-tarjeta{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn-card{
+  margin-top: 10px;
+  border: none;
+  cursor: pointer;
+  color: var(--white);
+  border-radius: 20px;
+  width: 145px;
+  height: 40px;
+  background-color: var(--black) !important;
+  transition: background-color 0.3s ease;
+}
+
+.btn-card:hover{
+  color: var(--black);
+  background-color: var(--white) !important;
+}
+
 
 @media screen and (max-width: 425px) {
   .front-card,

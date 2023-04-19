@@ -12,7 +12,7 @@ form {
   display: block;
 }
 
-.contacto input{
+.contacto input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -23,10 +23,11 @@ form {
   box-sizing: border-box
 }
 
-.preguntas h2, p{
+.preguntas h2,
+p {
+  padding: 0;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 
 .contacto textarea {
   padding: 10px;
@@ -42,18 +43,18 @@ form {
   resize: none;
 }
 
-.preguntas{
+.preguntas {
   color: var(--white);
 }
 
-.preguntas h2{
+.preguntas h2 {
   text-align: center;
   margin-bottom: 50px;
   font-size: 2rem;
   margin-top: 80px;
 }
 
-.preguntas p{
+.preguntas p {
   font-size: 1.2rem;
   margin: 10px;
 }
@@ -69,7 +70,7 @@ form {
   width: 100%;
 }
 
-.enviar:hover{
+.enviar:hover {
   background-color: var(--light-brown) !important;
   color: var(--white);
 }
@@ -82,21 +83,21 @@ form {
   margin: 0.5rem 0;
 }
 
-.titulo-nosotros{
+.titulo-nosotros {
   font-size: 5rem !important;
   font-family: "Kanit", sans-serif;
 }
 
-/* .feedback{
+.feedback {
   text-align: center;
   font-size: 1rem;
   margin-bottom: 20px;
   color: gainsboro;
   font-weight: 600;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-} */
+}
 
-.formularios{
+.formularios {
   display: flex;
   justify-content: space-around;
   align-items: start;
@@ -104,15 +105,15 @@ form {
   width: 70%;
 }
 
-.contacto{
+.contacto {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-@media (max-width: 900px){
-  .formularios{
+@media (max-width: 900px) {
+  .formularios {
     align-items: center;
     justify-content: center;
     flex-direction: column;

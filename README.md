@@ -19,7 +19,7 @@ Tambien cuenta con un formulario de registro de eventos para los organizadores q
 - ### Checkout
 Una vez que el usuario ha seleccionado las entradas que desea comprar, el siguiente paso en la plataforma de Bypass es la página de checkout o pago. En esta página, el usuario puede revisar su selección de entradas, el precio total y los detalles de la transacción antes de proceder al pago.
 Incluye opciones para introducir información de pago, como los detalles de la tarjeta de crédito o débito, así como la dirección de envío si se aplica. Cuenta con un sistema de pago seguro para proteger la información personal del usuario y garantizar una transacción segura.
-Una vez que el pago se ha completado correctamente, el usuario recibe una confirmación de compra en la página de Bypass y por correo electrónico, que incluye la información de la transacción y un resumen de las entradas compradas. La plataforma de Bypass también proporciona un código QR para las entradas, que se puede utilizar para acceder al evento.
+Una vez que el pago se ha completado correctamente, el usuario recibe una confirmación de compra en la página de Bypass, que incluye la información de la transacción y un resumen de las entradas compradas. La plataforma de Bypass también proporciona un código QR para las entradas, que se puede utilizar para acceder al evento.
 - ### Nosotros
 Bypass cuenta con una sección "Nosotros" en su sitio web, donde los usuarios pueden encontrar información adicional sobre la empresa, su historia y su misión.
 Esta sección incluye detalles sobre los fundadores, el equipo y la visión de la empresa. También proporciona información sobre los valores centrales de Bypass, sus políticas de privacidad y seguridad.
