@@ -9,7 +9,7 @@ import { BiPurchaseTagAlt } from "react-icons/bi";
 import { ImTicket } from "react-icons/im";
 import { IoMdQrScanner } from "react-icons/io";
 import { MdOutlineSell } from "react-icons/md";
-//import logo from "../../assets/logo.png";
+import logo from "../../assets/images/bypass-logo.png";
 import "./Index.css";
 
 const Navbar = () => {
@@ -36,7 +36,7 @@ const Navbar = () => {
                 animationInDuration={1000}
                 isVisible={true}
               >
-                {/* <img src={logo} alt="" /> */}
+                <img src={logo} alt="" />
               </Animated>
             </Link>
             <div className="menu-icon" onClick={handleShowNavbar}>

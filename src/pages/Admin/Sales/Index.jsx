@@ -97,7 +97,7 @@ function Index() {
                     </td>
                     <td>{sale.place}</td>
                     <td>{sale.price}</td>
-                    <td>{sale.user_id}</td>
+                    <td>{sale.user_id.substring(0, 8)}</td>
                     <td>{sale.ability}</td>
                     <td className="buttons-events">
                       <Link to={`/sell/${sale.uid}`}>
