@@ -23,7 +23,6 @@ const Home = () => {
     <>
       <Navbar />
       <Carousel />
-
       <main className="container-sm">
         <div className="container">
           <div className="buscadores">
@@ -61,7 +60,7 @@ const Home = () => {
             {/* </AnimationOnScroll> */}
           </section>
           <section className="this-week">
-            <h2 className="title">Esta semana</h2>
+            <h2 className="title">Esta Semana</h2>
             <AnimationOnScroll
               animateIn="animate__bounceInRight"
               animateOnce={true}

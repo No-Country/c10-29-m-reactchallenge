@@ -7,7 +7,7 @@ const AboutUs = () => {
     <div className="about-us">
       <div className="nosotros-img">
         <img src="../src/assets/logo.png" alt="Logo" />
-        <img src="../src/assets/images/1.webp" alt="" />
+        <img src="../src/assets/images/1.webp" alt="Grupo de rock" />
       </div>
 
       <div className="contenido-nosotros">
@@ -20,12 +20,11 @@ const AboutUs = () => {
       </div>
 
       <div className="nosotros-img">
-        <img src="../src/assets/images/2.webp" alt="" />
+        <img src="../src/assets/images/2.webp" alt="Niño corriendo" />
         <div>
           <p>¿Y cuál es nuestra misión?</p>
           <p>¿Cuáles son los objetivos?</p>
         </div>
-        
       </div>
 
       <div className="contenido-nosotrosText">
@@ -44,12 +43,11 @@ const AboutUs = () => {
           <p>Empatía</p>
           <p className="textP">Nuestros principales valores</p>
         </div>
-        <img src="../src/assets/images/3.webp" alt="" />
+        <img src="../src/assets/images/3.webp" alt="Imagen butacas" />
       </div>
 
       <div className="nosotros-text">
         <p>Con Bypass, puedes estar seguro de que estás obteniendo entradas auténticas y legítimas, nuestro sistema de pagos es seguro y encriptado, te brindamos tranquilidad al momento de realizar la transacción online.</p>
-
         <p>Estamos y queremos ser parte de tu pasión, acercarte más aún a tus artistas o actividades favoritas.
             ¡Cuenta siempre con Bypass para llegar a donde más te gusta!</p>
       </div>

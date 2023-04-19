@@ -107,11 +107,11 @@ const SignUp = () => {
             </div>
 
             <div className="fields">
-              <label htmlFor="user_phoneNumber">Telefono</label>
+              <label htmlFor="user_phoneNumber">Teléfono</label>
               <Field
                 type="number"
                 name="user_phoneNumber"
-                placeholder="Numero de telefono"
+                placeholder="Número de teléfono"
               />
               <div className="error-message">
                 <ErrorMessage className="error" name="user_phoneNumber" />
@@ -122,7 +122,7 @@ const SignUp = () => {
               <Field
                 type="number"
                 name="user_dni"
-                placeholder="Numero de DNI"
+                placeholder="Número de DNI"
               />
               <div className="error-message">
                 <ErrorMessage className="error" name="user_dni" />
@@ -155,7 +155,7 @@ const SignUp = () => {
 
             <div className="register-buttons">
               <button type="submit" disabled={isSubmitting}>
-                Registrarse
+                Regístrarse
               </button>
               <SignWithGoogle />
             </div>
