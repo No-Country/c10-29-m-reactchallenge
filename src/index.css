@@ -48,6 +48,11 @@ body::after{
   opacity: 0.2; 
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 @media screen and (max-width: 768px){
   body::after{
     background-attachment: scroll;

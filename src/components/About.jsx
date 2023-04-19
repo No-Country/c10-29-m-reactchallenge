@@ -1,6 +1,10 @@
 import React from "react";
 //import { Link } from "react-router-dom";
 import "./About.css";
+import logo from "../assets/images/logo.png";
+import grupoDeRock from "../assets/images/1.webp";
+import niñoCoriendo from "../assets/images/2.webp";
+import imagen_butacas from "../assets/images/1.webp";
 
 const AboutUs = () => {
   return (
