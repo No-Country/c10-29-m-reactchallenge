@@ -26,8 +26,6 @@ function Index() {
   const infoMessage = () =>
     toast.error("La entrada ya se encuentra en el carrito");
 
-  //
-
   useEffect(() => {
     setLoading(true);
     dispatch(fetchGetEventById(id));
@@ -50,8 +48,6 @@ function Index() {
       );
     }
   };
-
-  //
 
   return (
     <Template>

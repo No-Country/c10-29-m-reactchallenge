@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import "./About.css";
 
 const AboutUs = () => {
   return (
     <div className="about-us">
       <div className="nosotros-img">
-        <img src="../src/assets/logo.png" alt="Logo" />
-        <img src="../src/assets/images/1.webp" alt="Grupo de rock" />
+        <img src="../src/assets/images/logo.png" alt="Logo"/>
+        <img src="../src/assets/images/1.webp" alt="Grupo de rock"/>
       </div>
 
       <div className="contenido-nosotros">
