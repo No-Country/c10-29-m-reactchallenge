@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./About.css";
+import logo from "../../assets/images/bypass-logo.png";
 
 const AboutUs = () => {
   return (
@@ -8,7 +9,7 @@ const AboutUs = () => {
       <div className="nosotros-img">
         <img src="../src/assets/logo.png" alt="Logo" />
 
-        <img src="\src\assets\images\1.webp" alt="Grupo de rock" />
+        <img src={logo} alt="" />
       </div>
 
       <div className="contenido-nosotros">
