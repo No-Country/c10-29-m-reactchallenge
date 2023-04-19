@@ -45,7 +45,7 @@ const Navbar = () => {
           <div className={`nav-elements  ${showNavbar && "active"}`}>
             <ul>
               <li className="hvr-underline-from-center">
-                <Link to="/about/">¿Quienes somos?</Link>
+                <Link to="/about/">¿Quiénes somos?</Link>
               </li>
               <li className="hvr-underline-from-center">
                 <Link to="/contact-us/">Contacto</Link>
@@ -53,10 +53,10 @@ const Navbar = () => {
               {user.status !== "succeeded" && (
                 <>
                   <li className="hvr-underline-from-center">
-                    <Link to="/sign-in/">Iniciar Sesion</Link>
+                    <Link to="/sign-in/">Iniciar Sesión</Link>
                   </li>
                   <li className="hvr-underline-from-center">
-                    <Link to="/sign-up/">Registrarse</Link>
+                    <Link to="/sign-up/">Regístrarse</Link>
                   </li>
                 </>
               )}
@@ -108,7 +108,7 @@ const Navbar = () => {
                       dispatch(emptyCart());
                     }}
                   >
-                    <Link to="/">Cerrar Sesion</Link>
+                    <Link to="/">Cerrar Sesión</Link>
                   </li>
                 </>
               )}

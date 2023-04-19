@@ -7,16 +7,16 @@ function Index() {
   return (
     <Animated animationIn="bounceIn" animationOut="fadeOut" isVisible={true}>
       <div className="login-page">
-        <h1>bypass</h1>
-        <h2>¡Que gusto verte devuelta!</h2>
-        <h4>Inicio de Sesion</h4>
+        <h1>Bypass</h1>
+        <h2>¡Qué gusto verte de vuelta!</h2>
+        <h4>Inicio de Sesión</h4>
         <Login />
         <hr />
         <p>
-          ¿Todavia no tenes cuenta en bypass?  <br />
+          ¿Todavía no tenés cuenta en Bypass?  <br />
           <br />
           <Link to="/sign-up" className="home-button">
-            Registrate
+            Regístrate
           </Link>
         </p>
         <Link to="/" className="home-button">

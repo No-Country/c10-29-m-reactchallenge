@@ -56,57 +56,57 @@ const Login = () => {
           }
         }}
       >
-        {({ isSubmitting }) => (
-          <Form ref={formC} className="login-form">
-            <div className="form-group">
-              {/* <label htmlFor="user_email" className="form-label">
-                Email:{" "}
-              </label> */}
-              <Field
-                type="email"
-                name="user_email"
-                placeholder="Ingrese su correo electronico"
-                className="form-input"
-              />
-              <ErrorMessage
-                className="error-message"
-                name="user_email"
-                component="div"
-              />
-            </div>
-            <div className="custom-search">
-              {/* <label htmlFor="user_password" className="form-label">
-                Contraseña:{" "}
-              </label> */}
-              <Field
-                type={inputType}
-                name="user_password"
-                placeholder="Ingrese su contraseña"
-                className="form-input custom-search-input"
-              />
-              <button type="button" className="custom-search-button" onClick={toggleInput}>
-                {inputType === "password" ? (<AiOutlineEye />) : (<AiOutlineEyeInvisible />)}
-              </button>
-              <ErrorMessage
-                className="error-message"
-                name="user_password"
-                component="div"
-              />
-
-              <p className="password-forgotten">¿Olvidaste la contraseña?</p>
-            </div>
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="form-button"
-            >
-              Ingresar
+       {({ isSubmitting }) => (
+        <Form ref={formC} className="login-form">
+          <div className="form-group">
+            {/* <label htmlFor="user_email" className="form-label">
+              Email:{" "}
+            </label> */}
+            <Field
+              type="email"
+              name="user_email"
+              placeholder="Ingrese su correo electrónico"
+              className="form-input"
+            />
+            <ErrorMessage
+              className="error-message"
+              name="user_email"
+              component="div"
+            />
+          </div>
+          <div className="custom-search">
+            {/* <label htmlFor="user_password" className="form-label">
+              Contraseña:{" "}
+            </label> */}
+            <Field
+              type={inputType}
+              name="user_password"
+              placeholder="Ingrese su contraseña"
+              className="form-input custom-search-input"
+            />
+            <button type="button" className="custom-search-button" onClick={toggleInput}>
+              {inputType === "password" ? (<AiOutlineEye />) : (<AiOutlineEyeInvisible />)}
             </button>
-            <SignWithGoogle isLoggin={true} />
-            <ToastContainer />
-          </Form>
-        )}
-      </Formik>
+            <ErrorMessage
+              className="error-message"
+              name="user_password"
+              component="div"
+            />
+
+            <p className="password-forgotten">¿Olvidaste la contraseña?</p>
+          </div>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="form-button"
+          >
+            Ingresar
+          </button>
+          <SignWithGoogle isLogging={true} />
+          <ToastContainer />
+        </Form>
+      )}
+    </Formik>
     </div>
   );
 };
