@@ -1,12 +1,50 @@
-.title{
-    font-family: "Kanit"!important;
-    font-size: 3rem;
-    color: var(--white);
-    font-weight: 800;
-    margin: 20px;
-    text-align: center;
+.title {
+  font-family: "Kanit" !important;
+  font-size: 3rem;
+  color: var(--white);
+  font-weight: 800;
+  margin: 20px;
+  text-align: center;
 }
 
-.outstanding, .this-week{
-    width: 100%;
+.outstanding,
+.this-week {
+  width: 100%;
+}
+
+.buscadores {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  background-color: var(--light-brown);
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 8px 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 4px 4px 8px 1px rgba(0, 0, 0, 0.15);
+  box-shadow: 4px 4px 8px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* media queries max width 480, 768 and 1024 px */
+@media screen and (max-width: 480px) {
+  .buscadores {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .buscadores {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .buscadores {
+    /* flex-direction: column; */
+    /* flex-wrap: wrap; */
+
+  }
 }

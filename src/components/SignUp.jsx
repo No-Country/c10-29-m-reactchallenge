@@ -1,5 +1,5 @@
-import React, { useEffect, useRef  } from "react";
-import { Formik, Form, Field, ErrorMessage,  } from "formik";
+import React, { useEffect, useRef } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import {} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,17 +10,19 @@ import { signUpUser } from "../services/auth";
 import { loginSuccess } from "../redux/features/auth/authenticationSlice";
 import { useDispatch } from "react-redux";
 import "./SignUp.css";
+import { toastError } from "../utils/messages/message";
+import { ToastContainer } from "react-toastify";
 
 const SignUp = () => {
   const db = getFirestore(app);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const errorAuthenticationMessage = () => toastError("Correo ya registrado")
   const formC = useRef();
-  
+
   return (
     <div>
-      <h1 className="titulo-cuenta">Creamos tu cuenta</h1>
+      <h1 className="title-register">Creamos tu cuenta</h1>
       <Formik
         initialValues={{
           user_password: "",
@@ -30,136 +32,138 @@ const SignUp = () => {
           user_phoneNumber: "",
           user_dni: "",
           role: "",
+          authProvider: "local"
         }}
-        validate={signupValidation}
-        onSubmit={async (formvalue) => {
+        validate={async (values) => signupValidation(values)}
+        onSubmit={async (formvalue, {resetForm}) => {
           try {
-            const loggedUser = await signUpUser(formvalue);  
-            dispatch(loginSuccess(loggedUser));
-            navigate("/");
+            const loggedUser = await signUpUser(formvalue);
+            if (loggedUser){
+              dispatch(loginSuccess(loggedUser));
+              navigate("/");
+            }
           } catch (err) {
-            console.error(err);
-            alert(err.message);
+            console.log({err});
+            if (err.code === "auth/email-already-in-use"){
+              errorAuthenticationMessage()
+              return
+            }
+
+            if (err.code === "auth/popup-closed-by-user"){
+              resetForm()
+              return
+            }
+
           }
         }}
       >
-        {({ isSubmitting, values, setFieldValue }) => (
-          <Form ref={formC}>
-            <div className="container1">
-              <div className="fields">
-                <label htmlFor="user_name">Nombre y Apellido</label>
-                <Field className="boxs"
-                  type="text"
-                  name="user_name"
-                  placeholder="Ingrese su nombre completo"
-                />
-                <ErrorMessage
-                  className="error"
-                  name="user_name"
-                  component="div"
-                />
+        {({ isSubmitting, errors, setFieldValue }) => (
+          <Form ref={formC} className="signup-form">
+            <div className="fields">
+              <label htmlFor="user_name">Nombre y Apellido</label>
+              <Field
+                type="text"
+                name="user_name"
+                placeholder="Ingrese su nombre completo"
+              />
+              <div className="error-message">
+              {errors.user_name ? <div>{errors.user_name}</div> : null}
+                <ErrorMessage className="error" name="user_name" />
               </div>
-              <div>
-                <label htmlFor="user_email">Email</label>
-                <Field className="boxs"
-                  type="email"
-                  name="user_email"
-                  placeholder="Ingrese su correo electronico"
-                />
-                <ErrorMessage
-                  className="error"
-                  name="user_email"
-                  component="div"
-                />
+            </div>
+            <div className="fields">
+              <label htmlFor="user_email">Email</label>
+              <Field
+                type="email"
+                name="user_email"
+                placeholder="Ingrese su correo electronico"
+              />
+              <div className="error-message">
+                <ErrorMessage className="error" name="user_email" />
               </div>
             </div>
 
-            <div className="container1">
-              <div className="fields">
-                <label htmlFor="user_password">Contraseña</label>
-                <Field className="boxs"
-                  type="password"
-                  name="user_password"
-                  placeholder="Minimo 8 caracteres"
-                />
-                <ErrorMessage
-                  className="error"
-                  name="user_password"
-                  component="div"
-                />
+            <div className="fields">
+              <label htmlFor="user_password">Contraseña</label>
+              <Field
+                type="password"
+                name="user_password"
+                placeholder="Minimo 8 caracteres"
+              />
+              <div className="error-message">
+                <ErrorMessage className="error" name="user_password" />
               </div>
-              <div>
-                <label htmlFor="user_birthdate">Fecha de nacimiento</label>
-                <Field className="boxs"
-                  type="date"
-                  name="user_birthdate"
-                  placeholder="Fecha de nacimiento"
-                />
-                <ErrorMessage
-                  className="error"
-                  name="user_birthdate"
-                  component="div"
-                />
+            </div>
+            <div className="fields">
+              <label htmlFor="user_birthdate">Fecha de nacimiento</label>
+              <Field
+                type="date"
+                name="user_birthdate"
+                placeholder="Fecha de nacimiento"
+              />
+              <div className="error-message">
+                <ErrorMessage className="error" name="user_birthdate" />
               </div>
             </div>
 
-          <div className="container1">
-              <div className="fields">
-                <label htmlFor="user_phoneNumber">Telefono</label>
-                <Field className="boxs"
-                  type="number"
-                  name="user_phoneNumber"
-                  placeholder="Numero de telefono"
-                />
-                <ErrorMessage
-                  className="error"
-                  name="user_phoneNumber"
-                  component="div"
-                />
+            <div className="fields">
+              <label htmlFor="user_phoneNumber">Telefono</label>
+              <Field
+                type="number"
+                name="user_phoneNumber"
+                placeholder="Numero de telefono"
+              />
+              <div className="error-message">
+                <ErrorMessage className="error" name="user_phoneNumber" />
               </div>
-              <div>
-                <label htmlFor="user_dni">DNI</label>
-                <Field className="boxs"
-                  type="number"
-                  name="user_dni"
-                  placeholder="Numero de DNI"
-                />
-                <ErrorMessage className="error" name="user_dni" component="div" />
+            </div>
+            <div className="fields">
+              <label htmlFor="user_dni">DNI</label>
+              <Field
+                type="number"
+                name="user_dni"
+                placeholder="Numero de DNI"
+              />
+              <div className="error-message">
+                <ErrorMessage className="error" name="user_dni" />
               </div>
             </div>
 
-              <div
-                className="radio-buttons"
-                role="group"
-                aria-labelledby="my-radio-group"
-              >
+            <div
+              className="radio-buttons"
+              role="group"
+              aria-labelledby="my-radio-group"
+            >
+              <div style={{ display: "flex" }}>
                 <label>
-                  <Field type="radio" name="role" value="buyer" />
-                  Comprador
+                  <Field type="radio" name="role" value="buyer"/>
+                  Espectador
                 </label>
                 <label>
                   <Field type="radio" name="role" value="seller" />
-                  Vendedor
+                  Productor
                 </label>
               </div>
-
-              <div className="registro">
-                <button type="submit" disabled={isSubmitting}>
-                  Registrarse
-                </button>
-                <Link className="volver" to="/" >
-                  <button type="submit">
-                    Volver
-                  </button>
-                </Link>
+              <div className="error-message">
+                <ErrorMessage className="error" name="role" />
               </div>
-              <p className="google-register-info">Para registrarse con Google debe elegir entre comprador o vendedor</p>
+              <p className="google-register-info">
+                Para registrarse con Google debe elegir entre espectador o
+                productor
+              </p>
+            </div>
+
+            <div className="register-buttons">
+              <button type="submit" disabled={isSubmitting}>
+                Registrarse
+              </button>
               <SignWithGoogle />
+            </div>
+            <ToastContainer />
+
           </Form>
         )}
       </Formik>
-      
-      
 
       {/* <div className="log">
         ¿Ya tenes una cuenta?

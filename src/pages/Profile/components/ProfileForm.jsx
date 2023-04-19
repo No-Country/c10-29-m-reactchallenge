@@ -22,7 +22,6 @@ const ProfileForm = ({ user }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateProfile(formData));
-    console.log(formData); // Aquí podrías enviar los datos del formulario a través de una petición HTTP o hacer lo que necesites con ellos
   };
 
   return (

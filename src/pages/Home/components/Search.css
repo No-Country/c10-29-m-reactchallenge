@@ -1,0 +1,26 @@
+.buscador {
+    background-color: var(--light-brown);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.buscador input {
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.search-container-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+
+.search-icon{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}

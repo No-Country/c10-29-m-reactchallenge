@@ -20,12 +20,11 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       const { id } = action.payload;
-      console.log(action.payload);
       const itemExists = state.items.some((item) => item.uid === id);
     
       if (!itemExists) {
         const newItem = { ...action.payload };
-        console.log("newItem", newItem)
+
         state.items.push(newItem);
         state.total += newItem.price;
         setItem("cart", state.items);

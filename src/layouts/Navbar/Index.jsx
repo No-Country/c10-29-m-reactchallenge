@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="container">
+      <div className="container-sm">
         <div className="navbar-container">
           <div className="bypass-logo">
             <Link to="/">
@@ -70,6 +70,9 @@ const Navbar = () => {
                   <li className="hvr-underline-from-center">
                     <Link to="/sell/"><MdOutlineSell />&nbsp; Vender</Link>
                   </li>
+                  <li className="hvr-underline-from-center">
+                    <Link to="/scan-qr/"><IoMdQrScanner />&nbsp; Escanear QR</Link>
+                  </li>
                 </>
               )}
               {user?.role === "buyer" && isLogged && (
@@ -77,7 +80,7 @@ const Navbar = () => {
                   <li className="hvr-underline-from-center">
                     <Link to="/purchases/">
                       <BiPurchaseTagAlt />
-                      &nbsp; Mis Compras
+                      &nbsp; Mis Tickets
                     </Link>
                   </li>
                   <li className="cart">

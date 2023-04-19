@@ -3,17 +3,21 @@
   .about-us {
     padding: 20px;
     margin-bottom: 30px;
+   
   }
 
-  .about-us h2 {
+  /* .about-us h2 {
     font-size: 1.8rem;
     margin-bottom: 15px;
-  }
+    color: var(--white);
+  } */
 
   .about-us p {
-    font-size: 1.1rem;
-    line-height: 1.5;
+    font-size: 1.3rem;
     margin-bottom: 10px;
+    color: var(--white);
+    margin: 10px;
+    font-family: "Kanit", sans-serif;
   }
 
   /* Ajustar el tamaño del botón */
@@ -37,6 +41,7 @@
     border-radius: 15px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
     margin: 50px;
+    font-family: "Kanit", sans-serif;
   }
 
   .about-us h2 {
@@ -50,9 +55,68 @@
     margin-bottom: 20px;
   }
 
+  
   /* Ajustar el tamaño del botón */
   .about-us button {
     font-size: 1rem;
     padding: 12px 20px;
   }
+
+  .nosotros-img{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nosotros-img img{
+    width: 650px;
+    height: auto;
+    border-radius: 5px;
+    
+  }
+
+  .contenido-nosotros p{
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    color: var(--white);
+    font-size: 2rem;
+    font-family: "Kanit", sans-serif;
+  }
+
+  .contenido-nosotrosText p{
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 150px;
+    margin-bottom: 150px;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-family: "Kanit", sans-serif;
+  }
+
+  .textP{
+    font-size: 2rem !important;
+    
+  }
+
+  .nosotros-img p{
+    text-align: center;
+    color: var(--white);
+    font-size: 3rem;
+    font-family: "Kanit", sans-serif;
+  }
+
+  .nosotros-text p{
+    text-align: center;
+    color: var(--white);
+    font-size: 1.5rem;
+    font-family: "Kanit", sans-serif;
+    margin-top: 50px;
+  }
 }
+
+

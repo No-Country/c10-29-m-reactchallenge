@@ -1,31 +1,56 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchGetAllEvents } from "../../redux/features/events/eventsSlice";
 import eventsService from "../../services/events";
 import "./Index.css";
 
-const Cards = ({ searchTerm = "", dateFilter = false, search = false }) => {
-  // const eventsState = useSelector((state) => state.events.events);
+const Cards = ({
+  searchTerm = "",
+  dateFilter = false,
+  search = false,
+  filterProv,
+  filterDate,
+}) => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // dispatch(fetchGetAllEvents());
     setLoading(true);
     eventsService.getAllEvents().then((res) => {
       setEvents(res);
       setLoading(false);
-      console.log("res", res);
     });
   }, []);
 
-  const filteredEvents = events.filter((event) => {
-    return (
-      event.title &&
-      event.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  });
+  const filteredEvents = events
+    .filter((event) => {
+      return (
+        event.title &&
+        event.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    })
+    .filter((event) => {
+      if (filterProv) {
+        return event.provincia === filterProv;
+      }
+      return true;
+    })
+    .filter((event) => {
+      if (filterDate) {
+        const fechaFilt = new Date(filterDate);
+        const opciones2 = { day: "numeric", month: "numeric", year: "numeric" };
+        const fechaFormateada2 = fechaFilt.toLocaleDateString(
+          undefined,
+          opciones2
+        );
+
+        const fecha = new Date(event.time);
+        const opciones = { day: "numeric", month: "numeric", year: "numeric" };
+        const fechaFormateada = fecha.toLocaleDateString(undefined, opciones);
+
+        return fechaFormateada === fechaFormateada2;
+      }
+      return true;
+    });
 
   const currentDate = new Date();
   const firstDayOfWeek = new Date(currentDate);
@@ -34,12 +59,10 @@ const Cards = ({ searchTerm = "", dateFilter = false, search = false }) => {
   lastDayOfWeek.setDate(firstDayOfWeek.getDate() + 6);
 
   const filteredEvenstByDate = events.filter((event) => {
-    // console.log(event.time);
     const dateEvent = new Date(event.time);
-    // console.log("dateEvent", dateEvent);
+
     const eventTime = dateEvent.getTime(); // Obtén el valor de tiempo en milisegundos
-    // console.log("eventTime", eventTime);
-    // console.log("firstDayOfWeek", firstDayOfWeek.getTime());
+
     return (
       eventTime >= firstDayOfWeek.getTime() &&
       eventTime <= lastDayOfWeek.getTime()
@@ -58,7 +81,11 @@ const Cards = ({ searchTerm = "", dateFilter = false, search = false }) => {
           {search && filteredEvents.length > 0 ? (
             filteredEvents.map((card) => (
               <Link to={`/cards/${card.uid}`} key={card.uid}>
-                <div className={`card-ticket ${card.ability === 0 ? "sold-out" : ""}`}>
+                <div
+                  className={`card-ticket ${
+                    card.ability === 0 ? "sold-out" : ""
+                  }`}
+                >
                   <img src={card.image} />
                 </div>
               </Link>
@@ -80,7 +107,6 @@ const Cards = ({ searchTerm = "", dateFilter = false, search = false }) => {
       )}
     </div>
   );
-  
 };
 
 export default Cards;

@@ -1,0 +1,13 @@
+.filter-data-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+}
+.date-search-cards{
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+}

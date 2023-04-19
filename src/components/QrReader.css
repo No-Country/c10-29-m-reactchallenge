@@ -1,0 +1,25 @@
+.qr-reader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.qr-reader button{
+    margin-bottom: 20px;
+    color: var(--white);
+    background-color: var(--black);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+
+.qr-reader button:hover{
+    background-color: var(--light-brown);
+    color: var(--black);
+}
+@media (max-width: 768px){
+    
+}

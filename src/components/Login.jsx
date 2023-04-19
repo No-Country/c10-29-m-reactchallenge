@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { loginSuccess } from "../redux/features/auth/authenticationSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -24,7 +23,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <Formik
-        initialValues={{ user_password: "", user_email: "" }}
+        initialValues={{ user_password: "", user_email: "", authProvider: "local" }}
         validate={(values) => {
           const errors = {};
           if (values.authProvider !== "local") {

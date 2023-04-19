@@ -1,0 +1,12 @@
+.buscador-prov{
+    background-color: var(--light-brown);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.search-select{
+    border-radius: 10px;
+    width: 100%;
+    padding: 5px;
+    background-color: var(--white);
+}
