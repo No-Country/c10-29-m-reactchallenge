@@ -1,17 +1,16 @@
 import React from "react";
-//import { Link } from "react-router-dom";
 import "./About.css";
 import logo from "../assets/images/logo.png";
 import grupoDeRock from "../assets/images/1.webp";
 import niñoCoriendo from "../assets/images/2.webp";
-import imagen_butacas from "../assets/images/1.webp";
+import imagen_butacas from "../assets/images/3.webp";
 
 const AboutUs = () => {
   return (
     <div className="about-us">
       <div className="nosotros-img">
-        <img src="../src/assets/images/logo.png" alt="Logo"/>
-        <img src="../src/assets/images/1.webp" alt="Grupo de rock"/>
+        <img src={logo} alt="Logo"/>
+        <img src={grupoDeRock} alt="Grupo de rock"/>
       </div>
 
       <div className="contenido-nosotros">
@@ -24,7 +23,7 @@ const AboutUs = () => {
       </div>
 
       <div className="nosotros-img">
-        <img src="../src/assets/images/2.webp" alt="Niño corriendo" />
+        <img src={niñoCoriendo} alt="Niño corriendo" />
         <div>
           <p>¿Y cuál es nuestra misión?</p>
           <p>¿Cuáles son los objetivos?</p>
@@ -47,7 +46,7 @@ const AboutUs = () => {
           <p>Empatía</p>
           <p className="textP">Nuestros principales valores</p>
         </div>
-        <img src="../src/assets/images/3.webp" alt="Imagen butacas" />
+        <img src={imagen_butacas} alt="Imagen butacas" />
       </div>
 
       <div className="nosotros-text">
@@ -56,14 +55,8 @@ const AboutUs = () => {
             ¡Cuenta siempre con Bypass para llegar a donde más te gusta!</p>
       </div>
 
-      {/* <div>
-        <Link to={'/'}>
-        <button type="submit">Submit</button>
-        </Link>
-    </div> */}
     </div>
   );
 };
 
 export default AboutUs;
-
