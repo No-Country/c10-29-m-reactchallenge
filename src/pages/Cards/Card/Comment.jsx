@@ -66,10 +66,11 @@ function Comment() {
         {currentEventById.coments?.map((coment) => {
           return (
             <div key={coment.uid} className="comment-user-contein">
+              <StarRating/>
               <div className="comment-user-name">
                 <span>{coment.user_name}</span>
                 <span>{coment.date}</span>
-                 <StarRating/>
+                
               </div>
               <p className="comment">• {coment.text.coment}</p>
             </div>
