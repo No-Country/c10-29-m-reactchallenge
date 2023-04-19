@@ -9,7 +9,7 @@ import useSignUpWithGoogle from "../hooks/useSignUpWithGoogle";
 import { connect } from "formik";
 import { FcGoogle } from "react-icons/fc";
 
-const SignWithGoogle = ({ formik, isLoggin }) => {
+const SignWithGoogle = ({ formik, isLogging }) => {
   const { values, setFieldValue } = formik;
 
   const { isDisabled } = useSignUpWithGoogle({ values });
@@ -23,7 +23,7 @@ const SignWithGoogle = ({ formik, isLoggin }) => {
       className="botonGoogle"
       type="submit"
       onClick={signInWithGoogle}
-      disabled={!isLoggin && isDisabled}
+      disabled={!isLogging && isDisabled}
     >
       <FcGoogle /> Ingresa con Google
     </button>
