@@ -1,15 +1,10 @@
-form {
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  margin: 0 auto;
-}
+
 
 .label-contacto {
-  font-weight: bold;
-  margin-top: 10px !important;
-  margin-bottom: 0 !important;
   display: block;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  font-weight: 600;
 }
 
 .contacto input {
@@ -21,12 +16,6 @@ form {
   font-size: 16px;
   width: 300px;
   box-sizing: border-box
-}
-
-.preguntas h2,
-p {
-  padding: 0;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .contacto textarea {
@@ -43,21 +32,7 @@ p {
   resize: none;
 }
 
-.preguntas {
-  color: var(--white);
-}
 
-.preguntas h2 {
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 2rem;
-  margin-top: 80px;
-}
-
-.preguntas p {
-  font-size: 1.2rem;
-  margin: 10px;
-}
 
 .enviar {
   background-color: var(--black) !important;
@@ -102,7 +77,7 @@ p {
   justify-content: space-around;
   align-items: start;
   flex-direction: row;
-  width: 70%;
+ color: var(--white);
 }
 
 .contacto {
@@ -111,6 +86,8 @@ p {
   align-items: center;
   flex-direction: column;
 }
+
+
 
 @media (max-width: 900px) {
   .formularios {
