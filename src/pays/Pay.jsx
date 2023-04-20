@@ -1,67 +1,22 @@
 import React, { useState } from "react";
-import bgMobile from "../../src/assets/images/bg-main-mobile.png";
-import bgDesktop from "../../src/assets/images/bg-main-desktop.png";
-import bgCardBack from "../../src/assets/images/bg-card-back.png";
-import bgCardFront from "../../src/assets/images/bg-card-front.png";
-import logo from "../../src/assets/images/bypass-logo.png";
-import tick from "../../src/assets/images/icon-complete.svg";
-import { format } from "date-fns";
 import "./Pay.css";
+import Swal from 'sweetalert2'
 
 export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePurchase }) {
   const [name, setName] = useState(""); 
   const [cardNumber, setCardNumber] = useState("");
-  //const [date, setDate] = useState("01/23");
   const [cvc, setCvc] = useState("");
   const [date, setDate] = useState(new Date().toISOString().substring(0, 7));
 
-
   const handleSubmit = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     setConfirmed(true);
-    // setDisplayCard(true);
+    handlePurchase();
   };
 
   return (
     <>
       <section className="card-container">
-        {/* <div className="absolute -z-10 w-full">
-            <picture>
-              <source media="(min-width: 768px)" srcSet={bgDesktop} />
-              <img src={bgMobile} alt="" className="w-full md:w-1/3" />
-            </picture>
-          </div> */}
-
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 max-w-7xl mx-auto">
-          {/* <div className="mt-10 mx-5 grid grid-cols-1">
-            <article className="front-card p-5 flex flex-col justify-between">
-              <img src={logo} alt="" className="w-20 lg:w-28" />
-
-              <div>
-                <h2 className="text-white text-l lg:text-3xl mb-6 tracking-widest">
-                  {cardNumber}
-                  
-                </h2>
-
-                <ul className="flex items-center justify-between">
-                  <li className="text-white uppercase text-base lg:text-xl tracking-widest">
-                    {name}
-                  </li>
-                  <li className="text-white text-base lg:text-xl tracking-widest">
-                    {format(new Date(date), "MM/yy")}
-                  </li>
-                </ul>
-              </div>
-            </article>
-
-            <article className="back-card relative lg:ml-20">
-              <p className="absolute right-10 text-lg lg:text-xl text-white tracking-widest">
-               
-                {cvc}
-              </p>
-            </article>
-          </div> */}
-
           <div className="pt-8 px-5 pb-20 cards-info">
             {!confirmed && (
               <form onSubmit={handleSubmit} className="gap-8 max-w-lg lg:h-screen">
@@ -81,7 +36,7 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
                 <div>
                   <label htmlFor="card_number">Número de tarjeta</label>
                   <input
-                    type="number"
+                    type="text"
                     name="card_number"
                     id="card_number"
                     placeholder=" 1234 5678 9012 3456"
@@ -146,33 +101,20 @@ export default function Pay({ confirmed, setConfirmed, setDisplayCard, handlePur
               />
             )}
           </div>
-        </div>
       </section>
     </>
   );
 }
 
 function ThankYou({ setDisplayCard, handlePurchase }) {
+  Swal.fire(
+    'Gracias por tu compra!',
+    '',
+    'success'
+  );
+
   return (
     <>
-      <div className="thank-you flex flex-col items-center justify-center lg:h-screen max-w-lg mx-auto">
-        <img src={tick} alt="" className="block mx-auto" />
-        <h1 className="text-slate-800 text-3xl my-6 uppercase text-center">
-          Gracias
-        </h1>
-        <p className="text-slate-400 text-center">
-          Por tu compra
-        </p>
-        <button
-          onClick={() => {
-            handlePurchase();
-            setDisplayCard(false);
-          }}
-          className="btn block mx-auto mt-10 w-full "
-        >
-          Continue
-        </button>
-      </div>
     </>
   );
 }
