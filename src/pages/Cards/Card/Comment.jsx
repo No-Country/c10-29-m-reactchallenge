@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./Index.css";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../utils/firebaseConfig";
-import StarRating from '../../../../src/components/star/starRating'
+import StarRating from "../../../../src/components/star/starRating";
 
 function Comment() {
   const { id } = useParams();
@@ -30,13 +30,13 @@ function Comment() {
     const newComent = {
       text: form,
       user_id: user.uid,
-      user_name: user.name,
+      user_name: user.user_name,
       date: new Date().toLocaleDateString(),
       id: Math.random().toString(36).substring(2, 15),
     };
 
     const eventsRef = doc(db, "events", id);
-
+    console.log("useruid", user.uid, "form", form, "user.name", user);
     await updateDoc(eventsRef, {
       coments: currentEventById.coments
         ? [...currentEventById.coments, newComent]
@@ -63,19 +63,20 @@ function Comment() {
       </form>
       <div className="comment-all-users">
         {console.log(currentEventById)}
-        {currentEventById.coments?.map((coment) => {
-          return (
-            <div key={coment.uid} className="comment-user-contein">
-              <StarRating/>
-              <div className="comment-user-name">
-                <span>{coment.user_name}</span>
-                <span>{coment.date}</span>
-                
+        {currentEventById.coments
+          ?.map((coment) => {
+            return (
+              <div key={coment.uid} className="comment-user-contein">
+                <StarRating />
+                <div className="comment-user-name">
+                  <span>{coment.user_name}</span>
+                  <span>{coment.date}</span>
+                </div>
+                <p className="comment">• {coment.text.coment}</p>
               </div>
-              <p className="comment">• {coment.text.coment}</p>
-            </div>
-          );
-        }).reverse()}
+            );
+          })
+          .reverse()}
       </div>
     </div>
   );
